@@ -1,0 +1,18 @@
+<!-- Upper Navbar (Fixed) -->
+<nav class="upper-navbar">
+    <div class="logo">Mihika</div>
+    <ul class="nav-links">
+      <li><a (click)="setCategory('master')" [class.active]="activeCategory === 'master'">Master</a></li>
+      <li><a (click)="setCategory('transactions')" [class.active]="activeCategory === 'transactions'">Transaction</a></li>
+    </ul>
+  </nav>
+  
+  <!-- Lower Navbar (Changes based on selected category) -->
+  <nav class="lower-navbar" *ngIf="categoryLinks.length">
+    <ul>
+      <li *ngFor="let link of categoryLinks">
+       
+      </li>
+    </ul>
+  </nav>
+ 

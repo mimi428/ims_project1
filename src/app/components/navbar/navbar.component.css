@@ -1,0 +1,66 @@
+/* Upper Navbar */
+.upper-navbar {
+    display: flex;
+    align-items: center;
+    background: #336799;
+    color: white;
+    padding: 10px;
+  }
+  
+  /* Logo and Master/Transaction links on the left */
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  /* Logo */
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  /* Upper Navbar Links */
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .nav-links a.active {
+    color: #27c3e2;
+  }
+  
+  /* Lower Navbar */
+  .lower-navbar {
+    display: flex;
+    justify-content: center;
+    background: #6599ff;
+    padding: 10px 0;
+  }
+  
+  .lower-navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+  }
+  
+  .lower-navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 5px 10px;
+  }
+  
+  .lower-navbar a.active {
+    border-bottom: 2px solid white;
+  }
+  
