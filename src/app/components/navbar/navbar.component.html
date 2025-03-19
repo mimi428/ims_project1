@@ -2,17 +2,20 @@
 <nav class="upper-navbar">
     <div class="logo">Mihika</div>
     <ul class="nav-links">
-      <li><a (click)="setCategory('master')" [class.active]="activeCategory === 'master'">Master</a></li>
-      <li><a (click)="setCategory('transactions')" [class.active]="activeCategory === 'transactions'">Transaction</a></li>
+        <li><a (click)="setLowerNavbar('master')">Master</a></li>
+        <li><a (click)="setLowerNavbar('transactions')">Transactions</a></li>
+        <li>Report</li>
+        <li>Config</li>
     </ul>
+        <div class="search-bar">
+        <input type="text" placeholder="Search..." />
+      </div>
   </nav>
   
-  <!-- Lower Navbar (Changes based on selected category) -->
-  <nav class="lower-navbar" *ngIf="categoryLinks.length">
-    <ul>
-      <li *ngFor="let link of categoryLinks">
-       
-      </li>
-    </ul>
-  </nav>
+    <nav class="lower-navbar">
+        <ul>
+          <li *ngFor="let word of lowerNavbarWords">{{ word }}</li>
+        </ul>
+      </nav>
+
  

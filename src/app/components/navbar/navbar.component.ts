@@ -11,8 +11,21 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
   categoryLinks: { path: string; label: string }[] = [];
   activeCategory: string = '';
+  lowerNavbarWords: string[] = [];
 
   constructor(private router: Router) {}
+
+  setLowerNavbar(section: string) {
+    if (section === 'master') {
+      this.lowerNavbarWords = ['Products', 'Categories', 'Inventory'];
+    } else if (section === 'transactions') {
+      this.lowerNavbarWords = ['Sales', 'Purchase', 'Payments'];
+    } else if (section === 'reports') {
+      this.lowerNavbarWords = ['Monthly Report', 'Annual Report', 'Performance'];
+    } else {
+      this.lowerNavbarWords = [];
+    }
+  }
 
   setCategory(category: string) {
     this.activeCategory = category;
