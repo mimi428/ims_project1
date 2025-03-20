@@ -32,6 +32,7 @@
     font-size: 1rem;
     padding: 10px ;
     cursor: pointer;
+    margin-top: 5px;
   }
   
   .nav-links a:active {
@@ -45,14 +46,14 @@
     margin-left: 500px;
   }
 
-/* Lower Navbar */
 .lower-navbar {
   width: 100%;
   display: flex;
   justify-content: left;
   background: #6599ff;
-  position: relative; /* Ensures dropdown aligns properly */
+  position: relative;
   z-index: 100;
+  font-size: 1rem;
 }
 
 .lower-navbar ul {
@@ -62,11 +63,10 @@
   margin-left: 50px; 
   color: white;
 }
-
 .lower-navbar li {
   position: relative; 
+  height:4vh;
 }
-
 /* Lower Navbar Buttons */
 .lower-navbar button {
   background: #6599ff;
@@ -75,26 +75,26 @@
   font-size: 1rem;
   cursor: pointer;
   padding: 8px 12px;
-  position: relative; /* Ensures dropdown stays below the button */
+  position: relative; 
 }
 
 .lower-navbar button:hover {
   background: #336799;
 }
 
-
 .dropdown {
   position: absolute;
-  top: 100%; /* Ensures dropdown appears right below the lower navbar */
-  left: 50%; /* Aligns the dropdown to the center of the button */
-  transform: translateX(-50%); /* Centers the dropdown */
+  margin-top: 20px;
+  top: 100%; 
+  left: 50%; 
+  transform: translateX(-50%); 
   background: white;
   padding: 8px 0;
   flex-direction: column;
-  width: 180px; /* Adjust width if needed */
+  width: 180px; 
   white-space: nowrap;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-  display: none; /* Hidden by default */
+  display: none; 
   z-index: 1000;
   border-radius: 4px;
 }

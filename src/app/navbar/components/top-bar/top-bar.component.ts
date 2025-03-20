@@ -24,18 +24,15 @@ export class TopBarComponent {
       this.lowerNavbarWords = [];
     }
 
-    // Reset dropdowns when changing sections
     this.dropdownVisible = {};
   }
 
-  // Toggle dropdown for a specific button
   toggleDropdown(word: string) {
-    // Close all dropdowns first
+
     Object.keys(this.dropdownVisible).forEach(key => this.dropdownVisible[key] = false);
     this.dropdownVisible[word] = !this.dropdownVisible[word]; // Toggle selected dropdown
   }
 
-  // Get the dropdown options dynamically
   getDropdownOptions(word: string): string[] {
     if (word === 'Masters') {
       return ['Product master', 'Party master', 'Category master','Warehouse master'];
@@ -47,12 +44,21 @@ export class TopBarComponent {
       return ['Asset Register', 'Depreciation Info', 'Maintenance Schedule'];
     } else if (word === 'Others') {
       return ['Settings', 'User Roles', 'Configurations'];
+    } else if (word === 'Sales') {
+      return ['Abbreviated Tax Invoice', 'Sales Tax Invoice', 'Export Sales Invoice', 'Cash Handout'];
+    } else if (word === 'Purchase') {
+      return ['Purchase invoice', 'Import purchase invoice'];
+    } else if (word === 'Payments') {
+      return ['Asset Register', 'Depreciation Info', 'Maintenance Schedule'];
+    } else if (word === 'Others') {
+      return ['Settings', 'User Roles', 'Configurations'];
     } else {
       return [];
     }
+    
   }
 
-  // Handle clicking on a dropdown item
+
   onDropdownItemClick(option: string) {
     console.log("Clicked on:", option);
     alert(`You selected: ${option}`); // Replace with navigation logic
