@@ -1,9 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
+import { AppComponent } from "../../../app.component";
+
 
 @Component({
   selector: 'app-navbar',
-  imports:[CommonModule],
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './top-bar.component.html',
   styleUrls: ['./top-bar.component.css']
 })
@@ -11,8 +14,9 @@ export class TopBarComponent {
   lowerNavbarWords: string[] = []; 
   searchQuery: string = '';
   dropdownVisible: { [key: string]: boolean } = {}; // Track visibility of dropdowns
+  
+  constructor(private router: Router) {}
 
-  // Set the lower navbar dynamically based on the upper navbar selection
   setLowerNavbar(section: string) {
     if (section === 'master') {
       this.lowerNavbarWords = ['Masters','Inventory Info', 'Scheme Management', 'Fixed Assets Module', 'Others'];
@@ -61,10 +65,15 @@ export class TopBarComponent {
 
   onDropdownItemClick(option: string) {
     console.log("Clicked on:", option);
-    alert(`You selected: ${option}`); // Replace with navigation logic
+    // Navigate based on the selected option
+    switch (option) {
+      case 'Product master':
+        this.router.navigate(['/product-master']);
+        break;
+
+    }
   }
 
-  // Close dropdowns when clicking outside
   @HostListener('document:click', ['$event'])
   closeDropdown(event: MouseEvent) {
     const clickedOutside = !(event.target as HTMLElement).closest('.lower-navbar');
