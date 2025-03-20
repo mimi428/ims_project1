@@ -26,6 +26,7 @@
   }
   
   .nav-links a {
+    margin-left: 5px;
     color: white;
     text-decoration: none;
     font-size: 1rem;
@@ -46,15 +47,15 @@
 
   .lower-navbar {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     background: #6599ff;
-    padding: 2px;
     position:relative;
   }
   
   .lower-navbar ul {
     display: flex;
     list-style: none;
+    margin-left: 59px; 
     gap: 17px;
     color:white;
   }
@@ -70,5 +71,7 @@
   .lower-navbar a.active {
     border-bottom: 2px solid white;
   }
+
+
   
   

@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'],
+  templateUrl: './top-bar.component.html',
+  styleUrls: ['./top-bar.component.css'],
   imports:[CommonModule]
 })
-export class NavbarComponent {
+export class TopBarComponent {
   categoryLinks: { path: string; label: string }[] = [];
   activeCategory: string = '';
   lowerNavbarWords: string[] = [];
@@ -17,9 +17,14 @@ export class NavbarComponent {
 
   setLowerNavbar(section: string) {
     if (section === 'master') {
-      this.lowerNavbarWords = ['Products', 'Categories', 'Inventory'];
+      this.lowerNavbarWords = ['Masters',
+        'Inventory Info',
+        'Scheme Management',
+        'Fixed Assets Module',
+        'Others'
+        ];
     } else if (section === 'transactions') {
-      this.lowerNavbarWords = ['Sales', 'Purchase', 'Payments'];
+      this.lowerNavbarWords = ['Sales', 'Purchase', 'Inventory movement'];
     } else if (section === 'reports') {
       this.lowerNavbarWords = ['Monthly Report', 'Annual Report', 'Performance'];
     } else {
