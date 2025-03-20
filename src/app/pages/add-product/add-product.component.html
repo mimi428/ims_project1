@@ -1,49 +1,131 @@
 <div class="container">
     <!-- Title and Buttons Section -->
     <div class="row">
-      <div class="col-md-9">
-        <h4>PRODUCT MASTER</h4>
+        <div class="col-md-6">
+          <label class="label-text">PRODUCT MASTER >>Add product</label>
+        </div>
+        <div class="col-md-6">
+          <div class="button-container">
+            <button class="btn btn-info">Reset</button>
+            <button class="btn btn-info" disabled>Add Main Group</button>
+            <button class="btn btn-info" disabled>Add Sub Group</button>
+            <button type="button" class="btn btn-info">Add product</button>
+            <button routerlink="/navbar/components/top-bar" class="btn btn-info">Back</button>
+          </div>
+        </div>
       </div>
+<br>
+<div class="container">
+    <div class="row">
       <div class="col-md-3">
-        <div class="btn">
-            <div class="d-flex justify-content-end">
-                <button>Add main group</button>
-                <button>Add sub group</button>
-                <button>Add product</button>
-                <button>Back</button>
-                <button>Button 5</button>
+        <div class="form-wrapper">
+            <!-- Left Section -->
+            <div class="left-section">
+                <div class="form-row">
+                    <label for="mainGroup">Main Group:</label>
+                    <select id="mainGroup" name="mainGroup">
+                        <option value="">Select Main Group</option>
+                        <!-- Add options dynamically -->
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="subGroupA">Sub Group (A):</label>
+                    <select id="subGroupA" name="subGroupA">
+                        <option value="">Select Sub Group (A)</option>
+                        <!-- Add options dynamically -->
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="subGroupB">Sub Group (B):</label>
+                    <select id="subGroupB" name="subGroupB">
+                        <option value="">Select Sub Group (B)</option>
+                        <!-- Add options dynamically -->
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="subGroupC">Sub Group (C):</label>
+                    <select id="subGroupC" name="subGroupC">
+                        <option value="">Select Sub Group (C)</option>
+                        <!-- Add options dynamically -->
+                    </select>
+                </div>
             </div>
         </div>
       </div>
-    </div>
-  
-    <!-- Content Section: Left 9 columns and Right 3 columns -->
-    <div class="row">
-      <!-- Left Side: Takes up 9 columns -->
-     
-  
-      <!-- Right Side: Takes up 3 columns, with dropdowns -->
-      <div class="col-md-3">
-        <h3>Dropdowns</h3>
-        <label for="dropdown1">Select Option 1</label>
-        <select id="dropdown1" class="form-control">
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-          <option value="option3">Option 3</option>
-        </select>
-        <br>
-        
-        <label for="dropdown2">Select Option 2</label>
-        <select id="dropdown2" class="form-control">
-          <option value="optionA">Option A</option>
-          <option value="optionB">Option B</option>
-          <option value="optionC">Option C</option>
-        </select>
-      </div>
       <div class="col-md-9">
-        <h3>Content on the Left</h3>
-        <p>This is the left side where your content can go.</p>
-      </div>
+  
+            <!-- Right Section -->
+            <div class="right-section">
+                <!-- Product Code & Name -->
+                <div class="form-row">
+                    <label for="productCode">Product Code:</label>
+                    <input type="text" id="productCode" name="productCode">
+                </div>
+                <div class="form-row">
+                    <label for="productName">Product Name:</label>
+                    <input type="text" id="productName" name="productName">
+                </div>
+
+                <!-- Tabs -->
+                <div class="tabs">
+                    <button type="button" class="tab active" data-tab="details">Detailed Information</button>
+                    <button type="button" class="tab" data-tab="alternate">Alternate Unit</button>
+                    <button type="button" class="tab" data-tab="inventory">Inventory Control</button>
+                    <!-- Add other tabs as needed -->
+                </div>
+
+                <!-- Tab Content: Detailed Information -->
+                <div class="tab-content active" id="details">
+                    <!-- Product Description -->
+                    <div class="form-row">
+                        <label for="productDescription">Product Description:</label>
+                        <input type="text" id="productDescription" name="productDescription">
+                    </div>
+
+                    <!-- Stock Unit & Product Type -->
+                    <div class="form-row">
+                        <label for="stockUnit">Stock Unit:</label>
+                        <input type="text" id="stockUnit" name="stockUnit">
+                        <!-- Add button next to Stock Unit -->
+                        <button type="button" class="add-btn">+</button>
+
+                        <label for="productType">Product Type:</label>
+                        <select id="productType" name="productType">
+                            <option value="">Select Product Type</option>
+                            <!-- Add options dynamically -->
+                            <option value="inventoryItem">Inventory Item</option>
+                        </select>
+                    </div>
+
+                    <!-- VAT Mode -->
+                    <div class="form-row vat-mode-row">
+                        VAT Mode:
+                        <input type="radio" id="vatItem" name="vatMode" value="vatItem" checked> VAT Item
+                        <input type="radio" id="nonVatItem" name="vatMode" value="nonVatItem"> Non-VAT
+                    </div>
+
+                    <!-- Additional fields can be added here based on the image -->
+                </div>
+
+                <!-- Alternate Unit Tab Content -->
+                <div class="tab-content" id="alternate">
+                    Alternate Unit Content
+                </div>
+
+                <!-- Inventory Control Tab Content -->
+                <div class="tab-content" id="inventory">
+                    Inventory Control Content
+                </div>
+
+                <!-- Buttons -->
+                <div class='action-buttons'>
+                  <!-- Reset, Back, Save buttons as per image-->
+                  Reset | Add Product | Save End
+                </div>
+
+      
     </div>
   </div>
+    </div>
+  
   

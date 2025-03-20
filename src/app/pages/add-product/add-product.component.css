@@ -1,0 +1,274 @@
+/* Custom styles for the label */
+.label-text {
+    white-space: nowrap;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    padding-left: 4%;
+    padding-top: 15px;
+    width: 192px;
+  }
+  .button-container {
+    display: flex;
+    justify-content: flex-end; 
+    margin-right: 20px;
+    gap: 9px; 
+    flex-wrap: wrap; 
+  }
+  .btn {
+    font-size: 12px;
+    padding: 8px 12px;
+    cursor: pointer;
+    background-color: #336799;
+    color: white;
+    border-radius: 0%;
+  }
+
+  .btn:hover {
+    background-color: #2dacd1;
+    color: white;
+  }
+  
+  .btn:focus {
+    outline: none;
+  }
+
+.container {
+    margin-top: 30px;
+  }
+
+  .sidebar {
+    background-color: #e8edf3;
+    padding: 20px;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .side {
+    margin-bottom: 20px;
+  }
+  
+  /* Label styling */
+  label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: inline-block;
+    font-size: 14px;
+  }
+  
+
+  .select-control {
+    width: 100%;
+    padding: 8px 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccccccde;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+
+  .col-md-9 {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #555;
+  }
+
+.form-container {
+    width: 60%;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.form-row label {
+    flex-basis: 30%;
+}
+
+.form-row input,
+.form-row select {
+    flex-basis: 65%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.tab {
+    flex-grow: 1;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #eaeaea;
+    border-radius: 4px 4px 0 0;
+}
+
+.tab.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.save-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    border: none;
+}
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* Container for the Product Master Form */
+.product-master-container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Main Title */
+.product-master-container h1 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Form Wrapper Layout */
+.form-wrapper {
+    display: flex;
+    gap: 20px;
+}
+
+/* Left Section Styling */
+.left-section {
+    flex: 1;
+}
+
+.left-section .form-row {
+    margin-bottom: 15px;
+}
+
+.left-section label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.left-section select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+/* Right Section Styling */
+.right-section {
+    flex: 2.5;
+}
+
+.right-section .form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.right-section label {
+    flex-basis: 25%;
+    font-size: 14px;
+}
+
+.right-section input,
+.right-section select {
+    flex-grow: 1;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.right-section .add-btn {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+}
+
+/* Tabs Styling */
+.tabs {
+    display: flex;
+}
+
+.tab {
+    flex-grow: 1;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #eaeaea;
+}
+
+.tab.active {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Tab Content Styling */
+.tab-content {
+    display: none; /* Hidden by default */
+}
+
+.tab-content.active {
+    display: block; /* Show active tab content */
+}
+
+/* VAT Mode Row Styling */
+.vat-mode-row input[type="radio"] {
+   margin-left :10
+
+
+}
