@@ -3,17 +3,14 @@
       <label class="label-text">PRODUCT MASTER</label>
     </div>
     <div class="col-md-6">
-      <!-- Button Container with Flexbox -->
       <div class="button-container">
-        <button class="btn btn-info">Add Product</button>
+        <button class="btn btn-info"(click)="redirectToAddProduct()">Add Product</button>
         <button class="btn btn-info">Add Main Group</button>
         <button class="btn btn-info" disabled>Add Sub Group</button>
         <button type="button" class="btn btn-info">Export AltUnit</button>
         <button class="btn btn-info">Export Product</button>
         <button class="btn btn-info">Import Product [F2]</button>
         <button routerlink="/navbar/components/top-bar" class="btn btn-info">Back</button>
-        
-       
       </div>
     </div>
   </div>
@@ -21,13 +18,89 @@
 
     <div class="row">
         <div class="col-md-3 sidebar">
-            <h4>Product</h4>
-
+            <div class="idk">
+                <h4>Product</h4>
+            </div>
+            
           </div>
           
       <div class="col-md-9">
-        <h3>Content on the right</h3>
-        <p>This is the right side where your content can go.</p>
+        <div class="tabs">
+            <button class="tab-button" [ngClass]="{'active': activeTab.value === 'ProductList'}" (click)="activeTab.setValue('ProductList')">
+              Product List
+            </button>
+            <button class="tab-button" [ngClass]="{'active': activeTab.value === 'ProductGroupList'}" (click)="activeTab.setValue('ProductGroupList')">
+              Product Group List
+            </button>
+          </div>
+          <form class="search-container">
+            <!-- Search Type Radios -->
+            <label>
+              <input type="radio" formControlName="searchType" value="searchItemName"> Search By Name
+            </label>
+            <label>
+              <input type="radio" formControlName="searchType" value="searchItemCode"> Search By Code
+            </label>
+            <label>
+              <input type="radio" formControlName="searchType" value="searchItemBarcode"> Barcode
+            </label>
+          
+            <!-- Search Input -->
+            <input type="search" formControlName="searchQuery" placeholder="Search..." autocomplete="off" class="search-input">
+          
+            <!-- Sort Options -->
+            <label>
+              <input type="radio" formControlName="sortType" value="sortItemName"> Sort By Name
+            </label>
+            <label>
+              <input type="radio" formControlName="sortType" value="sortItemByDate"> Sort By C-Date
+            </label>
+          
+            <!-- Submit Button -->
+            <button type="submit">Search</button>
+          </form>
+          
+     
+          <br>
+        <div class="col-9">
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>SN</th>
+                    <th>Item Name</th>
+                    <th>Item Code</th>
+                    <th>Unit</th>
+                    <th>P-Rate</th>
+                    <th>S-Rate</th>
+                    <th>Vat</th>
+                    <th>Parent</th>
+                    <th>Supplier</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Rice</td>
+                    <td>12345</td>
+                    <td>Kg</td>
+                    <td>100</td>
+                    <td>120</td>
+                    <td>5%</td>
+                    <td>Group A</td>
+                    <td>Supplier ABC</td>
+                    <td>
+                      <button>View</button>
+                      <button>Edit</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
   
+ 
+      

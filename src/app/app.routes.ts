@@ -9,16 +9,16 @@ import { AddProductComponent } from './pages/add-product/add-product.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'master', pathMatch: 'full' },
+ 
   {
     path: '',
     component: TopBarComponent,
     children: [
-      { path: 'product-master', component: ProductMasterComponent, 
-        children:[
-        {
-        path: 'add-product', component: AddProductComponent}
-      ], },
+      { path: 'product-master', component: ProductMasterComponent},
       { path: 'tax-invoice', component: TaxInvoiceComponent },
-    ],
-  }
-]
+      {path: 'add-product', component: AddProductComponent}
+      ],
+   },
+      
+    ]
+

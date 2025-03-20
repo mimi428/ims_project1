@@ -5,9 +5,9 @@
     font-weight: bold;
     font-size: 18px;
     padding-left: 4%;
+    padding-top: 25px;
     width: 192px;
   }
-
   .button-container {
     display: flex;
     justify-content: flex-end; 
@@ -15,14 +15,13 @@
     gap: 9px; 
     flex-wrap: wrap; 
   }
-  
-
   .btn {
     font-size: 11px;
     padding: 8px 12px;
     cursor: pointer;
     background-color: #336799;
     color: white;
+    border-radius: 0%;
   }
 
   .btn:hover {
@@ -33,4 +32,104 @@
   .btn:focus {
     outline: none;
   }
+
+.idk{
+    background-color: #336799;
+    padding:100px;
+    color: white;
+    padding-bottom: 200px;
+    
+
+}
+
+  .search-container {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .search-input {
+    width: 25%;
+    padding: 5px;
+    font-size: 14px;
+  }
+  
+  label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+
+  .col-9 {
+    width: 100%;
+    padding-left: 10px;
+  }
+  
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: smaller;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  th {
+    background: #336799;
+    color: white;
+  }
+  
+  /* Buttons inside the table */
+  td button {
+    padding: 3px 8px;
+    border: none;
+    cursor: pointer;
+  }
+  
+
+  /* Tab Container */
+.tabs {
+    display: flex;
+    border-bottom: 2px solid #007bff;
+    margin-bottom: 10px;
+    background-color: #336799;
+  }
+  
+  /* Tab Buttons */
+  .tab-button {
+    background-color: #336799;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+    color: white;
+  }
+  
+  .tab-button.active {
+    border-bottom: 3px solid #007bff;
+    font-weight: bold;
+  }
+  
+  /* Tab Content */
+  .tab-content {
+    display: none;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .tab-content.active {
+    display: block;
+  }
+  
   
