@@ -12,9 +12,19 @@
     </div>
 </nav>
 
-  <nav class="lower-navbar">
-      <ul>
-        <li *ngFor="let word of lowerNavbarWords">{{ word }}</li>
-      </ul>
-    </nav>
 
+<nav class="lower-navbar">
+  <ul>
+    <li *ngFor="let word of lowerNavbarWords">
+      <!-- Button that shows dropdown -->
+      <button (click)="toggleDropdown(word)">{{ word }}</button>
+
+      <!-- Dropdown menu with clickable words -->
+      <ul *ngIf="dropdownVisible[word]" class="dropdown">
+        <li *ngFor="let option of getDropdownOptions(word)" (click)="onDropdownItemClick(option)">
+          {{ option }}
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
