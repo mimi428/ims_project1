@@ -70,6 +70,9 @@ export class TopBarComponent {
       case 'Product master':
         this.router.navigate(['/product-master']);
         break;
+      case 'Abbreviated Tax Invoice':
+        this.router.navigate(['/tax-invoice']);
+        break;
 
     }
   }

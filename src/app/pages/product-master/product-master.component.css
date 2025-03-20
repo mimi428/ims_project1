@@ -1,0 +1,36 @@
+/* Custom styles for the label */
+.label-text {
+    white-space: nowrap;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    padding-left: 4%;
+    width: 192px;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: flex-end; 
+    margin-right: 20px;
+    gap: 9px; 
+    flex-wrap: wrap; 
+  }
+  
+
+  .btn {
+    font-size: 11px;
+    padding: 8px 12px;
+    cursor: pointer;
+    background-color: #336799;
+    color: white;
+  }
+
+  .btn:hover {
+    background-color: #2dacd1;
+    color: white;
+  }
+  
+  .btn:focus {
+    outline: none;
+  }
+  
