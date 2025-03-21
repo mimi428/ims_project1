@@ -1,5 +1,6 @@
 <div class="row">
   <div class="col-md-6">
+    <button class="btn btn-info">Show Details</button> &nbsp;
     <label class="label-text">ABBREVIATED TAX INVOICE</label>
   </div>
   <div class="col-md-6 button-container">
@@ -12,94 +13,137 @@
 </div>
 
 <br />
-
 <div class="row main-container">
+  <!-- Column 1 -->
   <div class="col-md-4">
-    <!-- Bill No -->
-    <div class="form-group">
-      <label>Bill No</label>
-      <span class="bold-text">SI465-MMX-81/82</span>
+    <div class="form-group row">
+      <div class="col-5 label-div">
+        <label class="label-name">Bill No</label>
+      </div>
+      <div class="col-7 input-div">
+        <span class="bold-text">SI465-MMX-81/82</span>
+      </div>
     </div>
 
-    <!-- Invoice Date -->
-    <!-- Invoice Date -->
-    <!-- Invoice Date -->
-    <div class="form-group">
-      <label>Inv Date</label>
-      <input type="date" max="2025-03-20" formControlName="invDate" disabled />
+    <div class="form-group row">
+      <div class="col-5 label-div">
+        <label class="label-name">Inv Date</label>
+      </div>
+      <div class="col-7 input-div">
+        <input type="date" max="2025-03-20" formControlName="invDate" disabled class="input-size">
+      </div>
     </div>
 
-    <!-- Entry Date -->
-    <div class="form-group">
-      <label>Entry Date</label>
-      <input type="date" max="2025-03-20" formControlName="entryDate" disabled />
+    <div class="form-group row">
+      <div class="col-5 label-div">
+        <label class="label-name">Entry Date</label>
+      </div>
+      <div class="col-7 input-div">
+        <input type="date" max="2025-03-20" formControlName="entryDate" disabled class="input-size">
+      </div>
     </div>
 
-
-    <!-- SO NO -->
-    <div class="form-group">
-      <label>S NO</label>
-      <input type="text" placeholder="Enter to Select SO no." readonly formControlName="soNo" />
-      <input type="checkbox" formControlName="loadFullSODetail" />
-      <label>Load Full SO Detail</label>
+    <div class="form-group row">
+      <div class="col-5 label-div">
+        <label class="label-name">S NO</label>
+      </div>
+      <div class="col-7 input-div">
+        <input type="text" placeholder="Enter to Select SO no." readonly formControlName="soNo" class="input-size">
+        <input type="checkbox" formControlName="loadFullSODetail">
+        <label class="label-name">Load Full SO Detail</label>
+      </div>
     </div>
   </div>
 
+  <!-- Column 2 -->
   <div class="col-md-4">
-    <!-- Warehouse -->
-    <div class="form-group">
-      <label>Warehouse</label>
-      <input type="text" placeholder="Press Enter to Select Warehouse" readonly formControlName="warehouse" />
+    <div class="form-group row">
+      <div class="col-5 label-div">
+        <label class="label-name">Warehouse</label>
+      </div>
+      <div class="col-7 input-div">
+        <input type="text" placeholder="Press Enter to Select Warehouse" readonly formControlName="warehouse" class="input-size">
+      </div>
     </div>
 
-    <!-- Salesman -->
-    <div class="form-group">
-      <label>Salesman</label>
-      <input type="text" placeholder="Press ENTER to Select Salesman" readonly formControlName="salesman" />
+    <div class="form-group row">
+      <div class="col-5 label-div">
+        <label class="label-name">Salesman</label>
+      </div>
+      <div class="col-7 input-div">
+        <input type="text" placeholder="Press ENTER to Select Salesman" readonly formControlName="salesman" class="input-size">
+      </div>
     </div>
 
-    <!-- Cost Center -->
-    <div class="form-group">
-      <label>Cost Center</label>
-      <select formControlName="costCenter">
-        <option value="">Select</option>
-        <option *ngFor="let center of costCenters" [value]="center.id">{{ center.name }}</option>
-      </select>
+    <div class="form-group row">
+      <div class="col-5 label-div">
+        <label class="label-name">Cost Center</label>
+      </div>
+      <div class="col-7 input-div">
+        <select formControlName="costCenter" style="font-size: 12px;">
+          <option value="">Select</option>
+          <option value="1">Finance</option>
+          <option value="2">Operations</option>
+          <option value="3">IT</option>
+        </select>
+      </div>
     </div>
   </div>
 
+  <!-- Column 3 -->
   <div class="col-md-4">
-    <!-- Customer -->
-    <div class="form-group">
-      <label>Customer</label>
-      <input type="text" placeholder="Press ENTER to Select Customer" readonly formControlName="customer" />
+    <div class="form-group row">
+      <div class="col-5 label-div">
+        <label class="label-name">Customer</label>
+      </div>
+      <div class="col-7 input-div">
+        <input type="text" placeholder="Press ENTER to Select Customer" readonly formControlName="customer" class="input-size">
+      </div>
     </div>
 
-    <!-- Address -->
-    <div class="form-group">
-      <label>Address</label>
-      <input type="text" readonly formControlName="address" />
+    <div class="form-group row">
+      <div class="col-5 label-div">
+        <label class="label-name">Address</label>
+      </div>
+      <div class="col-7 input-div">
+        <input type="text" readonly formControlName="address" class="input-size">
+      </div>
     </div>
 
-    <!-- VATNO -->
-    <div class="form-group">
-      <label>VATNO</label>
-      <input type="text" readonly formControlName="vatNo" />
+    <div class="form-group row">
+      <div class="col-5 label-div">
+        <label class="label-name">VAT NO</label>
+      </div>
+      <div class="col-7 input-div">
+        <input type="text" readonly formControlName="vatNo" class="input-size">
+      </div>
     </div>
 
-    <!-- Remarks -->
-    <div class="form-group">
-      <label>Remarks</label>
-      <textarea formControlName="remarks"></textarea>
+    <div class="form-group row">
+      <div class="col-5 label-div">
+        <label class="label-name">Remarks</label>
+      </div>
+      <div class="col-7 input-div">
+        <textarea formControlName="remarks"></textarea>
+      </div>
     </div>
 
-    <!-- Flat Discount -->
-    <div class="form-group discount">
-      <label>Flat Dis(%)</label>
-      <input type="number" formControlName="flatDisPercent" disabled />
+    <div class="form-group row discount">
+      <div class="col-5 label-div">
+        <label class="label-name">Flat Dis(%)</label>
+      </div>
+      <div class="col-7 input-div">
+        <input type="number" formControlName="flatDisPercent" disabled class="input-size">
+      </div>
+    </div>
 
-      <label>Flat Dis(Rs)</label>
-      <input type="number" formControlName="flatDisRs" disabled />
+    <div class="form-group row discount">
+      <div class="col-5 label-div">
+        <label class="label-name">Flat Dis(Rs)</label>
+      </div>
+      <div class="col-7 input-div">
+        <input type="number" formControlName="flatDisRs" disabled class="input-size">
+      </div>
     </div>
   </div>
 </div>
