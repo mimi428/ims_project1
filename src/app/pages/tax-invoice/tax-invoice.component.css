@@ -1,0 +1,59 @@
+.label-text {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 9px;
+}
+.btn {
+  font-size: 11px;
+  padding: 8px 12px;
+  cursor: pointer;
+  background-color: #336799;
+  color: white;
+  border-radius: 0%;
+}
+
+.btn:hover {
+  background-color: #2dacd1;
+  color: white;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.main-container {
+  padding: 15px;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+input,
+select,
+textarea {
+  width: 70%;
+  padding: 5px;
+}
+
+.discount {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.discount input {
+  width: 48%;
+}

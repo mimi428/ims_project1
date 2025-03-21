@@ -1,1 +1,105 @@
-<p>tax-invoice works!</p>
+<div class="row">
+  <div class="col-md-6">
+    <label class="label-text">ABBREVIATED TAX INVOICE</label>
+  </div>
+  <div class="col-md-6 button-container">
+    <button class="btn btn-info">Image upload</button>
+    <button class="btn btn-info">Reset F3</button>
+    <button class="btn btn-info" disabled>Save</button>
+    <button type="button" class="btn btn-info">View</button>
+    <button routerLink="/navbar/components/top-bar" class="btn btn-info">Back</button>
+  </div>
+</div>
+
+<br />
+
+<div class="row main-container">
+  <div class="col-md-4">
+    <!-- Bill No -->
+    <div class="form-group">
+      <label>Bill No</label>
+      <span class="bold-text">SI465-MMX-81/82</span>
+    </div>
+
+    <!-- Invoice Date -->
+    <!-- Invoice Date -->
+    <!-- Invoice Date -->
+    <div class="form-group">
+      <label>Inv Date</label>
+      <input type="date" max="2025-03-20" formControlName="invDate" disabled />
+    </div>
+
+    <!-- Entry Date -->
+    <div class="form-group">
+      <label>Entry Date</label>
+      <input type="date" max="2025-03-20" formControlName="entryDate" disabled />
+    </div>
+
+
+    <!-- SO NO -->
+    <div class="form-group">
+      <label>S NO</label>
+      <input type="text" placeholder="Enter to Select SO no." readonly formControlName="soNo" />
+      <input type="checkbox" formControlName="loadFullSODetail" />
+      <label>Load Full SO Detail</label>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <!-- Warehouse -->
+    <div class="form-group">
+      <label>Warehouse</label>
+      <input type="text" placeholder="Press Enter to Select Warehouse" readonly formControlName="warehouse" />
+    </div>
+
+    <!-- Salesman -->
+    <div class="form-group">
+      <label>Salesman</label>
+      <input type="text" placeholder="Press ENTER to Select Salesman" readonly formControlName="salesman" />
+    </div>
+
+    <!-- Cost Center -->
+    <div class="form-group">
+      <label>Cost Center</label>
+      <select formControlName="costCenter">
+        <option value="">Select</option>
+        <option *ngFor="let center of costCenters" [value]="center.id">{{ center.name }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <!-- Customer -->
+    <div class="form-group">
+      <label>Customer</label>
+      <input type="text" placeholder="Press ENTER to Select Customer" readonly formControlName="customer" />
+    </div>
+
+    <!-- Address -->
+    <div class="form-group">
+      <label>Address</label>
+      <input type="text" readonly formControlName="address" />
+    </div>
+
+    <!-- VATNO -->
+    <div class="form-group">
+      <label>VATNO</label>
+      <input type="text" readonly formControlName="vatNo" />
+    </div>
+
+    <!-- Remarks -->
+    <div class="form-group">
+      <label>Remarks</label>
+      <textarea formControlName="remarks"></textarea>
+    </div>
+
+    <!-- Flat Discount -->
+    <div class="form-group discount">
+      <label>Flat Dis(%)</label>
+      <input type="number" formControlName="flatDisPercent" disabled />
+
+      <label>Flat Dis(Rs)</label>
+      <input type="number" formControlName="flatDisRs" disabled />
+    </div>
+  </div>
+</div>
