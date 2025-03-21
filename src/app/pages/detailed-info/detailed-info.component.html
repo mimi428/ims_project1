@@ -1,0 +1,47 @@
+<div class="tab-content active" id="details">
+    <!-- Product Description -->
+    <div class="form-row">
+        <label for="productDescription">Product Description:</label>
+        <input type="text" id="productDescription" name="productDescription">
+    </div>
+
+    <!-- Stock Unit & Product Type -->
+    <div class="form-row">
+        <label for="stockUnit">Stock Unit:</label>
+        <input type="text" id="stockUnit" name="stockUnit">
+        <!-- Add button next to Stock Unit -->
+        <button type="button" class="add-btn">+</button>
+
+        <label for="productType">Product Type:</label>
+        <select id="productType" name="productType">
+            <option value="">Select Product Type</option>
+            <!-- Add options dynamically -->
+            <option value="inventoryItem">Inventory Item</option>
+        </select>
+    </div>
+
+    <!-- VAT Mode -->
+    <div class="form-row vat-mode-row">
+        VAT Mode:
+        <input type="radio" id="vatItem" name="vatMode" value="vatItem" checked> VAT Item
+        <input type="radio" id="nonVatItem" name="vatMode" value="nonVatItem"> Non-VAT
+    </div>
+
+    <!-- Additional fields can be added here based on the image -->
+</div>
+
+<!-- Alternate Unit Tab Content -->
+<div class="tab-content" id="alternate">
+    Alternate Unit Content
+</div>
+
+<!-- Inventory Control Tab Content -->
+<div class="tab-content" id="inventory">
+    Inventory Control Content
+</div>
+
+<!-- Buttons -->
+<div class='action-buttons'>
+  <!-- Reset, Back, Save buttons as per image-->
+  Reset | Add Product | Save End
+</div>

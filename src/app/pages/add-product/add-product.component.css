@@ -126,19 +126,22 @@ Custom styles for the label
 /* Right Section Styling */
 .right-section {
     flex: 2.5;
+    padding: 20px;
 }
 
 .right-section .form-row {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 
 .right-section label {
-    flex-basis: 25%;
-    font-size: 14px;
+    flex-basis: 15%;
+    font-size: 12px;
 }
-
+#productCode{
+    font-size: small;
+}
 .right-section input,
 .right-section select {
     flex-grow: 1;
@@ -161,30 +164,29 @@ Custom styles for the label
     display: flex;
 }
 
-.tab {
-    flex-grow: 1;
-    padding: 10px;
-    text-align: center;
+.tab-button {
+    background-color: #336799;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
     cursor: pointer;
-    background-color: #eaeaea;
-}
-
-.tab.active {
-    background-color: #007bff;
+    transition: 0.3s;
     color: white;
-}
-
-/* Tab Content Styling */
-.tab-content {
-    display: none; /* Hidden by default */
-}
-
-.tab-content.active {
-    display: block; /* Show active tab content */
-}
-
-/* VAT Mode Row Styling */
-.vat-mode-row input[type="radio"] {
-   margin-left :10
-
-}
+  }
+  
+  .tab-button.active {
+    border-bottom: 3px solid #007bff;
+    font-weight: bold;
+  }
+  
+  /* Tab Content */
+  .tab-content {
+    display: none;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .tab-content.active {
+    display: block;
+  }
+  

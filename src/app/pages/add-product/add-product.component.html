@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-6">
-        <label class="label-text">PRODUCT MASTER &nbsp;&nbsp;>>Add product</label>
+        <label class="label-text">&nbsp;PRODUCT MASTER &nbsp;&nbsp;>>Add product</label>
         </div>
         <div class="col-md-6">
           <div class="button-container">
@@ -52,7 +52,6 @@
         </div>
       </div>
       <div class="col-md-9">
-  
             <!-- Right Section -->
             <div class="right-section">
                 <!-- Product Code & Name -->
@@ -64,67 +63,36 @@
                     <label for="productName">Product Name:</label>
                     <input type="text" id="productName" name="productName">
                 </div>
-
-                <!-- Tabs -->
                 <div class="tabs">
-                    <button type="button" class="tab active" data-tab="details">Detailed Information</button>
-                    <button type="button" class="tab" data-tab="alternate">Alternate Unit</button>
-                    <button type="button" class="tab" data-tab="inventory">Inventory Control</button>
-                    <!-- Add other tabs as needed -->
+                    <button class="tab-button" [ngClass]="{'active': activeTab === 'Detailedinfo'}" (click)="activeTab = 'Detailedinfo'">
+                      Detailed Information
+                    </button>
+                    <button class="tab-button" [ngClass]="{'active': activeTab === 'AlternateUnit'}" (click)="activeTab = 'AlternateUnit'">
+                      Alternate Unit
+                    </button>
+                    <button class="tab-button" [ngClass]="{'active': activeTab === 'InventoryControl'}" (click)="activeTab = 'InventoryControl'">
+                      Inventory Control
+                    </button>
+                    <button class="tab-button" [ngClass]="{'active': activeTab === 'ImageUpload'}" (click)="activeTab = 'ImageUpload'">
+                      Image Upload
+                    </button>
+                    <button class="tab-button" [ngClass]="{'active': activeTab === 'BatchwisePrice'}" (click)="activeTab = 'BatchwisePrice'">
+                      Batchwise Price
+                    </button>
+                  </div>
+                  
+                  <div class="tab-content">
+                    <app-detailed-info *ngIf="activeTab === 'Detailedinfo'"></app-detailed-info>
+                    <app-alternate-unit *ngIf="activeTab === 'AlternateUnit'"></app-alternate-unit>
+                    <app-inventory-control *ngIf="activeTab === 'InventoryControl'"></app-inventory-control>
+                    <app-image-upload *ngIf="activeTab === 'ImageUpload'"></app-image-upload>
+                    <app-batchwise-price *ngIf="activeTab === 'BatchwisePrice'"></app-batchwise-price>
+                    <app-yield *ngIf="activeTab === 'Yield'"></app-yield>
+                  </div>
                 </div>
-
-                <!-- Tab Content: Detailed Information -->
-                <div class="tab-content active" id="details">
-                    <!-- Product Description -->
-                    <div class="form-row">
-                        <label for="productDescription">Product Description:</label>
-                        <input type="text" id="productDescription" name="productDescription">
-                    </div>
-
-                    <!-- Stock Unit & Product Type -->
-                    <div class="form-row">
-                        <label for="stockUnit">Stock Unit:</label>
-                        <input type="text" id="stockUnit" name="stockUnit">
-                        <!-- Add button next to Stock Unit -->
-                        <button type="button" class="add-btn">+</button>
-
-                        <label for="productType">Product Type:</label>
-                        <select id="productType" name="productType">
-                            <option value="">Select Product Type</option>
-                            <!-- Add options dynamically -->
-                            <option value="inventoryItem">Inventory Item</option>
-                        </select>
-                    </div>
-
-                    <!-- VAT Mode -->
-                    <div class="form-row vat-mode-row">
-                        VAT Mode:
-                        <input type="radio" id="vatItem" name="vatMode" value="vatItem" checked> VAT Item
-                        <input type="radio" id="nonVatItem" name="vatMode" value="nonVatItem"> Non-VAT
-                    </div>
-
-                    <!-- Additional fields can be added here based on the image -->
-                </div>
-
-                <!-- Alternate Unit Tab Content -->
-                <div class="tab-content" id="alternate">
-                    Alternate Unit Content
-                </div>
-
-                <!-- Inventory Control Tab Content -->
-                <div class="tab-content" id="inventory">
-                    Inventory Control Content
-                </div>
-
-                <!-- Buttons -->
-                <div class='action-buttons'>
-                  <!-- Reset, Back, Save buttons as per image-->
-                  Reset | Add Product | Save End
-                </div>
-
-      
+            </div>
+        </div>
     </div>
-  </div>
-    </div>
+
   
   
