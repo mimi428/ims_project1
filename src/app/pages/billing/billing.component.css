@@ -109,8 +109,7 @@
   .input-field:disabled {
     background-color: #f0f0f0;
   }
-  
-  /* Button and close icon */
+
   .close-wrapper {
     display: flex;
     justify-content: center;
@@ -126,13 +125,12 @@
     width: 20px;
     padding: 2.5px;
   }
-  
-  /* Add button styling */
+
   .add p {
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
-    text-align: center;
+    text-align: left;
     margin: 10px;
   }
   
@@ -140,12 +138,10 @@
     color: #007bff;
   }
   
-  /* Hover effect for rows */
   .selected:hover {
     background-color: #f1f1f1;
   }
   
-  /* Additional styling for specific cells */
   .amnt, .totalDisc, .netamount, .vatvalue {
     background-color: #f9f9f9;
     text-align: right;
