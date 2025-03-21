@@ -1,45 +1,174 @@
+.small-form{
+    background-color: #f7f7f7;
+}
 .bill {
-    padding: 15px;
-    background: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
   }
   
   .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .col-md-2, .col-md-4 {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
   }
   
-  .col-md-2, .col-md-4, .col-md-6 {
-    padding: 5px;
-  }
-  
-.label-name {
-    font-size: 12px;
-    white-space: nowrap;
-  }
-  
-  label {
+  .label-name {
     font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
+    margin-right: 10px; 
+    font-size: 12px;
   }
-  select {
+  
+  .input-size {
+    padding: 5px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: smaller;
+  }
+  
+  .stock-indicator {
+    color: red; /* You can change this based on actual stock status */
+  }
+  
+  .col-md-2 {
+    flex: 0 0 16.66%; /* For the 2-column width */
+  }
+  
+  .col-md-4 {
+    flex: 0 0 33.33%; /* For the 4-column width */
+  }
+
+.big-form {
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  #productinserttable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px; 
+  }
+  
+  #prodlistTableheader {
+    background: silver;
+    color: black;
+    border-right: 1px solid #b4b4b4;
+    border-left: 1px solid #b4b4b4;
+  }
+  
+  #prodlistTableheader th {
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  #productinserttable td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #b4b4b4;
+  }
+
+  .sno, .barcode, .description, .batch, .unit, .quantity, .rate, .amnt, .discountAmt, .totalDisc, .vatvalue, .netamount, .expdate, .close {
+    padding: 10px;
+  }
+  
+  .description input, .batch input, .unit select, .quantity input, .rate input, .amnt input, .discountAmt input, .totalDisc input, .vatvalue input, .netamount input, .expdate input {
     width: 100%;
     padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    box-sizing: border-box;
   }
   
-.input-size {
+  .CellWithComment {
+    position: relative;
+  }
+  
+  .CellWithComment .CellComment {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    font-size: 10px;
+    color: #888;
+    margin-top: 3px;
+  }
+  
+  /* Input fields styling */
+  .input-field {
     width: 100%;
-    padding: 3px;
-    font-size: 12px;
-    background: #fff; 
-    border: 1px solid #ccc;
-    border-radius: 3px;
+    padding: 5px;
+    font-size: 12px;  /* Set font size for inputs */
+    box-sizing: border-box;
   }
   
+  .input-field:disabled {
+    background-color: #f0f0f0;
+  }
   
- 
+  /* Button and close icon */
+  .close-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .closetools {
+    background: none;
+    border: none;
+  }
+  
+  .closeicon {
+    width: 20px;
+    padding: 2.5px;
+  }
+  
+  /* Add button styling */
+  .add p {
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    margin: 10px;
+  }
+  
+  .add p:hover {
+    color: #007bff;
+  }
+  
+  /* Hover effect for rows */
+  .selected:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Additional styling for specific cells */
+  .amnt, .totalDisc, .netamount, .vatvalue {
+    background-color: #f9f9f9;
+    text-align: right;
+  }
+  
+  .quantity input, .rate input, .amnt input, .discountAmt input, .totalDisc input, .vatvalue input, .netamount input {
+    text-align: right;
+  }
+  
+  /* Exp Date cell styling */
+  .expdate input {
+    text-align: center;
+  }
+  
+  /* Styling for select elements */
+  .unit select {
+    padding: 5px;
+    font-size: 12px;
+  }
+  
+  /* Close button cell */
+  .close {
+    width: 40px;
+    text-align: center;
+  }
+  

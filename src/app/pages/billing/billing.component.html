@@ -1,23 +1,99 @@
-<div class="bill">
-    <div class="row">
-      <div class="col-md-2">
-        <label class="label-name" for="barcodeField">BarCode:</label>
-        <input class="input-size" id="barcodeField" type="text" placeholder="Enter Barcode" (click)="selectInput($event)">
+<div class="small-form">
+    <div class="bill">
+        <div class="row">
+          <div class="col-md-2">
+            <label class="label-name" for="barcodeField">BarCode:</label>
+            <input class="input-size" id="barcodeField" type="text" placeholder="Enter Barcode" (click)="selectInput($event)">
+          </div>
+      
+          <div class="col-md-4">
+            <label class="label-name" for="description">Description:</label>
+            <input  class="input-size" id="description" type="text" placeholder="Description">
+          </div>
+      
+          <div class="col-md-2">
+            <label class="label-name" for="quantityBarcode">Quantity:</label>
+            <input class="input-size" id="quantityBarcode" type="number">
+          </div>
+      
+          <div class="col-md-4">
+            <label class="label-name">Stock: <span class="stock-indicator"></span></label>
+          </div>
+        </div>
       </div>
-  
-      <div class="col-md-4">
-        <label class="label-name" for="description">Description:</label>
-        <input  class="input-size" id="description" type="text" placeholder="Description">
-      </div>
-  
-      <div class="col-md-2">
-        <label class="label-name" for="quantityBarcode">Quantity:</label>
-        <input class="input-size" id="quantityBarcode" type="number">
-      </div>
-  
-      <div class="col-md-4">
-        <label class="label-name">Stock: <span class="stock-indicator"></span></label>
-      </div>
+</div>
+<div class="big-form">
+    <table id="productinserttable">
+      <thead>
+        <tr id="prodlistTableheader">
+          <th>S.No.</th>
+          <th>Barcode</th>
+          <th>Description</th>
+          <th>BatchNo</th>
+          <th>Unit</th>
+          <th>Quantity</th>
+          <th>Rate</th>
+          <th>Amt</th>
+          <th>Ind. Disc</th>
+          <th>Total Disc</th>
+          <th>VAT</th>
+          <th>Net Amt</th>
+          <th>Exp Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of rows; let i = index">
+            <td>{{i + 1}}</td>
+            <td>
+              <input id="barcode" type="text" disabled class="input-field" />
+            </td>
+            <td>
+              <input id="itemDesc" type="text" readonly class="input-field" placeholder="Press ENTER to Select Item" />
+            </td>
+            <td>
+              <input id="batch" type="text" readonly class="input-field" placeholder="Please Enter to Select" />
+            </td>
+            <td>
+              <select id="alternateunit" class="input-field"></select>
+            </td>
+            <td>
+              <input id="alternateQty" type="number" class="input-field" />
+            </td>
+            <td>
+              <input id="rate" type="number" class="input-field" />
+            </td>
+            <td>
+              <input id="amntId" type="number" class="input-field" />
+            </td>
+            <td>
+              <input id="discountAmt" type="number" class="input-field" />
+            </td>
+            <td>
+              <input id="totalDisc" type="number" disabled class="input-field" />
+            </td>
+            <td>
+              <input id="vatvalue" type="number" disabled class="input-field" />
+            </td>
+            <td>
+              <input id="netamount" type="number" class="input-field" />
+            </td>
+            <td>
+              <input id="expdateNonedit" type="text" class="input-field" />
+            </td>
+            <td class="close" (click)="deleteRow()">
+              <div class="close-wrapper">
+                <button class="closetools">
+                  <img src="../../assets/close.png" alt="Close" class="closeicon" />
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <span class="add" (click)="addRow()">
+        <p>+</p>
+      </span>
     </div>
-  </div>
+  
   
