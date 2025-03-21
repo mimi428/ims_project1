@@ -1,4 +1,3 @@
-Custom styles for the label
 .label-text {
     white-space: nowrap;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -38,8 +37,6 @@ Custom styles for the label
     margin-left: 10px;
 }
 
-  
-  /* Label styling */
   label {
     font-weight: bold;
   }
@@ -75,7 +72,6 @@ Custom styles for the label
     border: none;
 }
 
-/* Form Wrapper Layout */
 .form-wrapper {
     display: flex;
     gap: 20px;
@@ -94,7 +90,6 @@ Custom styles for the label
 
 }
 
-/* Left Section Styling */
 .left-section {
     flex: 1;
         background-color: #f7f7f7;
@@ -123,7 +118,7 @@ Custom styles for the label
     border: 1px solid #ccc;
 }
 
-/* Right Section Styling */
+
 .right-section {
     flex: 2.5;
     padding: 20px;
@@ -159,13 +154,15 @@ Custom styles for the label
     border: none;
 }
 
-/* Tabs Styling */
 .tabs {
     display: flex;
+    width: 300%;
+    height: 35px;
+   
 }
 
 .tab-button {
-    background-color: #336799;
+    background-color:#6599ff ;
     border: none;
     padding: 10px 20px;
     font-size: 14px;
@@ -175,14 +172,19 @@ Custom styles for the label
   }
   
   .tab-button.active {
-    border-bottom: 3px solid #007bff;
+    background-color: #336799;
     font-weight: bold;
   }
-  
-  /* Tab Content */
+  .tab-button:hover {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
   .tab-content {
     display: none;
-    padding: 10px;
+    padding: 8px;
     border: 1px solid #ddd;
   }
   

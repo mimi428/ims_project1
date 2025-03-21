@@ -15,10 +15,10 @@ import { BatchwisePriceComponent } from "../batchwise-price/batchwise-price.comp
   styleUrl: './add-product.component.css'
 })
 export class AddProductComponent { 
-  activeTab!: string;
-
-  constructor() { }
+  activeTab: string = 'Detailedinfo';
+  setActiveTab(tabName: string): void {
+    console.log('Setting active tab to:', tabName); 
+    this.activeTab = tabName;
+  }
 
 }
-
-

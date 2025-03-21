@@ -52,47 +52,53 @@
         </div>
       </div>
       <div class="col-md-9">
-            <!-- Right Section -->
-            <div class="right-section">
-                <!-- Product Code & Name -->
-                <div class="form-row">
-                    <label for="productCode">Product Code:</label>
-                    <input type="text" id="productCode" name="productCode">
-                </div>
-                <div class="form-row">
-                    <label for="productName">Product Name:</label>
-                    <input type="text" id="productName" name="productName">
-                </div>
-                <div class="tabs">
-                    <button class="tab-button" [ngClass]="{'active': activeTab === 'Detailedinfo'}" (click)="activeTab = 'Detailedinfo'">
-                      Detailed Information
-                    </button>
-                    <button class="tab-button" [ngClass]="{'active': activeTab === 'AlternateUnit'}" (click)="activeTab = 'AlternateUnit'">
-                      Alternate Unit
-                    </button>
-                    <button class="tab-button" [ngClass]="{'active': activeTab === 'InventoryControl'}" (click)="activeTab = 'InventoryControl'">
-                      Inventory Control
-                    </button>
-                    <button class="tab-button" [ngClass]="{'active': activeTab === 'ImageUpload'}" (click)="activeTab = 'ImageUpload'">
-                      Image Upload
-                    </button>
-                    <button class="tab-button" [ngClass]="{'active': activeTab === 'BatchwisePrice'}" (click)="activeTab = 'BatchwisePrice'">
-                      Batchwise Price
-                    </button>
-                  </div>
-                  
-                  <div class="tab-content">
-                    <app-detailed-info *ngIf="activeTab === 'Detailedinfo'"></app-detailed-info>
-                    <app-alternate-unit *ngIf="activeTab === 'AlternateUnit'"></app-alternate-unit>
-                    <app-inventory-control *ngIf="activeTab === 'InventoryControl'"></app-inventory-control>
-                    <app-image-upload *ngIf="activeTab === 'ImageUpload'"></app-image-upload>
-                    <app-batchwise-price *ngIf="activeTab === 'BatchwisePrice'"></app-batchwise-price>
-                    <app-yield *ngIf="activeTab === 'Yield'"></app-yield>
-                  </div>
-                </div>
-            </div>
+        <!-- Right Section -->
+        <div class="right-section">
+          <!-- Product Code & Name -->
+          <div class="form-row">
+            <label for="productCode">Product Code:</label>
+            <input type="text" id="productCode" name="productCode">
+          </div>
+          <div class="form-row">
+            <label for="productName">Product Name:</label>
+            <input type="text" id="productName" name="productName">
+          </div>
+      
+          <!-- Tab Buttons -->
+          <div class="tabs">
+            <button class="tab-button" [ngClass]="{'active': activeTab === 'Detailedinfo'}" (click)="setActiveTab('Detailedinfo')">
+              Detailed Information
+            </button>
+            <button class="tab-button" [ngClass]="{'active': activeTab === 'AlternateUnit'}" (click)="setActiveTab('AlternateUnit')">
+              Alternate Unit
+            </button>
+            <button class="tab-button" [ngClass]="{'active': activeTab === 'InventoryControl'}" (click)="setActiveTab('InventoryControl')">
+              Inventory Control
+            </button>
+            <button class="tab-button" [ngClass]="{'active': activeTab === 'ImageUpload'}" (click)="setActiveTab('ImageUpload')">
+              Image Upload
+            </button>
+            <button class="tab-button" [ngClass]="{'active': activeTab === 'BatchwisePrice'}" (click)="setActiveTab('BatchwisePrice')">
+              Batchwise Price
+            </button>
+            <button class="tab-button" [ngClass]="{'active': activeTab === 'Yield'}" (click)="setActiveTab('Yield')">
+              Yield
+            </button>
+          </div>
+      
+          <!-- Tab Content -->
+          <div class="tab-content">
+            <app-detailed-info *ngIf="activeTab === 'Detailedinfo'"></app-detailed-info>
+            <app-alternate-unit *ngIf="activeTab === 'AlternateUnit'"></app-alternate-unit>
+            <app-inventory-control *ngIf="activeTab === 'InventoryControl'"></app-inventory-control>
+            <app-image-upload *ngIf="activeTab === 'ImageUpload'"></app-image-upload>
+            <app-batchwise-price *ngIf="activeTab === 'BatchwisePrice'"></app-batchwise-price>
+            <app-yield *ngIf="activeTab === 'Yield'"></app-yield>
+          </div>
         </div>
+      </div>
     </div>
+
 
   
   
