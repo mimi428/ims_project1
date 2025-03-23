@@ -13,7 +13,7 @@ import { AppComponent } from "../../../app.component";
 export class TopBarComponent {
   lowerNavbarWords: string[] = []; 
   searchQuery: string = '';
-  dropdownVisible: { [key: string]: boolean } = {}; // Track visibility of dropdowns
+  dropdownVisible: { [key: string]: boolean } = {}; 
   
   constructor(private router: Router) {}
 

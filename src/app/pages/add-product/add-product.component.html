@@ -66,7 +66,7 @@
           <div class="tabs">
           <ul class="tab-button">
             <li>
-              <a (click)="selectTab('detail')" [class.active]="selectedTab === 'detail'">Details</a>
+              <a (click)="selectTab('detail')" [class.active]="selectedTab === 'detail'">Detail Information</a>
             </li>
             <li>
               <a (click)="selectTab('alternate')" [class.active]="selectedTab === 'alternate'">Alternate Unit</a>
@@ -75,7 +75,7 @@
               <a (click)="selectTab('inventory')" [class.active]="selectedTab === 'inventory'">Inventory Control</a>
             </li>
             <li>
-              <a (click)="selectTab('barcode')" [class.active]="selectedTab === 'barcode'">Barcode </a>
+              <a (click)="selectTab('barcode')" [class.active]="selectedTab === 'barcode'">Barcode Mapping </a>
             </li>
             <li>
               <a (click)="selectTab('img')" [class.active]="selectedTab === 'img'">Image Upload</a>
@@ -118,7 +118,14 @@
           </div>
           
           <div *ngIf="selectedTab === 'alternate'" class="tab-pane">
-            box 2
+            <div class="input-barcode">
+              <label for="subItem">Sub Item:</label>
+              <input type="text" id="subItem" class="input-field" [formControl]="subItemControl">
+              <br>
+              <label for="yield">Yield(%):</label>
+              <input type="text" id="yield" class="input-field" [formControl]="yieldControl">
+              <button class="btn btn-info1" (click)="addEntry()">Add</button>
+            </div>
           </div>
 
           <div *ngIf="selectedTab === 'inventory'" class="tab-pane">

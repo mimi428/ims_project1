@@ -9,10 +9,7 @@ import { Component } from '@angular/core';
 })
 export class BillingComponent {
   rows: any[] = [];
-  
-  selectInput(event: Event): void {
-    (event.target as HTMLInputElement).select();
-  }
+
 
   closePopup(): void {
     console.log("Popup closed");
