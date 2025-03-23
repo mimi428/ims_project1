@@ -89,7 +89,7 @@
 
           </ul>
           </div>
-
+<br>
           <div class="selection">
           <div *ngIf="selectedTab === 'detail'" class="tab-pane">
             <div class="detailed-info">
@@ -128,11 +128,91 @@
           </div>
 
           <div *ngIf="selectedTab === 'inventory'" class="tab-pane">
-            box 3
+            <div class="inventory-control">
+              <!-- for form side -->
+              <div class="col-md-5">
+                <div class="headinginv">Default Inventory Control Parameter</div>
+                <div class="fieldinv">
+                  <label for="re-order-level">Re-Order Level:</label>
+                  <input type="number" id="re-order-level" class="input-field-inv">
+                </div>
+                <div class="fieldinv">
+                  <label for="min-stock-level">Min Stock Level:</label>
+                  <input type="number" id="min-stock-level" class="input-field-inv">
+                </div>
+                <div class="fieldinv">
+                  <label for="max-stock-level">Max Stock Level:</label>
+                  <input type="number" id="max-stock-level" class="input-field-inv">
+                </div>
+                <div class="headinginv">Inventory Packing Detail</div>
+                <div class="fieldinv">
+                  <label for="weight">Weight:</label>
+                  <input type="number" id="weight" class="input-weight-field">
+                  <select id="unit" class="select-field">
+                    <option value="liters">liters</option>
+                    <option value="cartoon">cartoon</option>
+                  </select>
+                </div>
+                <div class="fieldinv">
+                  <label for="dimension">Dimension:</label>
+                  <div class="dimension-container">
+                    <label for="length">L:</label>
+                    <input type="number" id="length" class="dimension-field">
+                    <label for="breadth">B:</label>
+                    <input type="number" id="breadth" class="dimension-field">
+                    <label for="height">H:</label>
+                    <input type="number" id="height" class="dimension-field">
+                  </div>
+              </div>
+            </div>
+                <div class="col-md-6">
+                  <div class="checkbox-container-inv">
+                    <label>
+                      <input type="checkbox" class="checkbox">&nbsp; Do Not Issue Stock After Min Stock Level.
+                    </label>
+                    <label>
+                      <input type="checkbox" class="checkbox">&nbsp;Warn When Stock Reaches Re-Order Level.
+                    </label>
+                    <label>
+                      <input type="checkbox" class="checkbox"> &nbsp;Take Zero Stock As Re-Order Level.
+                    </label>
+                    <label>
+                      <input type="checkbox" class="checkbox">&nbsp; Warehouse Wise Inventory Control Setting
+                    </label>
+                    </div>
+                </div>
+            </div>
+            
           </div>
 
           <div *ngIf="selectedTab === 'barcode'" class="tab-pane">
-            box 4
+            <div class="barcode-tab">
+              <div class="input-barcode">
+                  <label for="barcode">Barcode:</label>
+                  <input type="text" id="barcode" class="input-field">
+                  <label for="unit">Unit:</label>
+                  <select id="unit" class="dropdown">
+                      <option value="">Select Unit</option>
+                  </select>
+                  <button class="btn btn-info1">Add</button>
+              </div>
+              <br>
+              <div class="table-container1">
+                  <table class="bartable">
+                      <thead class="tableforbar">
+                          <tr>
+                              <th style="width: 7%;">SN</th>
+                              <th style="width: 18%;">Barcode</th>
+                              <th style="width: 4%;">Unit</th>
+                              <th style="width: 9%;">Discontinue</th>
+                              <th style="width: 15%;">Status</th>
+                              <th style="width: 12%;">Actions</th>
+                          </tr>
+                      </thead>
+                  </table>
+              </div>
+          </div>
+          
           </div>
 
           <div *ngIf="selectedTab === 'img'" class="tab-pane">
