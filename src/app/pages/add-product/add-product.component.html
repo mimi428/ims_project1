@@ -63,41 +63,95 @@
             <label for="productName">Product Name:</label>
             <input type="text" id="productName" name="productName">
           </div>
-      
-          <!-- Tab Buttons -->
           <div class="tabs">
-            <button class="tab-button" [ngClass]="{'active': activeTab === 'Detailedinfo'}" (click)="setActiveTab('Detailedinfo')">
-              Detailed Information
-            </button>
-            <button class="tab-button" [ngClass]="{'active': activeTab === 'AlternateUnit'}" (click)="setActiveTab('AlternateUnit')">
-              Alternate Unit
-            </button>
-            <button class="tab-button" [ngClass]="{'active': activeTab === 'InventoryControl'}" (click)="setActiveTab('InventoryControl')">
-              Inventory Control
-            </button>
-            <button class="tab-button" [ngClass]="{'active': activeTab === 'ImageUpload'}" (click)="setActiveTab('ImageUpload')">
-              Image Upload
-            </button>
-            <button class="tab-button" [ngClass]="{'active': activeTab === 'BatchwisePrice'}" (click)="setActiveTab('BatchwisePrice')">
-              Batchwise Price
-            </button>
-            <button class="tab-button" [ngClass]="{'active': activeTab === 'Yield'}" (click)="setActiveTab('Yield')">
-              Yield
-            </button>
+          <ul class="tab-button">
+            <li>
+              <a (click)="selectTab('detail')" [class.active]="selectedTab === 'detail'">Details</a>
+            </li>
+            <li>
+              <a (click)="selectTab('alternate')" [class.active]="selectedTab === 'alternate'">Alternate Unit</a>
+            </li>
+            <li>
+              <a (click)="selectTab('inventory')" [class.active]="selectedTab === 'inventory'">Inventory Control</a>
+            </li>
+            <li>
+              <a (click)="selectTab('barcode')" [class.active]="selectedTab === 'barcode'">Barcode </a>
+            </li>
+            <li>
+              <a (click)="selectTab('img')" [class.active]="selectedTab === 'img'">Image Upload</a>
+            </li>
+            <li>
+              <a (click)="selectTab('batchwise')" [class.active]="selectedTab === 'batchwise'">Batchwise Price</a>
+            </li>
+            <li>
+              <a (click)="selectTab('yield')" [class.active]="selectedTab === 'yield'">Yield</a>
+            </li>
+
+          </ul>
+          </div>
+
+          <div class="selection">
+          <div *ngIf="selectedTab === 'detail'" class="tab-pane">
+            <div class="detailed-info">
+              <h2>Detailed Information</h2>
+              <div class="form-row">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="4" cols="50"></textarea>
+              </div>
+            
+              <div class="form-row">
+                <label for="specifications">Specifications:</label>
+                <textarea id="specifications" name="specifications" rows="4" cols="50"></textarea>
+              </div>
+            
+              <div class="form-row">
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price">
+              </div>
+            
+              <div class="form-row">
+                <label for="manufacturer">Manufacturer:</label>
+                <input type="text" id="manufacturer" name="manufacturer">
+              </div>
+            
+              <div class="form-row">
+                <label for="warranty">Warranty:</label>
+                <input type="text" id="warranty" name="warranty">
+              </div>
+            </div>
+          
+          
+          </div>
+          
+          <div *ngIf="selectedTab === 'alternate'" class="tab-pane">
+            box 2
+          </div>
+
+          <div *ngIf="selectedTab === 'inventory'" class="tab-pane">
+            box 3
+          </div>
+
+          <div *ngIf="selectedTab === 'barcode'" class="tab-pane">
+            box 4
+          </div>
+
+          <div *ngIf="selectedTab === 'img'" class="tab-pane">
+            box 5
+          </div>
+
+          <div *ngIf="selectedTab === 'batchwise'" class="tab-pane">
+            box 6
+          </div>
+          
+          <div *ngIf="selectedTab === 'yield'" class="tab-pane">
+            box 7
           </div>
       
-          <!-- Tab Content -->
-          <div class="tab-content">
-            <app-detailed-info *ngIf="activeTab === 'Detailedinfo'"></app-detailed-info>
-            <app-alternate-unit *ngIf="activeTab === 'AlternateUnit'"></app-alternate-unit>
-            <app-inventory-control *ngIf="activeTab === 'InventoryControl'"></app-inventory-control>
-            <app-image-upload *ngIf="activeTab === 'ImageUpload'"></app-image-upload>
-            <app-batchwise-price *ngIf="activeTab === 'BatchwisePrice'"></app-batchwise-price>
-            <app-yield *ngIf="activeTab === 'Yield'"></app-yield>
-          </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
 
   
