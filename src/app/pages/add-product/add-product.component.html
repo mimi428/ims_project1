@@ -92,33 +92,33 @@
 <br>
           <div class="selection">
           <div *ngIf="selectedTab === 'detail'" class="tab-pane">
-            <div class="detailed-info">
-              <h2>Detailed Information</h2>
-              <div class="form-row">
-                <label for="description">Description:</label>
-                <textarea id="description" name="description" rows="4" cols="50"></textarea>
+            <div class="form-container">
+              <div class="form-group">
+                  <label for="StockUnit" class="form-label">Stock Unit :</label>
+                  <select id="StockUnit" class="form-select">
+                      <option value="1: Jhola">Jhola</option>
+                      <option value="2: Bora">Bora</option>
+                  </select>
               </div>
-            
-              <div class="form-row">
-                <label for="specifications">Specifications:</label>
-                <textarea id="specifications" name="specifications" rows="4" cols="50"></textarea>
+              <div class="form-group">
+                  <label for="purchaseprice" class="form-label">Purchase Price :</label>
+                  <input type="number" id="purchaseprice" class="form-input">
               </div>
-            
-              <div class="form-row">
-                <label for="price">Price:</label>
-                <input type="number" id="price" name="price">
+          
+              <div class="form-group">
+                  <label for="labelMrp" class="form-label">Label MRP :</label>
+                  <input type="number" id="labelMrp" class="form-input">
               </div>
-            
-              <div class="form-row">
-                <label for="manufacturer">Manufacturer:</label>
-                <input type="text" id="manufacturer" name="manufacturer">
+          
+              <div class="form-group">
+                  <label for="location" class="form-label">Location :</label>
+                  <div class="custom-dropdown">
+                      <span>Select Location</span>
+                      <div class="dropdown-caret"></div>
+                  </div>
               </div>
-            
-              <div class="form-row">
-                <label for="warranty">Warranty:</label>
-                <input type="text" id="warranty" name="warranty">
-              </div>
-            </div>
+          </div>
+          
           
           
           </div>
@@ -216,17 +216,74 @@
           </div>
 
           <div *ngIf="selectedTab === 'img'" class="tab-pane">
-            box 5
+            <div class="file-upload-area">
+              <div class="upload-drop-zone">
+                Choose img or Drag it here.
+              </div>
+              <div class="input-group image-preview">
+                <input type="file" accept=".png, .jpg" class="image-preview-input">
+                <button type="button" class="btn-upload">Upload</button>
+              </div>
+              <div class="image-container">
+                <img src="" alt="Preview Image">
+              </div>
+            </div>            
           </div>
 
           <div *ngIf="selectedTab === 'batchwise'" class="tab-pane">
-            box 6
+            <!-- can use same css as for barcode -->
+            <div class="table-container1">
+              <table class="bartable">
+                  <thead class="tableforbar">
+                      <tr>
+                          <th style="width: 7%;">Batch</th>
+                          <th style="width: 7%;">Stock</th>
+                          <th style="width: 8%;">Landing Cost</th>
+                          <th style="width: 12%;">Sellate beforetax</th>
+                          <th style="width: 12%;">Sellrate aftertax</th>
+                          <th style="width: 7%;">MRP</th>
+                          <th style="width: 7%;">Exp Date</th>
+                      </tr>
+                  </thead>
+              </table>
+          </div>
           </div>
           
           <div *ngIf="selectedTab === 'yield'" class="tab-pane">
-            box 7
+            <div class="input-barcode">
+              <label for="subItem">Sub Item:</label>
+              <input type="text" id="subItem" class="input-field" [formControl]="subItemControl">
+              <br>
+              <label for="yield">Yield(%):</label>
+              <input type="text" id="yield" class="input-field" [formControl]="yieldControl">
+              <button class="btn btn-info1" (click)="addEntry()">Add</button>
+            </div>
+          
+            <div class="table-container1">
+              <table class="bartable">
+                <thead class="tableforbar">
+                  <tr>
+                    <th style="width: 7%;">SN</th>
+                    <th style="width: 7%;">Sub Item</th>
+                    <th style="width: 8%;">Yield(%)</th>
+                    <th style="width: 8%;">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of entries; let i = index">
+                    <td>{{i + 1}}</td>
+                    <td>{{item.subItem}}</td>
+                    <td>{{item.yield}}</td>
+                    
+                    <td>
+                      <button class="edit-btn" (click)="editEntry(i)">Edit</button> &nbsp;
+                      <button (click)="removeEntry(i)">-</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-      
         </div>
       </div>
     </div>
