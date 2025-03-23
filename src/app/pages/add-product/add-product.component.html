@@ -8,7 +8,7 @@
             <button class="btn btn-info" disabled>Add Main Group</button>
             <button class="btn btn-info" disabled>Add Sub Group</button>
             <button type="button" class="btn btn-info">Add product</button>
-            <button routerlink="/navbar/components/top-bar" class="btn btn-info">Back</button>
+            <button class="btn btn-info">Back</button>
           </div>
         </div>
     </div>
@@ -96,8 +96,8 @@
               <div class="form-group">
                   <label for="StockUnit" class="form-label">Stock Unit :</label>
                   <select id="StockUnit" class="form-select">
-                      <option value="1: Jhola">Jhola</option>
-                      <option value="2: Bora">Bora</option>
+                      <option>Ton</option>
+                      <option>Gram</option>
                   </select>
               </div>
               <div class="form-group">
@@ -112,15 +112,9 @@
           
               <div class="form-group">
                   <label for="location" class="form-label">Location :</label>
-                  <div class="custom-dropdown">
-                      <span>Select Location</span>
-                      <div class="dropdown-caret"></div>
-                  </div>
+                  <input type="text"  class="form-input">
               </div>
           </div>
-          
-          
-          
           </div>
           
           <div *ngIf="selectedTab === 'alternate'" class="tab-pane">

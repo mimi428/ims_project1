@@ -1,10 +1,11 @@
-/* Upper Navbar */
+
 .upper-navbar {
     display: flex;
     align-items: center;
     background: #336799;
     color: white;
     font-size: 1rem;
+    padding: 8px 12px;
  
   }
  
@@ -12,6 +13,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    
   }
 
   .logo {
@@ -23,16 +25,17 @@
     display: flex;
     list-style: none;
     gap: 5px;
+  
   }
   
   .nav-links a {
     margin-left: 5px;
     color: white;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 14px;
     padding: 10px ;
     cursor: pointer;
-    margin-top: 5px;
+    margin-top: 25px;
   }
   
   .nav-links a:active {
@@ -53,26 +56,27 @@
   background: #6599ff;
   position: relative;
   z-index: 100;
-  font-size: 1rem;
+  
 }
 
 .lower-navbar ul {
   display: flex;
   justify-content: left;
   list-style: none;
-  margin-left: 50px; 
+  margin-left: 70px; 
   color: white;
+  font-size: 12px;
 }
 .lower-navbar li {
   position: relative; 
   height:4vh;
 }
-/* Lower Navbar Buttons */
+
 .lower-navbar button {
   background: #6599ff;
   border: none;
   color: white;
-  font-size: 1rem;
+  font-size: 13px;
   cursor: pointer;
   padding: 8px 12px;
   position: relative; 
@@ -99,7 +103,6 @@
   border-radius: 4px;
 }
 
-/* Dropdown Items */
 .dropdown li {
   color: black;
   cursor: pointer;
@@ -108,12 +111,10 @@
   text-align: left;
 }
 
-/* Show Dropdown on Hover */
 .lower-navbar li:hover .dropdown {
   display: flex;
 }
 
-/* Hover Effect */
 .dropdown li:hover {
   background: lightgray;
 }

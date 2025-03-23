@@ -17,7 +17,6 @@ export class TaxInvoiceComponent {
     { id: 3, name: 'IT' },
   ];
   showDetails = false;
-
   toggleDetails() {
     this.showDetails = !this.showDetails;
   }
@@ -28,7 +27,6 @@ export class TaxInvoiceComponent {
       this.toggleDetails();
     }
   }
-
   constructor(private fb: FormBuilder) {
     this.invoiceForm = this.fb.group({
       invDate: [{ value: '', disabled: true }],
