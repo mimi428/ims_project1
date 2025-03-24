@@ -34,7 +34,7 @@ export class TaxInvoiceComponent {
       soNo: [{ value: '', disabled: true }],
       loadFullSODetail: [false],
       warehouse: [{ value: '', disabled: true }],
-      salesman: [{ value: '', disabled: true }],
+      salesman: [''],
       costCenter: [''],
       customer: [{ value: '', disabled: true }],
       address: [{ value: '', disabled: true }],
@@ -44,6 +44,28 @@ export class TaxInvoiceComponent {
       flatDisRs: [{ value: '', disabled: true }],
     });
   }
+  showSalesmanPopup: boolean = false;
+  salesmen = [
+    { name: 'Amrita', contactInfo: '878878787' },
+    { name: 'Sita', contactInfo: '41845' },
+    { name: 'Gita', contactInfo: '432845' },
+    { name: 'Nita', contactInfo: '438345' },
+    { name: 'Rita', contactInfo: '438445' },
+    { name: 'Anita', contactInfo: '438455' },
+    { name: 'Mihika', contactInfo: '243543' }
+  ];
+  openSalesmanPopup(): void {
+    this.showSalesmanPopup = true;
+  }
+  closeSalesmanPopup(): void {
+    this.showSalesmanPopup = false;
+  }
+  selectedSalesman(salesman: any) {
+    this.selectedSalesman = salesman.name; // Update the selected salesman name
+    this.invoiceForm.get('salesman')?.setValue(salesman.name); // Update the form control value (optional)
+    this.closeSalesmanPopup(); // Close the popup
+  }
 }
+
 
 

@@ -60,19 +60,46 @@
   <div class="col-md-4">
     <div class="form-group row">
       <div class="col-5 label-div">
-        <label class="label-name">Warehouse</label>
-      </div>
-      <div class="col-7 input-div">
-        <input type="text" placeholder="Press Enter to Select Warehouse" readonly formControlName="warehouse" class="input-size">
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <div class="col-5 label-div">
         <label class="label-name">Salesman</label>
       </div>
       <div class="col-7 input-div">
-        <input type="text" placeholder="Press Enter to Select Salesman" readonly formControlName="salesman" class="input-size">
+        <input type="text" [placeholder]="selectedSalesman || 'Press Enter to Select Salesman'" formControlName="salesman" class="input-size" (keydown.enter)="openSalesmanPopup()">
+      </div>
+    </div>
+    
+    <div *ngIf="showSalesmanPopup" class="salesman-popup-overlay">
+      <div class="salesman-popup">
+        <div class="popup-header">
+          <h3>Salesman</h3>
+          <button class="close-button" (click)="closeSalesmanPopup()">&times;</button>
+        </div>
+        <div class="popup-body">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Contact Info</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let salesman of salesmen" (click)="selectedSalesman(salesman)">
+                <td>{{ salesman.name }}</td>
+                <td>{{ salesman.contactInfo }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    
+
+    <div class="form-group row">
+      <div class="col-5 label-div">
+        <label class="label-name">Warehouse</label>
+      </div>
+      <div class="col-7 input-div">
+        <input type="text" placeholder="Press Enter to Select warehouse" readonly formControlName="salesman" class="input-size">
       </div>
     </div>
 
@@ -82,10 +109,10 @@
       </div>
       <div class="col-7 input-div">
         <select formControlName="costCenter" style="font-size: 12px;">
-          <option value="">Select</option>
-          <option value="1">Finance</option>
-          <option value="2">Operations</option>
-          <option value="3">IT</option>
+          <option >Select</option>
+          <option >Finance</option>
+          <option >Operations</option>
+          <option >IT</option>
         </select>
       </div>
     </div>
@@ -97,7 +124,7 @@
         <label class="label-name">Customer</label>
       </div>
       <div class="col-7 input-div">
-        <input type="text" placeholder="Press ENTER to Select Customer" readonly formControlName="customer" class="input-size">
+        <input type="text" placeholder="Press ENTER to Select Customer" formControlName="customer" class="input-size">
       </div>
     </div>
 
