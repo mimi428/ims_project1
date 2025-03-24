@@ -24,28 +24,24 @@
                     <label for="mainGroup">Main Group:</label>
                     <select id="mainGroup" name="mainGroup">
                         <option value="">Select Main Group</option>
-                        <!-- Add options dynamically -->
                     </select>
                 </div>
                 <div class="form-row">
                     <label for="subGroupA">Sub Group (A):</label>
                     <select id="subGroupA" name="subGroupA">
                         <option value="">Select Sub Group (A)</option>
-                        <!-- Add options dynamically -->
                     </select>
                 </div>
                 <div class="form-row">
                     <label for="subGroupB">Sub Group (B):</label>
                     <select id="subGroupB" name="subGroupB">
                         <option value="">Select Sub Group (B)</option>
-                        <!-- Add options dynamically -->
                     </select>
                 </div>
                 <div class="form-row">
                     <label for="subGroupC">Sub Group (C):</label>
                     <select id="subGroupC" name="subGroupC">
                         <option value="">Select Sub Group (C)</option>
-                        <!-- Add options dynamically -->
                     </select>
                 </div>
             </div>
@@ -54,7 +50,6 @@
       <div class="col-md-9">
         <!-- Right Section -->
         <div class="right-section">
-          <!-- Product Code & Name -->
           <div class="form-row">
             <label for="productCode">Product Code:</label>
             <input type="text" id="productCode" name="productCode">
@@ -222,13 +217,30 @@
                 Choose img or Drag it here.
               </div>
               <div class="input-group image-preview">
-                <input type="file" accept=".png, .jpg" class="image-preview-input">
-                <button type="button" class="btn-upload">Upload</button>
+                <input type="file" accept=".png, .jpg" class="image-preview-input" (change)="onFileSelected($event)">
+                <button type="button" class="btn-upload" (click)="uploadImage()">Upload</button>
               </div>
-              <div class="image-container">
-                <img src="" alt="Preview Image">
+              <!-- Show image only after upload -->
+              <div class="image-container" *ngIf="isUploaded && imageSrc">
+                <img [src]="imageSrc" alt="Preview Image">
               </div>
-            </div>            
+            </div>
+          </div>
+          
+          <!-- Popup for successful upload -->
+          <div *ngIf="showPopup" class="upload-popup-overlay">
+            <div class="upload-popup">
+              <div class="popup-header">
+                <h3>Success!</h3>
+                <button class="close-button" (click)="closePopup()">&times;</button>
+              </div>
+              <div class="popup-body">
+                <p>Your image has been uploaded successfully!</p>
+              </div>
+              <div class="popup-footer">
+                <button class="btn-close" (click)="closePopup()">Close</button>
+              </div>
+            </div>
           </div>
 
           <div *ngIf="selectedTab === 'batchwise'" class="tab-pane">
