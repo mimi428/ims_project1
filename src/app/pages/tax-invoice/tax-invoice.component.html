@@ -63,7 +63,7 @@
         <label class="label-name">Salesman</label>
       </div>
       <div class="col-7 input-div">
-        <input type="text" [placeholder]="selectedSalesman || 'Press Enter to Select Salesman'" formControlName="salesman" class="input-size" (keydown.enter)="openSalesmanPopup()">
+        <input type="text" [placeholder]="selectedSalesman" formControlName="salesman" class="input-size" (keydown.enter)="openSalesmanPopup()">
       </div>
     </div>
     
@@ -91,9 +91,6 @@
         </div>
       </div>
     </div>
-    
-    
-
     <div class="form-group row">
       <div class="col-5 label-div">
         <label class="label-name">Warehouse</label>
@@ -127,7 +124,7 @@
         <input type="text" placeholder="Press ENTER to Select Customer" formControlName="customer" class="input-size">
       </div>
     </div>
-
+    
     <div class="form-group row">
       <div class="col-5 label-div">
         <label class="label-name">Address</label>
@@ -171,7 +168,6 @@
     </div>
   </div>
 </div>
-
 <div class="content">
   <app-billing></app-billing>
  </div>

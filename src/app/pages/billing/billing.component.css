@@ -34,15 +34,15 @@
   }
   
   .stock-indicator {
-    color: red; /* You can change this based on actual stock status */
+    color: red; 
   }
   
   .col-md-2 {
-    flex: 0 0 16.66%; /* For the 2-column width */
+    flex: 0 0 16.66%; 
   }
   
   .col-md-4 {
-    flex: 0 0 33.33%; /* For the 4-column width */
+    flex: 0 0 33.33%; 
   }
 
 .big-form {
@@ -65,7 +65,7 @@
   
   #prodlistTableheader th {
     padding: 10px;
-    text-align: left;
+    text-align: center;
     font-weight: bold;
   }
   
@@ -85,24 +85,11 @@
     box-sizing: border-box;
   }
   
-  .CellWithComment {
-    position: relative;
-  }
-  
-  .CellWithComment .CellComment {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    font-size: 10px;
-    color: #888;
-    margin-top: 3px;
-  }
-  
   /* Input fields styling */
   .input-field {
     width: 100%;
     padding: 5px;
-    font-size: 12px;  /* Set font size for inputs */
+    font-size: 12px;  
     box-sizing: border-box;
   }
   
@@ -150,19 +137,16 @@
   .quantity input, .rate input, .amnt input, .discountAmt input, .totalDisc input, .vatvalue input, .netamount input {
     text-align: right;
   }
-  
-  /* Exp Date cell styling */
+
   .expdate input {
     text-align: center;
   }
   
-  /* Styling for select elements */
   .unit select {
     padding: 5px;
     font-size: 12px;
   }
-  
-  /* Close button cell */
+
   .close {
     width: 40px;
     text-align: center;

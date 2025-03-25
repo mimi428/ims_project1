@@ -59,6 +59,7 @@ export class AddProductComponent {
       });
       this.subItemControl.setValue('');
       this.yieldControl.setValue('');
+      alert('Entry added successfully!');
     }
   }
   editEntry(index: number) {
@@ -66,11 +67,13 @@ export class AddProductComponent {
     this.subItemControl.setValue(item.subItem);
     this.yieldControl.setValue(item.yield);
     this.entries.splice(index, 1);
+    
   }
 
   removeEntry(index: number) {
     // Remove the entry
     this.entries.splice(index, 1);//splice means 
+    alert('Entry removed successfully!');
   }
 
 

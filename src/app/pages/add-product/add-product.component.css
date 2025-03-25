@@ -397,7 +397,6 @@
   cursor: pointer;
   font-size: 14px;
   border-radius: 4px;
-  transition: background 0.3s ease-in-out;
 }
 
 .btn-info1:hover {
@@ -478,7 +477,6 @@
 }
 
 /* for yield */
-/* Table Body */
 tbody {
   font-size: 14px;
 }
@@ -495,7 +493,6 @@ tbody tr:hover {
   background-color: #e9f7fc;
 }
 
-/* Table Data */
 tbody td {
   padding: 10px;
   border: 1px solid #ddd;
@@ -515,8 +512,9 @@ button {
   border-radius: 4px;
 }
 
-button:hover {
-  background-color: #d32f2f;
+
+.close-button:hover{
+  background-color: #f0eaea;
 }
 
 
