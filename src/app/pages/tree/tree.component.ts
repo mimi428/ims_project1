@@ -9,7 +9,6 @@ import { TreeNodeComponent } from "../tree-node/tree-node.component";
   styleUrls: ['./tree.component.css']
 })
 export class TreeComponent {
-  // Updated tree data with sub-products having children
   treeData = [
     {
       name: 'Products',
@@ -34,10 +33,12 @@ export class TreeComponent {
       name: 'Product 2',
       children: [
         {
-          name: 'idk',
+          name: 'fruit',
           children: [
-            { name: 'amcbw', children: [] },
-            { name: 'vhbe', children: [] }
+            { name: 'mango', children: [] },
+            { name: 'apple', children: [] },
+            { name: 'guava', children: [] },
+            { name: 'strawberry', children: [] }
           ]
         },
       ]

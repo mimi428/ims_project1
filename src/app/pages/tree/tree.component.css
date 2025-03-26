@@ -1,45 +1,16 @@
-.tree {
-    background-color: #336799;
-    color: white;
-    padding-bottom: 20px;
-    align-items: flex-start;
-    list-style-type: none;
-    list-style: none;
-    padding-left: 0; 
-    margin-left: 0; 
-      
-}
-
-.tree-list {
-    padding-left: 20px;
-    list-style: none;
-   
-}
-.tree-list li {
-    list-style: none !important;
-}
-
-.tree-node {
+.tree ul {
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
     cursor: pointer;
+  }
+  
+  .tree li {
+    list-style-type: none;
     display: block;
-    margin: 5px 0;
-    list-style: none;
-
-}
-
-.tree-node:before {
-    content: "▶ ";
-    font-size: 14px;
-    list-style: none;
-}
-
-.tree-node.expand:before {
-    content: "▼ ";
-    list-style: none;
-}
-
-.tree-list li > ul {
-    padding-left: 20px;
-    list-style: none;
-    
-}
+  }
+  
+  .tree li::marker {
+    content: ""; 
+  }
+  

@@ -10,7 +10,6 @@ import { Component, Input } from '@angular/core';
 export class TreeNodeComponent {
   @Input() node: any;
   @Input() expandedNodes: Set<string> = new Set();
-
   toggleNode(nodeName: string): void {
     if (this.expandedNodes.has(nodeName)) {
       this.expandedNodes.delete(nodeName);
@@ -18,7 +17,6 @@ export class TreeNodeComponent {
       this.expandedNodes.add(nodeName);
     }
   }
-
   isNodeExpanded(nodeName: string): boolean {
     return this.expandedNodes.has(nodeName);
   }
