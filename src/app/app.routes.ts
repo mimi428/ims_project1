@@ -6,8 +6,18 @@ import { TopBarComponent } from './navbar/components/top-bar/top-bar.component';
 import { TransactionComponent } from './navbar/components/transaction/transaction.component';
 import { Component } from '@angular/core';
 import { AddProductComponent } from './pages/add-product/add-product.component';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
+  {
+    path:'',
+    redirectTo:'login',
+    pathMatch: "full"
+},
+{
+    path:'login',
+    component:LoginComponent
+},
   {
     path: '',
     component: TopBarComponent,
