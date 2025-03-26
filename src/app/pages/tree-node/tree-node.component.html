@@ -1,0 +1,15 @@
+<li>
+    <span
+      class="tree-node"
+      (click)="toggleNode(node.name)"
+      [class.expand]="isNodeExpanded(node.name)"
+    >
+      {{ node.name }}
+    </span>
+    <ul *ngIf="isNodeExpanded(node.name)">
+      <ng-container *ngFor="let child of node.children">
+        <app-tree-node [node]="child" [expandedNodes]="expandedNodes"></app-tree-node>
+      </ng-container>
+    </ul>
+  </li>
+  

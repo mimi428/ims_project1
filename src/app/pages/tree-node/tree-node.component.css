@@ -15,9 +15,6 @@
     list-style: none;
    
 }
-.tree-list li {
-    list-style: none !important;
-}
 
 .tree-node {
     cursor: pointer;

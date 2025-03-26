@@ -35,9 +35,12 @@
 
 .tree{
     background-color: #336799;
-    padding:100px;
+    padding:10px;
     color: white;
-    padding-bottom: 200px;   
+    padding-bottom: 200px; 
+    list-style: none!important;
+    list-style-type: none !important;
+    
 }
 
   .search-container {

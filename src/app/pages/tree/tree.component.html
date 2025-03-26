@@ -1,19 +1,9 @@
 <div class="tree">
+    <h4>Product Master</h4>
     <ul class="tree-list">
       <ng-container *ngFor="let node of treeData">
-        <li>
-          <span class="tree-node"(click)="toggleNode(node.name)" [class.expand]="isNodeExpanded(node.name)">
-            {{ node.name }}
-          </span>
-          <ul *ngIf="isNodeExpanded(node.name)">
-            <li *ngFor="let child of node.children">
-              <span class="tree-node" (click)="toggleNode(child.name)" [class.expand]="isNodeExpanded(child.name)">
-                {{ child.name }}
-              </span>
-            </li>
-          </ul>
-        </li>
+        <app-tree-node [node]="node" [expandedNodes]="expandedNodes"></app-tree-node>
       </ng-container>
     </ul>
-  </div>
+</div>
   

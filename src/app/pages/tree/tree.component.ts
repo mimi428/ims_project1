@@ -1,31 +1,49 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { TreeNodeComponent } from "../tree-node/tree-node.component";
 
 @Component({
   selector: 'app-tree',
-  imports:[CommonModule],
+  imports: [CommonModule, TreeNodeComponent],
   templateUrl: './tree.component.html',
   styleUrls: ['./tree.component.css']
 })
 export class TreeComponent {
-  // Tree data
+  // Updated tree data with sub-products having children
   treeData = [
     {
-      name: 'PRODUCT',
+      name: 'Products',
       children: [
-        { name: 'Saman' ,
+        {
+          name: 'Bottle',
           children: [
-          { name: 'Sub-sub-product 1' },
-          { name: 'Sub-sub-product 2' }
-        ]},
-        { name: 'Saman1' },
-        { name: 'Saman2' },
-        { name: 'Saman4' }
+            { name: 'Plastic', children: [] },
+            { name: 'Thermos', children: [] }
+          ]
+        },
+        {
+          name: 'Shoes',
+          children: [
+            { name: 'Flipflops', children: [] },
+            { name: 'Sneakers', children: [] }
+          ]
+        }
+      ]
+    },
+    {
+      name: 'Product 2',
+      children: [
+        {
+          name: 'idk',
+          children: [
+            { name: 'amcbw', children: [] },
+            { name: 'vhbe', children: [] }
+          ]
+        },
       ]
     }
   ];
 
-  // To keep track of expanded nodes
   expandedNodes: Set<string> = new Set();
 
   toggleNode(nodeName: string): void {
