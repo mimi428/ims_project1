@@ -1,18 +1,22 @@
-<div class="login-container">
-    <h3>Login</h3>
-    <p>Welcome back!</p>
-    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-      <input type="text" formControlName="userName" placeholder="Email" required>
-      <span *ngIf="loginForm.controls['userName']?.invalid && loginForm.controls['userName'].dirty">
-        Email is required
-      </span>
-  
-      <input type="password" formControlName="password" placeholder="Password" required>
-      <span *ngIf="loginForm.controls['password']?.invalid && loginForm.controls['password'].dirty">
-        Password is required
-      </span>
-  
-      <button type="submit" [disabled]="!loginForm.valid">Login</button>
-    </form>
-  </div>
-  
+<div class="container">
+    <div class="ims-logo">
+        <img src="../assets/logo.png" alt="Logo" class="logo">
+      </div>
+    <div class="login-container">
+        <h3>Login</h3>
+        <p>Welcome back!</p>
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+          <input type="text" formControlName="userName" placeholder="Username" required>
+          <span *ngIf="loginForm.controls['userName']?.invalid && loginForm.controls['userName'].dirty">
+            Username is required
+          </span>
+      
+          <input type="password" formControlName="password" placeholder="Password" required>
+          <span *ngIf="loginForm.controls['password']?.invalid && loginForm.controls['password'].dirty">
+            Password is required
+          </span>
+          
+          <button type="submit" [disabled]="!loginForm.valid">Login</button>
+        </form>
+      </div>    
+</div>

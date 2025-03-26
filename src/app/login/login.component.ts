@@ -20,6 +20,12 @@ export class LoginComponent {
   }
 
   onLogin(){
+    if (this.loginForm.valid) {
+      console.log('Login successful!', this.loginForm.value);
+      this.router.navigate(['/product-master']);
+    } else {
+      console.log('Form is invalid');
+    }
     
   }
 

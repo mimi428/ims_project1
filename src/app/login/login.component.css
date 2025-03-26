@@ -1,6 +1,24 @@
+.container{
+    width: 90%;
+    height: 100%;
+    background-image: url(../assets/loginbg.png);
+    margin: 0px 0px 0px 0px;
+    margin-left: 0%;
+    margin-top: 0%;
+}
+.ims-logo {
+    text-align: right;
+    margin-bottom: 30px;
+  }
+  
+  .logo {
+    width: 150px;
+  }
 .login-container {
-    width: 300px;
-    margin: 50px auto;
+    width: 350px;
+    margin-top: 250px;
+    margin: 0px auto;
+    margin-left: 900px;
     padding: 20px;
     text-align: center;
     border-radius: 8px;
