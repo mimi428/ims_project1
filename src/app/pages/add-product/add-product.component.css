@@ -517,5 +517,24 @@ button {
   background-color: #f0eaea;
 }
 
+.form-group {
+  margin-bottom: 15px;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.input-field.invalid {
+  border-color: #dc3545;
+}
+
+.btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
 
 

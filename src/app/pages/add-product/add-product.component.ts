@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-product',
@@ -15,10 +15,10 @@ export class AddProductComponent {
     this.selectedTab = tab;
   }
   //for img displaying and popupss
-  imageSrc: string | ArrayBuffer | null = null; // image data URL hold garera rakhxa
-  showPopup: boolean = false; // popup visibile xa ki nai
-  isUploaded: boolean = false; // upload btn click vayo ki nai
-  selectedFile: File | null = null; // selected file k ho 
+  imageSrc: string | ArrayBuffer | null = null; 
+  showPopup: boolean = false; 
+  isUploaded: boolean = false; 
+  selectedFile: File | null = null; 
 
   onFileSelected(event: any): void {
     const file = event.target.files[0];
@@ -26,7 +26,7 @@ export class AddProductComponent {
       this.selectedFile = file;
       const reader = new FileReader();
       reader.onload = (e) => {
-        this.imageSrc = reader.result; // Set the image data URL
+        this.imageSrc = reader.result; 
       };
       reader.readAsDataURL(file);
     }
@@ -34,7 +34,6 @@ export class AddProductComponent {
 
   uploadImage(): void {
     if (this.selectedFile) {
-      console.log('Uploading file:', this.selectedFile.name);
       this.isUploaded = true;
       this.showPopup = true;
     }
@@ -44,22 +43,28 @@ export class AddProductComponent {
   }
   //for yield tab functionalityyyyyyyyyyyyy
   entries: { subItem: string, yield: string }[] = [];
-  subItemControl = new FormControl('');
-  yieldControl = new FormControl('');
+  subItemControl = new FormControl('', [Validators.required]);
+  yieldControl = new FormControl('', [
+    Validators.required,
+    Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/), 
+    Validators.min(0),
+    Validators.max(100)
+  ]);
+
+  get yieldErrors() {
+    return this.yieldControl.errors;
+  }
 
   addEntry() {
-    const subItemValue = this.subItemControl.value;
-    const yieldValue = this.yieldControl.value;
-
-    if (subItemValue && yieldValue) {
-      // Add the new entry push
+    this.subItemControl.markAsTouched();
+    this.yieldControl.markAsTouched();
+    if (this.subItemControl.valid && this.yieldControl.valid) {
       this.entries.push({
-        subItem: subItemValue,
-        yield: yieldValue
+        subItem: this.subItemControl.value!,
+        yield: this.yieldControl.value!
       });
-      this.subItemControl.setValue('');
-      this.yieldControl.setValue('');
-      alert('Entry added successfully!');
+      this.subItemControl.reset('');
+      this.yieldControl.reset('');
     }
   }
   editEntry(index: number) {
@@ -67,14 +72,8 @@ export class AddProductComponent {
     this.subItemControl.setValue(item.subItem);
     this.yieldControl.setValue(item.yield);
     this.entries.splice(index, 1);
-    
   }
-
   removeEntry(index: number) {
-    // Remove the entry
-    this.entries.splice(index, 1);//splice means 
-    alert('Entry removed successfully!');
+    this.entries.splice(index, 1);
   }
-
-
 }

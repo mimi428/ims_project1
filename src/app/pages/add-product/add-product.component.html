@@ -262,12 +262,25 @@
 
           <div *ngIf="selectedTab === 'yield'" class="tab-pane">
             <div class="input-barcode">
-              <label for="subItem">Sub Item:</label>
-              <input type="text" id="subItem" class="input-field" [formControl]="subItemControl">
-              <br>
-              <label for="yield">Yield(%):</label>
-              <input type="text" id="yield" class="input-field" [formControl]="yieldControl">
-              <button class="btn btn-info1" (click)="addEntry()">Add</button>
+              <div class="form-group">
+                <label for="subItem">Sub Item:</label>
+                <input type="text" id="subItem" class="input-field" [formControl]="subItemControl">
+                <div *ngIf="subItemControl.invalid && (subItemControl.dirty || subItemControl.touched)" class="error-message">
+                  <span *ngIf="subItemControl.errors?.['required']">Sub Item is required</span>
+                </div>
+              </div>
+          
+              <div class="form-group">
+                <label for="yield">Yield(%):</label>
+                <input type="text" id="yield" class="input-field" [formControl]="yieldControl">
+                <div *ngIf="yieldControl.invalid && (yieldControl.dirty || yieldControl.touched)" class="error-message">
+                  <span *ngIf="yieldControl.errors?.['required']">Yield percentage is required</span>
+                  <span *ngIf="yieldControl.errors?.['pattern']">Must be a number</span>
+                  <span *ngIf="yieldControl.errors?.['min']">Yield cannot be negative</span>
+                  <span *ngIf="yieldControl.errors?.['max']">Yield cannot exceed 100%</span>
+                </div>
+              </div>
+              <button class="btn btn-info1" (click)="addEntry()" [disabled]="subItemControl.invalid || yieldControl.invalid">Add</button>
             </div>
           
             <div class="table-container1">
@@ -285,7 +298,6 @@
                     <td>{{i + 1}}</td>
                     <td>{{item.subItem}}</td>
                     <td>{{item.yield}}</td>
-                    
                     <td>
                       <button class="edit-btn" (click)="editEntry(i)">Edit</button> &nbsp;
                       <button (click)="removeEntry(i)">-</button>

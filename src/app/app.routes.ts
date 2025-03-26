@@ -8,9 +8,6 @@ import { Component } from '@angular/core';
 import { AddProductComponent } from './pages/add-product/add-product.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'master', pathMatch: 'full' },
-  
- 
   {
     path: '',
     component: TopBarComponent,
