@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TreeComponent } from "../tree/tree.component";
 
 @Component({
   selector: 'app-product-master',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, TreeComponent],
   templateUrl: './product-master.component.html',
   styleUrl: './product-master.component.css'
 })

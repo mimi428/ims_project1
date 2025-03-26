@@ -1,0 +1,36 @@
+.tree {
+    background-color: #336799;
+    padding: 8px;
+    color: white;
+    padding-bottom: 200px;
+    list-style: none;
+}
+
+.tree-list {
+    list-style-type: none;
+    padding-left: 20px;
+    list-style: none;
+}
+
+.tree-node {
+    cursor: pointer;
+    display: block;
+    margin: 5px 0;
+    list-style: none;
+}
+
+.tree-node:before {
+    content: "▶ ";
+    font-size: 14px;
+    list-style: none;
+}
+
+.tree-node.expand:before {
+    content: "▼ ";
+    list-style: none;
+}
+
+.tree-list li > ul {
+    padding-left: 20px;
+    list-style: none;
+}
