@@ -102,16 +102,7 @@
     justify-content: center;
     align-items: center;
   }
-  
-  .closetools {
-    background: none;
-    border: none;
-  }
-  
-  .closeicon {
-    width: 20px;
-    padding: 2.5px;
-  }
+
 
   .add p {
     font-size: 18px;
