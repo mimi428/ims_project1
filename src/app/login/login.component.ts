@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  loginError: string = '';
 
   constructor(private fb: FormBuilder, private router: Router) {
     this.loginForm = this.fb.group({
@@ -20,13 +21,17 @@ export class LoginComponent {
   }
 
   onLogin(){
-    if (this.loginForm.valid) {
-      console.log('Login successful!', this.loginForm.value);
-      this.router.navigate(['/product-master']);
-    } else {
-      console.log('Form is invalid');
-    }
-    
-  }
+      if (this.loginForm.valid) {
+        const { userName, password } = this.loginForm.value;
 
+        if (userName === 'mihika' && password === 'mihika') {
+          this.loginError = '';
+          this.router.navigate(['/product-master']);
+        } else {
+          this.loginError = 'Invalid username or password';
+          alert('Login failed: Invalid credentials')
+        }
+         }
+
+  }
 }

@@ -1,56 +1,98 @@
-.container{
-    width: 90%;
-    height: 100%;
-    background-image: url(../assets/loginbg.png);
-    margin: 0px 0px 0px 0px;
-    margin-left: 0%;
-    margin-top: 0%;
+
+.container {
+  background-image: url(../assets/loginbg.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 10%;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
 }
+
 .ims-logo {
-    text-align: right;
-    margin-bottom: 30px;
-  }
-  
-  .logo {
-    width: 150px;
-  }
+  width: 150px;
+  height: 150px;
+  background-image: url('../assets/logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 20px;
+}
+
 .login-container {
-    width: 350px;
-    margin-top: 250px;
-    margin: 0px auto;
-    margin-left: 900px;
-    padding: 20px;
-    text-align: center;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 350px;
+}
+
+.login-container h3 {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+  color: #336799;
+  margin-left: 34%;
+}
+
+.login-container p {
+  margin: 0 0 20px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: border 0.3s;
+}
+
+
+span {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 12px;
+  background-color: #336799;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #357ab8;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin-right: 5%;
+    align-items: center;
   }
   
-  input {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  .login-container {
+    width: 300px;
   }
-  
-  button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-  }
-  
-  span {
-    color: red;
-    font-size: 12px;
-  }
-  
+}
