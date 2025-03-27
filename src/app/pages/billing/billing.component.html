@@ -31,11 +31,10 @@
           <th>Quantity</th>
           <th>Rate</th>
           <th>Amt</th>
-          <th>Ind. Disc</th>
           <th>Total Disc</th>
           <th>VAT</th>
           <th>Net Amt</th>
-          <th>Exp Date</th>
+          <th>Expiry</th>
           <th></th>
         </tr>
       </thead>
@@ -43,16 +42,24 @@
         <tr *ngFor="let row of rows; let i = index">
             <td>{{i + 1}}</td>
             <td>
-              <input id="barcode" type="text" disabled class="input-field" />
+              <input id="barcode" type="text" class="input-field" 
+                [value]="row.barcode" disabled />
             </td>
             <td>
-              <input id="itemDesc" type="text" readonly class="input-field" placeholder="Press ENTER to Select Item" />
+              <input id="itemDesc" type="text" readonly class="input-field" 
+              [placeholder]="row.itemDesc ? row.itemDesc : 'Press Enter to Select Item'"
+              (keydown.enter)="selectedRow = i; openItemPopup()" />
             </td>
-            <td>
-              <input id="batch" type="text" readonly class="input-field" placeholder="Please Enter to Select" />
-            </td>
-            <td>
-              <select id="alternateunit" class="input-field"></select>
+           <td>
+            <input id="itemDesc" type="text" readonly class="input-field" 
+            [placeholder]="row.batch ? row.batch : 'Press Enter to Select Item'"
+            (keydown.enter)="selectedRow = i; openBatchPopup()" />
+             </td>
+             <td>
+              <select id="alternateunit" class="input-field">
+                <option>Kg</option>
+                <option>Ton</option>
+              </select>
             </td>
             <td>
               <input id="alternateQty" type="number" class="input-field" />
@@ -64,19 +71,17 @@
               <input id="amntId" type="number" class="input-field" />
             </td>
             <td>
-              <input id="discountAmt" type="number" class="input-field" />
+              <input id="totalDisc" type="number" class="input-field" />
             </td>
             <td>
-              <input id="totalDisc" type="number" disabled class="input-field" />
-            </td>
-            <td>
-              <input id="vatvalue" type="number" disabled class="input-field" />
+              <input id="vatvalue" type="number" class="input-field" />
             </td>
             <td>
               <input id="netamount" type="number" class="input-field" />
             </td>
             <td>
-              <input id="expdateNonedit" type="text" class="input-field" />
+              <input id="barcode" type="text" class="input-field" 
+                [value]="row.expiryDate" disabled />
             </td>
             <td class="close" (click)="deleteRow()">
               <div class="close-wrapper">
@@ -93,4 +98,53 @@
       </span>
     </div>
   
-  
+    <div *ngIf="showItemPopup" class="item-popup-overlay">
+      <div class="item-popup">
+        <div class="popup-header">
+          <h3>Select Item</h3>
+          <button class="close-button" (click)="closeItemPopup()">&times;</button>
+        </div>
+        <div class="popup-body">
+          <table>
+            <thead>
+              <tr>
+                <th>Item Name</th>
+                <th>Barcode</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of items" (click)="selectItem(item)">
+                <td>{{ item.name }}</td>
+                <td>{{ item.barcode }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Batch Selection Popup -->
+    <div *ngIf="showBatchPopup" class="batch-popup-overlay">
+      <div class="batch-popup">
+        <div class="popup-header">
+          <h3>Select Batch</h3>
+          <button class="close-button" (click)="closeBatchPopup()">&times;</button>
+        </div>
+        <div class="popup-body">
+          <table>
+            <thead>
+              <tr>
+                <th>Batch No</th>
+                <th>Expiry Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let batch of batches" (click)="selectBatch(batch)">
+                <td>{{ batch.batchNo }}</td>
+                <td>{{ batch.expiryDate }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>

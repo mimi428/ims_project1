@@ -62,7 +62,7 @@ export class TaxInvoiceComponent {
   }
   selectedSalesman(salesman: any) {
     this.selectedSalesman = salesman.name; // Update the selected salesman name
-    this.invoiceForm.get('salesman')?.setValue(salesman.name); // Update the form control value (optional)
+    this.invoiceForm.get('salesman')?.setValue(salesman.name); // Update the form control value 
     this.closeSalesmanPopup(); // Close the popup
   }
 }

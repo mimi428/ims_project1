@@ -152,3 +152,99 @@
     text-align: center;
   }
   
+  /* Common Popup Overlay */
+.item-popup-overlay, .batch-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Common Popup Styling */
+.item-popup, .batch-popup {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  max-width: 90%;
+}
+
+/* Header Styling */
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  background-color: #2dacd1;
+}
+
+.popup-header h3 {
+  margin: 0;
+  font-size: 14px;
+  color: #fff;
+}
+
+/* Close Button */
+.close-button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.close-button:hover {
+  color: #333;
+}
+
+/* Popup Body */
+.popup-body {
+  padding: 13px;
+}
+
+.popup-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.popup-body li {
+  padding: 8px 0;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.popup-body li:hover {
+  background: #f5f5f5;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+table th {
+  background: #4e7fa7;
+  color: #fff;
+  font-weight: bold;
+}
+
+table tr:hover {
+  cursor: pointer;
+  background: #f5f5f5;
+}
