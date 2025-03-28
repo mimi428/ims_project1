@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
 
 @Component({
@@ -14,6 +14,7 @@ export class BillingComponent {
   showItemPopup = false;
   showBatchPopup = false;
   selectedRow: number = 0;
+  @ViewChild('addRowButton') addRowButton!: ElementRef;
 
   items = [
     { name: 'Bottle', barcode: '123456' },
@@ -43,7 +44,7 @@ export class BillingComponent {
       barcode: [''], 
       itemDesc: ['', Validators.required],
       batch: ['', Validators.required],
-      expiryDate: ['' ], 
+      expiryDate: [''], 
       unit: ['', Validators.required],
       quantity: [null, [Validators.required, Validators.min(1)]],
       rate: [null, [Validators.required, Validators.min(0)]],
@@ -55,11 +56,35 @@ export class BillingComponent {
   }
 
   addRow() {
-    if (this.rows.valid) {
-      this.rows.push(this.createRow());
+    // Check if this is the first row or if all required fields in the last row are filled
+    if (this.rows.length === 0 || this.isLastRowValid()) {
+      const newRow = this.createRow();
+      this.rows.push(newRow);
+      // Focus on the first field of the new row
+      setTimeout(() => {
+        const newRowIndex = this.rows.length - 1;
+        const firstInput = document.querySelector(`[formGroupName="${newRowIndex}"] input`) as HTMLElement;
+        if (firstInput) {
+          firstInput.focus();
+        }
+      });
     } else {
-      alert('Please fill all fields');
+      // Mark all fields as touched to show validation errors
+      this.markLastRowAsTouched();
+      alert('Please fill all required fields in the current row before adding a new one');
     }
+  }
+
+  isLastRowValid(): boolean {
+    const lastRow = this.rows.at(this.rows.length - 1) as FormGroup;
+    return lastRow.valid;
+  }
+
+  markLastRowAsTouched() {
+    const lastRow = this.rows.at(this.rows.length - 1) as FormGroup;
+    Object.keys(lastRow.controls).forEach(key => {
+      lastRow.get(key)?.markAsTouched();
+    });
   }
 
   deleteRow(index: number) {
@@ -81,6 +106,13 @@ export class BillingComponent {
       barcode: item.barcode
     });
     this.showItemPopup = false;
+    // After selecting item, focus on the next field
+    setTimeout(() => {
+      const nextInput = document.querySelector(`[formGroupName="${this.selectedRow}"] [formControlName="batch"]`) as HTMLElement;
+      if (nextInput) {
+        nextInput.focus();
+      }
+    });
   }
 
   selectBatch(batch: any) {
@@ -90,6 +122,13 @@ export class BillingComponent {
       expiryDate: batch.expiryDate
     });
     this.showBatchPopup = false;
+    // After selecting batch, focus on the next field
+    setTimeout(() => {
+      const nextInput = document.querySelector(`[formGroupName="${this.selectedRow}"] [formControlName="unit"]`) as HTMLElement;
+      if (nextInput) {
+        nextInput.focus();
+      }
+    });
   }
 
   closeItemPopup() {
@@ -99,7 +138,8 @@ export class BillingComponent {
   closeBatchPopup() {
     this.showBatchPopup = false;
   }
-  activeIndex(i:number){
+
+  activeIndex(i: number) {
     this.selectedRow = i;
   }
 
@@ -107,38 +147,64 @@ export class BillingComponent {
     if (this.billingForm.valid) {
       console.log('Form submitted:', this.billingForm.value);
     } else {
-      alert('Please fill all fields');
+      this.markAllRowsAsTouched();
+      alert('Please fill all required fields');
     }
   }
+
+  markAllRowsAsTouched() {
+    this.rows.controls.forEach(row => {
+      (row as FormGroup).markAllAsTouched();
+    });
+  }
+
+  @HostListener('document:keydown.enter', ['$event'])
+  handleEnterKey(event: KeyboardEvent) {
+    const activeElement = document.activeElement as HTMLElement;
+    
+    // Check if we're in an input field in our table
+    if (activeElement && activeElement.tagName === 'INPUT' && 
+        activeElement.closest('table')) {
+      // Prevent default form submission behavior
+      event.preventDefault();
+      
+      // Don't do anything if we're in a popup
+      if (this.showItemPopup || this.showBatchPopup) return;
+      
+      // Don't do anything if we're in the delete button
+      if (activeElement.classList.contains('closetools')) return;
+      
+      // Programmatically click the add row button
+      this.addRowButton.nativeElement.click();
+    }
+  }
+
   @HostListener('keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
       this.handleArrow(event);
     }
   }
-  private handleArrow(event: KeyboardEvent) {
-    const activeElement = document.activeElement as HTMLElement; //esle aaile focus vairako element dinxa.
-    if (!activeElement) return;
 
-    // handle elements in our table
-    if (!activeElement.matches('input, select') || 
-        !activeElement.closest('table')) { //this ensures that the elements are of table onlyyy
+  private handleArrow(event: KeyboardEvent) {
+    const activeElement = document.activeElement as HTMLElement;//esle aaile focus vairako element dinxa.
+    if (!activeElement) return;
+   // handle elements in our table
+    if (!activeElement.matches('input, select') || !activeElement.closest('table')) { //this ensures that the elements are of table onlyyy
       return;
     }
-    const allFields = Array.from( //fetch all fields from TABLE
+    const allFields = Array.from( //fetch all fields from Table
       document.querySelectorAll('input[formControlName], select[formControlName]')
     ) as HTMLElement[];
     
-    const currentIndex = allFields.indexOf(activeElement); //find index of active elemnt or focused field
+    const currentIndex = allFields.indexOf(activeElement);// find inex of active element
     if (currentIndex === -1) return;
 
-    const direction = event.key === 'ArrowLeft' ? -1 : 1; //if leftarrow is pressed, direction is -1 which moves left 
-   // if rightt is pressed  direction is 1 which moves right
-    const nextIndex = currentIndex + direction; //next index is calculated on the basis  .
+    const direction = event.key === 'ArrowLeft' ? -1 : 1;
+     // if rightt is pressed  direction is 1 which moves right
+    const nextIndex = currentIndex + direction;
     if (nextIndex >= 0 && nextIndex < allFields.length) {
       allFields[nextIndex].focus();
     }
   }
-  //for enter key when all fields are filled- adding a row
-  
 }
