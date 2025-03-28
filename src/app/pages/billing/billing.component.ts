@@ -31,7 +31,7 @@ export class BillingComponent {
     this.billingForm = this.fb.group({
       rows: this.fb.array([])
     });
-    this.addRow(); // Add initial empty row
+    this.addRow(); 
   }
 
   get rows(): FormArray {
@@ -99,11 +99,13 @@ export class BillingComponent {
   closeBatchPopup() {
     this.showBatchPopup = false;
   }
+  activeIndex(i:number){
+    this.selectedRow = i;
+  }
 
   onSubmit() {
     if (this.billingForm.valid) {
       console.log('Form submitted:', this.billingForm.value);
-      // Handle form submission
     } else {
       alert('Please fill all fields');
     }

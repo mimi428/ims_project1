@@ -40,7 +40,7 @@
       </tr>
     </thead>
     <tbody formArrayName="rows">
-      <tr *ngFor="let row of rows.controls; let i = index" [formGroupName]="i">
+      <tr *ngFor="let row of rows.controls; let i = index" [formGroupName]="i" (click)="activeIndex(i)">
         <td>{{i + 1}}</td>
         <td>
           <input formControlName="barcode" type="text" class="input-field" readonly />
@@ -78,14 +78,14 @@
           <input formControlName="quantity" type="number" class="input-field" />
           <div *ngIf="row.get('quantity')?.invalid && (row.get('quantity')?.touched || row.get('quantity')?.dirty)" 
                class="error-message">
-            Valid quantity is required
+            Quantity is required
           </div>
         </td>
         <td>
           <input formControlName="rate" type="number" class="input-field" />
           <div *ngIf="row.get('rate')?.invalid && (row.get('rate')?.touched || row.get('rate')?.dirty)" 
                class="error-message">
-            Valid rate is required
+            Rate is required
           </div>
         </td>
         <td>
@@ -105,7 +105,7 @@
           <input formControlName="netAmount" type="number" class="input-field" />
           <div *ngIf="row.get('netAmount')?.invalid && (row.get('netAmount')?.touched || row.get('netAmount')?.dirty)" 
                class="error-message">
-            Net amount is required
+            Enter Net amount 
           </div>
         </td>
         <td>
@@ -126,7 +126,7 @@
 </form>
 </div>
 
-<!-- Item Selection Popup -->
+<!-- Item Selection Popup similar to that of taxinvoice popup -->
 <div *ngIf="showItemPopup" class="item-popup-overlay">
 <div class="item-popup">
   <div class="popup-header">
@@ -151,8 +151,7 @@
   </div>
 </div>
 </div>
-
-<!-- Batch Selection Popup -->
+<!-- Batch selection popup similar to that of taxinvoice popup -->
 <div *ngIf="showBatchPopup" class="batch-popup-overlay">
 <div class="batch-popup">
   <div class="popup-header">
