@@ -20,7 +20,7 @@
       </div>
 </div>
 <div class="big-form">
-  <form [formGroup]="billingForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="billingForm">
     <table id="productinserttable">
       <thead>
         <tr id="prodlistTableheader">
@@ -43,17 +43,17 @@
         <tr *ngFor="let row of rows.controls; let i = index" [formGroupName]="i">
           <td>{{i + 1}}</td>
           <td>
-            <input formControlName="barcode" type="text" class="input-field" readonly />
+            <input formControlName="barcode" type="text" class="input-field" readonly/>
           </td>
           <td>
             <input formControlName="itemDesc" type="text" readonly class="input-field" 
                    [placeholder]="row.value.itemDesc ? row.value.itemDesc : 'Press Enter to Select Item'"
-                   (keydown.enter)="openItemPopup(i)" />
+                   (keydown.enter)="openItemPopup()" />
           </td>
           <td>
             <input formControlName="batch" type="text" readonly class="input-field" 
                    [placeholder]="row.value.batch ? row.value.batch : 'Press Enter to Select Batch'"
-                   (keydown.enter)="openBatchPopup(i)" />
+                   (keydown.enter)="openBatchPopup()" />
           </td>
           <td>
             <select formControlName="unit" class="input-field">
@@ -70,14 +70,14 @@
             <input formControlName="quantity" type="number" class="input-field" />
             <div *ngIf="row.get('quantity')?.invalid && (row.get('quantity')?.touched || row.get('quantity')?.dirty)" 
                  class="error-message">
-              Valid quantity is required
+              Quantity is required
             </div>
           </td>
           <td>
             <input formControlName="rate" type="number" class="input-field" />
             <div *ngIf="row.get('rate')?.invalid && (row.get('rate')?.touched || row.get('rate')?.dirty)" 
                  class="error-message">
-              Valid rate is required
+              Rate is required
             </div>
           </td>
           <td>
@@ -97,7 +97,7 @@
             <input formControlName="netAmount" type="number" class="input-field" />
             <div *ngIf="row.get('netAmount')?.invalid && (row.get('netAmount')?.touched || row.get('netAmount')?.dirty)" 
                  class="error-message">
-              Net amount is required
+               Enter Net amount 
             </div>
           </td>
           <td>
@@ -112,12 +112,12 @@
       </tbody>
     </table>
     <div class="form-actions">
-      <button type="button" class="add-row" (click)="addRow()">+ Add Row</button>
+      <button type="button" class="add-row" (click)="addRow()">+</button>
     </div>
   </form>
 </div>
 
-<!-- Item Selection Popup -->
+<!-- Item Selection Popup similar to the taxinvoice popup-->
 <div *ngIf="showItemPopup" class="item-popup-overlay">
   <div class="item-popup">
     <div class="popup-header">

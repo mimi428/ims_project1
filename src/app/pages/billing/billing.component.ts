@@ -59,27 +59,21 @@ export class BillingComponent {
       this.rows.push(this.createRow());
     } else {
       alert('Please fill all fields before adding new ones');
-      this.markAllAsTouched();
+     
     }
   }
 
   deleteRow(index: number) {
     this.rows.removeAt(index);
+
   }
 
-  markAllAsTouched() {
-    this.rows.controls.forEach(row => {
-      (row as FormGroup).markAllAsTouched();
-    });
-  }
-
-  openItemPopup(index: number) {
-    this.selectedRow = index;
+  openItemPopup() {
     this.showItemPopup = true;
   }
 
-  openBatchPopup(index: number) {
-    this.selectedRow = index;
+  openBatchPopup() {
+    
     this.showBatchPopup = true;
   }
 
@@ -107,15 +101,5 @@ export class BillingComponent {
 
   closeBatchPopup() {
     this.showBatchPopup = false;
-  }
-
-  onSubmit() {
-    if (this.billingForm.valid) {
-      console.log('Form submitted:', this.billingForm.value);
-      // Handle form submission
-    } else {
-      this.markAllAsTouched();
-      alert('Please fill all required fields');
-    }
   }
 }
