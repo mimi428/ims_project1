@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
 
 @Component({
@@ -73,7 +73,7 @@ export class BillingComponent {
   openBatchPopup() {
     this.showBatchPopup = true;
   }
-
+//desc lekhda automatically barcode ko value basna janakolagi ho 
   selectItem(item: any) {
     const row = this.rows.at(this.selectedRow) as FormGroup;
     row.patchValue({
@@ -110,4 +110,35 @@ export class BillingComponent {
       alert('Please fill all fields');
     }
   }
+  @HostListener('keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+      this.handleArrow(event);
+    }
+  }
+  private handleArrow(event: KeyboardEvent) {
+    const activeElement = document.activeElement as HTMLElement; //esle aaile focus vairako element dinxa.
+    if (!activeElement) return;
+
+    // handle elements in our table
+    if (!activeElement.matches('input, select') || 
+        !activeElement.closest('table')) { //this ensures that the elements are of table onlyyy
+      return;
+    }
+    const allFields = Array.from( //fetch all fields from TABLE
+      document.querySelectorAll('input[formControlName], select[formControlName]')
+    ) as HTMLElement[];
+    
+    const currentIndex = allFields.indexOf(activeElement); //find index of active elemnt or focused field
+    if (currentIndex === -1) return;
+
+    const direction = event.key === 'ArrowLeft' ? -1 : 1; //if leftarrow is pressed, direction is -1 which moves left 
+   // if rightt is pressed  direction is 1 which moves right
+    const nextIndex = currentIndex + direction; //next index is calculated on the basis  .
+    if (nextIndex >= 0 && nextIndex < allFields.length) {
+      allFields[nextIndex].focus();
+    }
+  }
+  //for enter key when all fields are filled- adding a row
+  
 }
