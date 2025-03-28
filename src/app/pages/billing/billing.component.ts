@@ -58,22 +58,22 @@ export class BillingComponent {
     if (this.rows.valid) {
       this.rows.push(this.createRow());
     } else {
-      alert('Please fill all fields before adding new ones');
-     
+      alert('Please fill all fields');
     }
   }
 
   deleteRow(index: number) {
     this.rows.removeAt(index);
-
   }
 
-  openItemPopup() {
+
+  openItemPopup(index: number) {
+    this.selectedRow = index;
     this.showItemPopup = true;
   }
 
-  openBatchPopup() {
-    
+  openBatchPopup(index: number) {
+    this.selectedRow = index;
     this.showBatchPopup = true;
   }
 
@@ -101,5 +101,13 @@ export class BillingComponent {
 
   closeBatchPopup() {
     this.showBatchPopup = false;
+  }
+
+  onSubmit() {
+    if (this.billingForm.valid) {
+      console.log('Form submitted:', this.billingForm.value);
+    } else {
+      alert('Please fill all fields');
+    }
   }
 }

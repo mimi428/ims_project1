@@ -242,4 +242,10 @@ table tr:hover {
   color: red;
   font-size: x-small;
  }
-
+.add-row{
+  color: green;
+  align-items: center;
+}
+.form-actions{
+  margin-left: 660px;
+}
