@@ -48,7 +48,7 @@
         <td>
           <input formControlName="itemDesc" type="text" readonly class="input-field" 
                  [placeholder]="row.value.itemDesc ? row.value.itemDesc : 'Press Enter to Select Item'"
-                 (keydown.enter)="openItemPopup(i)" />
+                 (keydown.enter)="openItemPopup()" />
                  <div *ngIf="row.get('itemDesc')?.invalid && (row.get('itemDesc')?.touched || row.get('itemDesc')?.dirty)" 
                  class="error-message">
               Description is required
@@ -57,10 +57,10 @@
         <td>
           <input formControlName="batch" type="text" readonly class="input-field" 
                  [placeholder]="row.value.batch ? row.value.batch : 'Press Enter to Select Batch'"
-                 (keydown.enter)="openBatchPopup(i)" />
+                 (keydown.enter)="openBatchPopup()" />
                  <div *ngIf="row.get('batch')?.invalid && (row.get('batch')?.touched || row.get('batch')?.dirty)" 
                  class="error-message">
-                 batch is required
+                 Batch is required
             </div>
         </td>
         <td>

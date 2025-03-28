@@ -66,14 +66,11 @@ export class BillingComponent {
     this.rows.removeAt(index);
   }
 
-
-  openItemPopup(index: number) {
-    this.selectedRow = index;
+  openItemPopup() {
     this.showItemPopup = true;
   }
 
-  openBatchPopup(index: number) {
-    this.selectedRow = index;
+  openBatchPopup() {
     this.showBatchPopup = true;
   }
 
@@ -106,6 +103,7 @@ export class BillingComponent {
   onSubmit() {
     if (this.billingForm.valid) {
       console.log('Form submitted:', this.billingForm.value);
+      // Handle form submission
     } else {
       alert('Please fill all fields');
     }
