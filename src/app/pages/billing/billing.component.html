@@ -137,12 +137,14 @@
       <table>
         <thead>
           <tr>
+            <th>S.N.</th>
             <th>Item Name</th>
             <th>Barcode</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of items; let i = index" (click)="selectItem(item)">
+            <td>{{item.id}}</td>
             <td>{{ item.name }}</td>
             <td>{{ item.barcode }}</td>
           </tr>
@@ -163,12 +165,14 @@
       <table>
         <thead>
           <tr>
+            <th>SN</th>
             <th>Batch No</th>
             <th>Expiry Date</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let batch of batches; let i = index" (click)="selectBatch(batch)">
+            <td>{{batch.id}}</td>
             <td>{{ batch.batchNo }}</td>
             <td>{{ batch.expiryDate }}</td>
           </tr>

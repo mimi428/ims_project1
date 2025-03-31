@@ -17,17 +17,17 @@ export class BillingComponent {
   @ViewChild('addRowButton') addRowButton!: ElementRef;
 
   items = [
-    { name: 'Bottle', barcode: '123456' },
-    { name: 'Shoes', barcode: '789012' },
-    { name: 'Bag', barcode: '784012' },
-    { name: 'Pen', barcode: '889012' },
-    { name: 'Fruit', barcode: '562341' }
+    { id:'1', name: 'Bottle', barcode: '123456' },
+    {  id:'2',name: 'Shoes', barcode: '789012' },
+    { id:'3', name: 'Bag', barcode: '784012' },
+    { id:'4', name: 'Pen', barcode: '889012' },
+    {  id:'5',name: 'Fruit', barcode: '562341' }
   ];
 
   batches = [
-    { batchNo: 'B00001', expiryDate: '2025-12-31' },
-    { batchNo: 'B00002', expiryDate: '2026-11-30' },
-    { batchNo: 'B00003', expiryDate: '2026-03-10' },
+    { id:'1', batchNo: 'B00001', expiryDate: '2025-12-31' },
+    { id:'2', batchNo: 'B00002', expiryDate: '2026-11-30' },
+    { id:'3',batchNo: 'B00003', expiryDate: '2026-03-10' },
   ];
 
   constructor(private fb: FormBuilder) {
@@ -148,12 +148,21 @@ export class BillingComponent {
       (row as FormGroup).markAllAsTouched();
     });
   }
+  //popup close garnalai
+  @HostListener('document:keydown.escape', ['$event'])
+  onEscape(event: KeyboardEvent): void {
+    if (this.showBatchPopup) {
+      this.closeBatchPopup();
+    } else if (this.showItemPopup) {
+      this.closeItemPopup();
+    }
+  }
 
   @HostListener('document:keydown.enter', ['$event'])
   handleEnterKey(event: KeyboardEvent) {
     const activeElement = document.activeElement as HTMLElement;
     
-    // enter garda popup kholnu paryoo so
+    // enter garda popup kholnu paryoo instead of moving to next field
     if (activeElement?.getAttribute('formControlName') === 'itemDesc') {
       event.preventDefault();
       this.openItemPopup();
@@ -199,14 +208,14 @@ export class BillingComponent {
   }
 
   private isFieldFocusable(field: HTMLElement): boolean {
-    // Skip readonly fields except for the itemDesc and batch fields (which open popups)
+    // Skip readonly fields except for the itemDesc and batch fields cause it opens popups
     if (field.hasAttribute('readonly')) {
       return field.getAttribute('formControlName') === 'itemDesc' || 
              field.getAttribute('formControlName') === 'batch';
     }
     return true;
   }
-
+  
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
