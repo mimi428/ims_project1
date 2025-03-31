@@ -14,6 +14,7 @@ export class BillingComponent {
   showItemPopup = false;
   showBatchPopup = false;
   selectedRow: number = 0;
+   
   @ViewChild('addRowButton') addRowButton!: ElementRef;
 
   items = [
@@ -61,6 +62,7 @@ export class BillingComponent {
     if (this.rows.length === 0 || this.isLastRowValid()) {
       const newRow = this.createRow();
       this.rows.push(newRow);
+      this.selectedRow = this.rows.length -1;
       
       // Focus on the first field of the new row on enter
       setTimeout(() => {
@@ -73,7 +75,7 @@ export class BillingComponent {
         if (firstInput) {
           firstInput.focus();
         }
-      });
+      },0);
     } else {
       this.markLastRowAsTouched();
       alert('Please fill all fields');
@@ -95,22 +97,18 @@ export class BillingComponent {
   deleteRow(index: number) {
     this.rows.removeAt(index);
   }
-
   openItemPopup() {
     this.showItemPopup = true;
   }
-
   openBatchPopup() {
     this.showBatchPopup = true;
   }
   closeItemPopup() {
     this.showItemPopup = false;
   }
-
   closeBatchPopup() {
     this.showBatchPopup = false;
   }
-
   activeIndex(i: number) {
     this.selectedRow = i;
   }
@@ -161,7 +159,6 @@ export class BillingComponent {
   @HostListener('document:keydown.enter', ['$event'])
   handleEnterKey(event: KeyboardEvent) {
     const activeElement = document.activeElement as HTMLElement;
-    
     // enter garda popup kholnu paryoo instead of moving to next field
     if (activeElement?.getAttribute('formControlName') === 'itemDesc') {
       event.preventDefault();
@@ -181,7 +178,7 @@ export class BillingComponent {
       this.moveToNextField(activeElement);
     }
   }
-
+// to the next field when the enter pressed.
   private moveToNextField(currentElement: HTMLElement) {
     const allFields = Array.from(
       document.querySelectorAll('input[formControlName], select[formControlName]')
@@ -210,19 +207,16 @@ export class BillingComponent {
   private isFieldFocusable(field: HTMLElement): boolean {
     // Skip readonly fields except for the itemDesc and batch fields cause it opens popups
     if (field.hasAttribute('readonly')) {
-      return field.getAttribute('formControlName') === 'itemDesc' || 
-             field.getAttribute('formControlName') === 'batch';
+      return field.getAttribute('formControlName') === 'itemDesc' || field.getAttribute('formControlName') === 'batch';
     }
     return true;
   }
-  
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
       this.handleArrowKeys(event);
     }
   }
-
   private handleArrowKeys(event: KeyboardEvent) {
     const activeElement = document.activeElement as HTMLElement;//esle aaile focus vairako element dinxa.
     if (!activeElement) return;

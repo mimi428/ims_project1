@@ -95,14 +95,11 @@
   .input-field:disabled {
     background-color: #f0f0f0;
   }
-
   .close-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-
-
   .add p {
     font-size: 18px;
     font-weight: bold;
@@ -215,7 +212,6 @@
   background: #f5f5f5;
 }
 
-/* Table Styling similar to*/
 table {
   width: 100%;
   border-collapse: collapse;

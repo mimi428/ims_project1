@@ -36,7 +36,7 @@
         <th>VAT</th>
         <th>Net Amt</th>
         <th>Expiry</th>
-        <th></th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody formArrayName="rows">
@@ -64,10 +64,10 @@
             </div>
         </td>
         <td>
-          <select formControlName="unit" class="input-field">
-            <option value="">Select Unit</option>
-            <option>Kg</option>
-            <option>Ton</option>
+          <select formControlName="unit" class="input-field" (keydown.enter)="$event.preventDefault()">
+            <option value="" disabled>Select Unit</option>
+            <option value="kg">Kg</option>
+            <option value="ton">Ton</option>
           </select>
           <div *ngIf="row.get('unit')?.invalid && (row.get('unit')?.touched || row.get('unit')?.dirty)" 
                class="error-message">
@@ -125,7 +125,6 @@
   </div>
 </form>
 </div>
-
 <!-- Item Selection Popup similar to that of taxinvoice popup -->
 <div *ngIf="showItemPopup" class="item-popup-overlay">
   <div class="item-popup">
