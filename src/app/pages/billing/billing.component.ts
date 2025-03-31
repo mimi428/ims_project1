@@ -19,6 +19,8 @@ export class BillingComponent {
   items = [
     { name: 'Bottle', barcode: '123456' },
     { name: 'Shoes', barcode: '789012' },
+    { name: 'Bag', barcode: '784012' },
+    { name: 'Pen', barcode: '889012' },
     { name: 'Fruit', barcode: '562341' }
   ];
 
@@ -32,7 +34,7 @@ export class BillingComponent {
     this.billingForm = this.fb.group({
       rows: this.fb.array([])
     });
-    this.addRow(); 
+    this.addRow(); // Add first row automatically
   }
 
   get rows(): FormArray {
@@ -41,10 +43,10 @@ export class BillingComponent {
 
   createRow(): FormGroup {
     return this.fb.group({
-      barcode: [''], 
+      barcode: [''],
       itemDesc: ['', Validators.required],
       batch: ['', Validators.required],
-      expiryDate: [''], 
+      expiryDate: [''],
       unit: ['', Validators.required],
       quantity: [null, [Validators.required, Validators.min(1)]],
       rate: [null, [Validators.required, Validators.min(0)]],
@@ -56,22 +58,25 @@ export class BillingComponent {
   }
 
   addRow() {
-    // Check if this is the first row or if all required fields in the last row are filled
     if (this.rows.length === 0 || this.isLastRowValid()) {
       const newRow = this.createRow();
       this.rows.push(newRow);
-      // Focus on the first field of the new row
+      
+      // Focus on the first field of the new row on enter
       setTimeout(() => {
         const newRowIndex = this.rows.length - 1;
-        const firstInput = document.querySelector(`[formGroupName="${newRowIndex}"] input`) as HTMLElement;
+        const firstInput = document.querySelector(`
+          [formGroupName="${newRowIndex}"] input:not([readonly]), 
+          [formGroupName="${newRowIndex}"] select
+        `) as HTMLElement;
+        
         if (firstInput) {
           firstInput.focus();
         }
       });
     } else {
-      // Mark all fields as touched to show validation errors
       this.markLastRowAsTouched();
-      alert('Please fill all required fields in the current row before adding a new one');
+      alert('Please fill all fields');
     }
   }
 
@@ -98,39 +103,6 @@ export class BillingComponent {
   openBatchPopup() {
     this.showBatchPopup = true;
   }
-//desc lekhda automatically barcode ko value basna janakolagi ho 
-  selectItem(item: any) {
-    const row = this.rows.at(this.selectedRow) as FormGroup;
-    row.patchValue({
-      itemDesc: item.name,
-      barcode: item.barcode
-    });
-    this.showItemPopup = false;
-    // After selecting item, focus on the next field
-    setTimeout(() => {
-      const nextInput = document.querySelector(`[formGroupName="${this.selectedRow}"] [formControlName="batch"]`) as HTMLElement;
-      if (nextInput) {
-        nextInput.focus();
-      }
-    });
-  }
-
-  selectBatch(batch: any) {
-    const row = this.rows.at(this.selectedRow) as FormGroup;
-    row.patchValue({
-      batch: batch.batchNo,
-      expiryDate: batch.expiryDate
-    });
-    this.showBatchPopup = false;
-    // After selecting batch, focus on the next field
-    setTimeout(() => {
-      const nextInput = document.querySelector(`[formGroupName="${this.selectedRow}"] [formControlName="unit"]`) as HTMLElement;
-      if (nextInput) {
-        nextInput.focus();
-      }
-    });
-  }
-
   closeItemPopup() {
     this.showItemPopup = false;
   }
@@ -141,6 +113,25 @@ export class BillingComponent {
 
   activeIndex(i: number) {
     this.selectedRow = i;
+  }
+
+//desc lekhda automatically barcode ko value basna janakolagi ho 
+  selectItem(item: any) {
+    const row = this.rows.at(this.selectedRow) as FormGroup;
+    row.patchValue({
+      itemDesc: item.name,
+      barcode: item.barcode
+    });
+    this.closeItemPopup();
+  }
+
+  selectBatch(batch: any) {
+    const row = this.rows.at(this.selectedRow) as FormGroup;
+    row.patchValue({
+      batch: batch.batchNo,
+      expiryDate: batch.expiryDate
+    });
+    this.closeBatchPopup();
   }
 
   onSubmit() {
@@ -162,34 +153,71 @@ export class BillingComponent {
   handleEnterKey(event: KeyboardEvent) {
     const activeElement = document.activeElement as HTMLElement;
     
-    // Check if we're in an input field in our table
-    if (activeElement && activeElement.tagName === 'INPUT' && 
-        activeElement.closest('table')) {
-      // Prevent default form submission behavior
+    // enter garda popup kholnu paryoo so
+    if (activeElement?.getAttribute('formControlName') === 'itemDesc') {
       event.preventDefault();
-      
-      // Don't do anything if we're in a popup
-      if (this.showItemPopup || this.showBatchPopup) return;
-      
-      // Don't do anything if we're in the delete button
-      if (activeElement.classList.contains('closetools')) return;
-      
-      // Programmatically click the add row button
+      this.openItemPopup();
+      return;
+    }
+    
+    if (activeElement?.getAttribute('formControlName') === 'batch') {
+      event.preventDefault();
+      this.openBatchPopup();
+      return;
+    }
+
+    // Default field navigation
+    if (activeElement && activeElement.tagName === 'INPUT' && activeElement.closest('table')) {
+      event.preventDefault();
+      this.moveToNextField(activeElement);
+    }
+  }
+
+  private moveToNextField(currentElement: HTMLElement) {
+    const allFields = Array.from(
+      document.querySelectorAll('input[formControlName], select[formControlName]')
+    ) as HTMLElement[];
+
+    const currentIndex = allFields.indexOf(currentElement);
+    if (currentIndex === -1) return;
+
+    // Find next focusable field
+    let nextIndex = currentIndex + 1;
+    while (nextIndex < allFields.length) {
+      const nextField = allFields[nextIndex];
+      if (this.isFieldFocusable(nextField)) {
+        nextField.focus();
+        break;
+      }
+      nextIndex++;
+    }
+
+    // If reached the end, add new row
+    if (nextIndex >= allFields.length) {
       this.addRowButton.nativeElement.click();
     }
   }
 
-  @HostListener('keydown', ['$event'])
+  private isFieldFocusable(field: HTMLElement): boolean {
+    // Skip readonly fields except for the itemDesc and batch fields (which open popups)
+    if (field.hasAttribute('readonly')) {
+      return field.getAttribute('formControlName') === 'itemDesc' || 
+             field.getAttribute('formControlName') === 'batch';
+    }
+    return true;
+  }
+
+  @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-      this.handleArrow(event);
+      this.handleArrowKeys(event);
     }
   }
 
-  private handleArrow(event: KeyboardEvent) {
+  private handleArrowKeys(event: KeyboardEvent) {
     const activeElement = document.activeElement as HTMLElement;//esle aaile focus vairako element dinxa.
     if (!activeElement) return;
-   // handle elements in our table
+    // handle elements in table
     if (!activeElement.matches('input, select') || !activeElement.closest('table')) { //this ensures that the elements are of table onlyyy
       return;
     }
@@ -201,7 +229,7 @@ export class BillingComponent {
     if (currentIndex === -1) return;
 
     const direction = event.key === 'ArrowLeft' ? -1 : 1;
-     // if rightt is pressed  direction is 1 which moves right
+     // if rightt is pressed  direction is 1 which moves right or viceversaa
     const nextIndex = currentIndex + direction;
     if (nextIndex >= 0 && nextIndex < allFields.length) {
       allFields[nextIndex].focus();
