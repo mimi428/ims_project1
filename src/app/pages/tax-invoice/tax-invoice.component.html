@@ -63,7 +63,7 @@
         <label class="label-name">Salesman</label>
       </div>
       <div class="col-7 input-div">
-        <input type="text" [placeholder]="selectedSalesman" formControlName="salesman" class="input-size" (keydown.enter)="openSalesmanPopup()">
+        <input type="text" [placeholder]="selectedSalesman || 'Select Salesman'" formControlName="salesman" class="input-size" (keydown.enter)="openSalesmanPopup()">
       </div>
     </div>
     

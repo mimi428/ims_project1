@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-billing',
@@ -14,7 +15,7 @@ export class BillingComponent {
   showItemPopup = false;
   showBatchPopup = false;
   selectedRow: number = 0;
-   
+  allFields:any;
   @ViewChild('addRowButton') addRowButton!: ElementRef;
 
   items = [
@@ -31,7 +32,7 @@ export class BillingComponent {
     { id:'3',batchNo: 'B00003', expiryDate: '2026-03-10' },
   ];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private cdr: ChangeDetectorRef) {
     this.billingForm = this.fb.group({
       rows: this.fb.array([])
     });
@@ -62,28 +63,30 @@ export class BillingComponent {
     if (this.rows.length === 0 || this.isLastRowValid()) {
       const newRow = this.createRow();
       this.rows.push(newRow);
-      this.selectedRow = this.rows.length -1;
+      this.cdr.markForCheck();
+      this.detectAllFields();
+      this.selectedRow = this.rows.length -1; //set the selected row to the newly added row for ites to set the value 
       
       // Focus on the first field of the new row on enter
       setTimeout(() => {
-        const newRowIndex = this.rows.length - 1;
-        const firstInput = document.querySelector(`
+        const newRowIndex = this.rows.length - 1; //finds the first input or select field inside the newly added row; exclude readlonlies
+        const firstInput = document.querySelector(` 
           [formGroupName="${newRowIndex}"] input:not([readonly]), 
           [formGroupName="${newRowIndex}"] select
         `) as HTMLElement;
-        
+
         if (firstInput) {
           firstInput.focus();
         }
       },0);
     } else {
-      this.markLastRowAsTouched();
+      this.markLastRowAsTouched(); 
       alert('Please fill all fields');
     }
   }
-
+  //the last row is completely filled before adding new row or not???
   isLastRowValid(): boolean {
-    const lastRow = this.rows.at(this.rows.length - 1) as FormGroup;
+    const lastRow = this.rows.at(this.rows.length - 1) as FormGroup; 
     return lastRow.valid;
   }
 
@@ -178,30 +181,36 @@ export class BillingComponent {
       this.moveToNextField(activeElement);
     }
   }
-// to the next field when the enter pressed.
-  private moveToNextField(currentElement: HTMLElement) {
-    const allFields = Array.from(
+  detectAllFields() {
+    this.allFields = Array.from(
       document.querySelectorAll('input[formControlName], select[formControlName]')
     ) as HTMLElement[];
+  
+    }
+// to the next field whenenter pressed.
+  private moveToNextField(currentElement: HTMLElement) {
+    // const allFields = Array.from(
+    //   document.querySelectorAll('input[formControlName], select[formControlName]')
+    // ) as HTMLElement[];
+    this.detectAllFields();
 
-    const currentIndex = allFields.indexOf(currentElement);
+    const currentIndex = this.allFields.indexOf(currentElement);
     if (currentIndex === -1) return;
 
-    // Find next focusable field
+    // Find next focusable field after current one
     let nextIndex = currentIndex + 1;
-    while (nextIndex < allFields.length) {
-      const nextField = allFields[nextIndex];
+    if (nextIndex >= this.allFields.length-1) {
+      this.addRow();
+    }
+    while (nextIndex < this.allFields.length) {
+      const nextField = this.allFields[nextIndex];
       if (this.isFieldFocusable(nextField)) {
         nextField.focus();
         break;
       }
       nextIndex++;
     }
-
     // If reached the end, add new row
-    if (nextIndex >= allFields.length) {
-      this.addRowButton.nativeElement.click();
-    }
   }
 
   private isFieldFocusable(field: HTMLElement): boolean {
@@ -227,7 +236,7 @@ export class BillingComponent {
     const allFields = Array.from( //fetch all fields from Table
       document.querySelectorAll('input[formControlName], select[formControlName]')
     ) as HTMLElement[];
-    
+        
     const currentIndex = allFields.indexOf(activeElement);// find inex of active element
     if (currentIndex === -1) return;
 
