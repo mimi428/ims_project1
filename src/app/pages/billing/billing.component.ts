@@ -205,12 +205,11 @@ export class BillingComponent {
     while (nextIndex < this.allFields.length) {
       const nextField = this.allFields[nextIndex];
       if (this.isFieldFocusable(nextField)) {
-        nextField.focus();
+        nextField.focus(); 
         break;
       }
       nextIndex++;
     }
-    // If reached the end, add new row
   }
 
   private isFieldFocusable(field: HTMLElement): boolean {
