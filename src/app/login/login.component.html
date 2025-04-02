@@ -2,7 +2,8 @@
   <div class="ims-logo"></div>
   <div class="login-container">
     <h3>LOGIN</h3>
-    <form (ngSubmit)="onLogin()">
+    <!-- template driven concept ko lagi  -->
+    <form (ngSubmit)="onLogin()"> 
       <input type="text" [(ngModel)]="userName" name="userName" placeholder="Username" required/>
       <span *ngIf="!userName() && loginError()">
         Username is required
@@ -15,7 +16,7 @@
       <span *ngIf="loginError()" class="error-message">
         {{ loginError() }}
       </span>
-      <button type="submit" [disabled]="!isFormValid()">Login</button>
+      <button type="submit">Login</button>
     </form>
   </div>
 </div>

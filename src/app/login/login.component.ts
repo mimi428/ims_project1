@@ -15,16 +15,9 @@ export class LoginComponent { //signal haru declare garne paila
   password = signal('');
   loginError = signal('');
 
-  isFormValid = computed(() => 
-    this.userName().trim().length > 0 && //esma username ra pass input garexa ki nai vanera check garne
-    this.password().trim().length > 0
-  );
-
   constructor(private router: Router) {}
-
   onLogin() {
-    if (this.isFormValid()) {
-      const userName = this.userName(); //get the value of username from signal
+      const userName = this.userName(); //get value of username from signal
       const password = this.password();
 
       if ((userName === 'mihika' && password === 'mihika')||
@@ -37,4 +30,3 @@ export class LoginComponent { //signal haru declare garne paila
       }
     }
   }
-}
