@@ -10,9 +10,10 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
+//UI ma validation message ra error dekhauna signal haru use gareko esle realtime ma user input change bhako kura dekhauna help garxaa.
 export class LoginComponent {
   loginForm: FormGroup;
-  userName = signal('');//signal to store uname
+  userName = signal('');//signal to store current uname
   password = signal('');
   loginError = signal('');
 
@@ -21,12 +22,11 @@ export class LoginComponent {
       userName: ['', Validators.required],
       password: ['', Validators.required]
     });
-
     // Sync form values with signals
     this.loginForm.get('userName')?.valueChanges.subscribe(value => this.userName.set(value)); //Update uname signal whenever the username input changes.
     this.loginForm.get('password')?.valueChanges.subscribe(value => this.password.set(value));
   }
-
+  
   onLogin() {
     if (this.loginForm.invalid) {
       return;

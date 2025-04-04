@@ -5,7 +5,8 @@
     <!-- Reactive Form -->
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <input type="text" formControlName="userName" placeholder="Username" required />
-      <span *ngIf="!userName() && loginForm.get('userName')?.touched">
+      <!-- Checks if the username is empty -->
+      <span *ngIf="!userName() && loginForm.get('userName')?.touched"> 
         Username is required
       </span>
       <input type="password" formControlName="password" placeholder="Password" required />
