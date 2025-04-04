@@ -2,15 +2,14 @@
   <div class="ims-logo"></div>
   <div class="login-container">
     <h3>LOGIN</h3>
-    <!-- template driven concept ko lagi  -->
-    <form (ngSubmit)="onLogin()"> 
-      <input type="text" [(ngModel)]="userName" name="userName" placeholder="Username" required/>
-      <span *ngIf="!userName() && loginError()">
+    <!-- Reactive Form -->
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <input type="text" formControlName="userName" placeholder="Username" required />
+      <span *ngIf="!userName() && loginForm.get('userName')?.touched">
         Username is required
       </span>
-      <input
-        type="password" [(ngModel)]="password" name="password" placeholder="Password" required/>
-      <span *ngIf="!password() && loginError()">
+      <input type="password" formControlName="password" placeholder="Password" required />
+      <span *ngIf="!password() && loginForm.get('password')?.touched">
         Password is required
       </span>
       <span *ngIf="loginError()" class="error-message">

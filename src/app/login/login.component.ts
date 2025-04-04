@@ -1,32 +1,47 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal, computed } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule,ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent { //signal haru declare garne paila
-  userName = signal('');
+export class LoginComponent {
+  loginForm: FormGroup;
+  userName = signal('');//signal to store uname
   password = signal('');
   loginError = signal('');
 
-  constructor(private router: Router) {}
-  onLogin() {
-      const userName = this.userName(); //get value of username from signal
-      const password = this.password();
+  constructor(private fb: FormBuilder, private router: Router) { //injecting whats needed
+    this.loginForm = this.fb.group({
+      userName: ['', Validators.required],
+      password: ['', Validators.required]
+    });
 
-      if ((userName === 'mihika' && password === 'mihika')||
-         (userName === 'admin' && password === 'admin')) {
-        this.loginError.set('');
-        this.router.navigate(['/product-master']);
-      } else {
-        this.loginError.set('Invalid username or password');// display error msg
-        alert('Login failed: Invalid credentials');
-      }
+    // Sync form values with signals
+    this.loginForm.get('userName')?.valueChanges.subscribe(value => this.userName.set(value)); //Update uname signal whenever the username input changes.
+    this.loginForm.get('password')?.valueChanges.subscribe(value => this.password.set(value));
+  }
+
+  onLogin() {
+    if (this.loginForm.invalid) {
+      return;
+    }
+
+    const userName = this.userName(); //get uname from signal
+    const password = this.password();
+
+    if ((userName === 'mihika' && password === 'mihika') ||
+        (userName === 'admin' && password === 'admin')) {
+      this.loginError.set('');
+      this.router.navigate(['/product-master']);
+    } else {
+      this.loginError.set('Invalid username or password');
+      alert("Please type valid credenetials")
     }
   }
+}
