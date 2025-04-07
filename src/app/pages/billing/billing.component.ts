@@ -116,14 +116,14 @@ export class BillingComponent {
   }
 //desc lekhda automatically barcode ko value basna janakolagi 
   // Here we use a signal to update the item selection for each row
-  itemSignals: { [key: number]: any } = {};
+  itemSignals: { [key: number]: any } = {}; // object haru jasma row ko index anusar signal save garincha.
   batchSignals:{ [key: number]: any } ={};
 
   selectItem(item: any) {
     const row = this.rows.at(this.selectedRow) as FormGroup;
     // Use signal for itemDesc
-    const itemDescSignal = signal(item.name);
-    this.itemSignals[this.selectedRow] = itemDescSignal; // Save the signal for this row
+    const itemDescSignal = signal(item.name); //item name lai signal banako- reactive value.
+    this.itemSignals[this.selectedRow] = itemDescSignal; // Save the signal for this row index anusar
     // Patch the form with item values
     row.patchValue({
       itemDesc: itemDescSignal(),
