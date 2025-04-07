@@ -1,44 +1,87 @@
 .row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px; 
-    padding: 10px;
-    margin-left: 50px;
-  }
-  
-  .rectangle-item {
-    box-sizing: border-box;
-    width: 250px;
-  }
-  
-  .rectangle {
-    border: 1px solid #ccc;
-    padding: 20px;
-    text-align: left;
-  }
-  
-  .icon img {
-    max-width: 50px;
-    margin-top: 10px;
-  }
-  
-  
-  /* .rectangle .icon {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  .rectangle .icon img {
-    max-width: 40px;
-    max-height: 40px;
-  }
-  
-  .rectangle-item .icon img {
-    max-width: 30px;
-    max-height: 30px;
-  } */
-  
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 10px;
+  margin-left: 50px;
+}
 
-  
+.rectangle-item {
+  box-sizing: border-box;
+  width: 250px;
+  margin-bottom: 10px;
+}
+
+.rectangle {
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  background-color: #f9f9f9;
+}
+.rectangle-blue {
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  background-color: rgba(96, 171, 231, 0.467);
+}
+
+.rectangle-pinkb {
+  border: 1px solid #e96ba6;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  color:#e96ba6;
+  background-color: #f9f9f9;
+}
+
+.rectangle-pink {
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  background-color: #e96ba6;
+}
+.rectangle-green {
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  background-color: #32d167;
+}
+
+.rectangle .text {
+  flex: 1;
+}
+
+.rectangle .text p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+  margin-top: 30px;
+}
+
+.icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
