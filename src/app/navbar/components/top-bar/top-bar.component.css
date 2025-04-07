@@ -116,3 +116,9 @@
 .dropdown li:hover {
   background: lightgray;
 }
+.logoutbtn{
+  margin-left: 240px;
+  color: white;
+  background-color: #6599ff;
+  padding: 6px;
+}

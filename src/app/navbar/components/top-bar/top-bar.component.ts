@@ -76,7 +76,9 @@ export class TopBarComponent {
 
     }
   }
-
+  onLogout() {
+    this.router.navigate(['/login']);
+  }
   @HostListener('document:click', ['$event'])
   closeDropdown(event: MouseEvent) {
     const clickedOutside = !(event.target as HTMLElement).closest('.lower-navbar');

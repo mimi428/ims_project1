@@ -1,23 +1,38 @@
+// auth.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { catchError, map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private dbUrl = 'assets/db.json'; // Path to the JSON file
+  private apiUrl = 'http://localhost:3000/users'; // JSON server URL 'json-server --watch db.json --port 3000'
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+  public isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
   constructor(private http: HttpClient) {}
 
-  authenticate(username: string, password: string): Observable<boolean> {
-    return this.http.get<{ users: { username: string; password: string }[] }>(this.dbUrl).pipe(
-      map(data => {
-        const user = data.users.find(u => u.username === username && u.password === password);
-        return !!user; // Return true if user exists, false otherwise
+  login(username: string, password: string): Observable<boolean> {
+    return this.http.get<any[]>(`${this.apiUrl}?username=${username}&password=${password}`).pipe(
+      map(users => {
+        if (users.length === 1) {
+          this.isAuthenticatedSubject.next(true);
+          return true;
+        }
+        return false;
       }),
-      catchError(() => of(false)) // Handle errors gracefully
+      catchError(error => {
+        console.error('Login error:', error);
+        return throwError(() => new Error('Login failed'));
+      })
     );
+  }
+  logout(): void {
+    this.isAuthenticatedSubject.next(false);
+  }
+  isAuthenticated(): boolean {
+    return this.isAuthenticatedSubject.value;
   }
 }

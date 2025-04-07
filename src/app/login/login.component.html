@@ -16,7 +16,9 @@
       <span *ngIf="loginError()" class="error-message">
         {{ loginError() }}
       </span>
-      <button type="submit">Login</button>
+      <button type="submit" [disabled]="isLoading()">
+        {{ isLoading() ? 'Verifying...' : 'Login' }}
+      </button>
     </form>
   </div>
 </div>
