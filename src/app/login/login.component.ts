@@ -52,7 +52,7 @@ export class LoginComponent {
       .subscribe({
         next: (success) => {
           if (success) {
-            this.router.navigate(['/product-master']);
+            this.router.navigate(['/dashboard']);
           } else {
             this.loginError.set('Invalid username or password');
             alert("Please enter valid credentials");
