@@ -1,6 +1,6 @@
 
 .container {
-  background-image: url(../assets/loginbg.png);
+  background-image: url('../../assets/loginbg.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -16,7 +16,7 @@
 .ims-logo {
   width: 150px;
   height: 150px;
-  background-image: url('../assets/logo.png');
+  background-image: url('../../assets/logo.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
