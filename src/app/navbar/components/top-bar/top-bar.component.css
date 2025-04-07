@@ -17,6 +17,11 @@
   .logo {
     font-size: 14px;
     font-weight: bold;
+    background-color: #336799;
+    border-color: #336799;
+    color: white;
+    box-shadow: none;
+
   }
 
   .nav-links {

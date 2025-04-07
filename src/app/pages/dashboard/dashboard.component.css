@@ -1,0 +1,44 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; 
+    padding: 10px;
+    margin-left: 50px;
+  }
+  
+  .rectangle-item {
+    box-sizing: border-box;
+    width: 250px;
+  }
+  
+  .rectangle {
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: left;
+  }
+  
+  .icon img {
+    max-width: 50px;
+    margin-top: 10px;
+  }
+  
+  
+  /* .rectangle .icon {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .rectangle .icon img {
+    max-width: 40px;
+    max-height: 40px;
+  }
+  
+  .rectangle-item .icon img {
+    max-width: 30px;
+    max-height: 30px;
+  } */
+  
+
+  

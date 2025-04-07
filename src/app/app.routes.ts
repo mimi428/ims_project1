@@ -7,6 +7,7 @@ import { TransactionComponent } from './navbar/components/transaction/transactio
 import { Component } from '@angular/core';
 import { AddProductComponent } from './pages/add-product/add-product.component';
 import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 export const routes: Routes = [
   {
@@ -22,6 +23,7 @@ export const routes: Routes = [
     path: '',
     component: TopBarComponent,
     children: [
+      {path: 'dashboard', component:DashboardComponent},
       { path: 'product-master', component: ProductMasterComponent},
       { path: 'tax-invoice', component: TaxInvoiceComponent },
       { path: 'add-product', component: AddProductComponent},

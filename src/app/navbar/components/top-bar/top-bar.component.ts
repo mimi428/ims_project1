@@ -76,6 +76,9 @@ export class TopBarComponent {
 
     }
   }
+  onLogo() {
+    this.router.navigate(['/dashboard']);
+  }
   onLogout() {
     this.router.navigate(['/login']);
   }
