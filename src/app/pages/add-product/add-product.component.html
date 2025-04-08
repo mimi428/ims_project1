@@ -50,14 +50,21 @@
       <div class="col-md-9">
         <!-- Right Section -->
         <div class="right-section">
-          <div class="form-row">
-            <label for="productCode">Product Code:</label>
-            <input type="text" id="productCode" name="productCode">
+          <div class="forpopup">
+            <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+              <div class="form-row">
+                <label for="itemName">Item Name:</label>
+                <input type="text" id="itemName" formControlName="itemName">
+              </div>
+              <div class="form-row">
+                <label for="barcode">Barcode:</label>
+                <input type="text" id="barcode" formControlName="barcode">
+              </div>
+              <button type="submit" class="btn-close">Add</button>
+            </form>
           </div>
-          <div class="form-row">
-            <label for="productName">Product Name:</label>
-            <input type="text" id="productName" name="productName">
-          </div>
+
+          <br><br>
           <div class="tabs">
           <ul class="tab-button">
             <li>

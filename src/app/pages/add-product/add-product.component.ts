@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ItemsService } from '../../service/items.service';
 
 @Component({
   selector: 'app-add-product',
@@ -9,6 +10,13 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
   styleUrl: './add-product.component.css'
 })
 export class AddProductComponent { 
+  itemForm: FormGroup;
+  constructor(private fb: FormBuilder, private itemsService: ItemsService) {
+    this.itemForm = this.fb.group({
+      itemName: ['', Validators.required],
+      barcode: ['', Validators.required]
+    });
+  }
   selectedTab: string = 'detail'; // Default tab open 
   // Function to switch tabs
   selectTab(tab: string): void {
@@ -75,5 +83,18 @@ export class AddProductComponent {
   }
   removeEntry(index: number) {
     this.entries.splice(index, 1);
+  } 
+  onSubmit() {
+    if (this.itemForm.valid) {
+      this.itemsService.addItem(this.itemForm.value).subscribe({
+        next: () => {
+          alert('Item added successfully!');
+          this.itemForm.reset();
+        },
+        error: () => {
+          alert('Failed to add item');
+        }
+      });
+    }
   }
 }
