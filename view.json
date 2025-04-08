@@ -1,0 +1,60 @@
+{
+  "billingData": [
+    {
+      "id": "441f",
+      "barcode": "B78453",
+      "itemName": "Pencil",
+      "batch": "B00001",
+      "expiryDate": "2025-12-31",
+      "unit": "kg",
+      "quantity": 74,
+      "rate": 14,
+      "amt": 100,
+      "totalDisc": 10,
+      "vat": 10,
+      "netAmount": 14
+    },
+    {
+      "id": "2297",
+      "barcode": "B00111",
+      "itemName": "Eraser",
+      "batch": "B00001",
+      "expiryDate": "2025-12-31",
+      "unit": "ton",
+      "quantity": 52,
+      "rate": 55,
+      "amt": 54,
+      "totalDisc": 447,
+      "vat": 55,
+      "netAmount": 54
+    },
+    {
+      "id": "b6f3",
+      "barcode": "B89562",
+      "itemName": "Sharpner",
+      "batch": "B00003",
+      "expiryDate": "2026-03-10",
+      "unit": "ton",
+      "quantity": 1225,
+      "rate": 11,
+      "amt": 1465,
+      "totalDisc": 553,
+      "vat": 45,
+      "netAmount": 254652
+    },
+    {
+      "id": "f86a",
+      "barcode": "B56473",
+      "itemName": "Earphone",
+      "batch": "B00003",
+      "expiryDate": "2026-03-10",
+      "unit": "kg",
+      "quantity": 1222,
+      "rate": 552,
+      "amt": 2555,
+      "totalDisc": 22,
+      "vat": 14,
+      "netAmount": 2525252
+    }
+  ]
+}

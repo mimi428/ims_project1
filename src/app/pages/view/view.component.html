@@ -1,1 +1,43 @@
-<p>view works!</p>
+<div class="bill-portal">
+    <div class="card">
+        <div class="card-header">
+            <h5>Bill</h5>
+        </div>
+        <div class="card-body">
+            <table class="bill-table">
+                <thead>
+                    <tr>
+                        <th>S.No.</th>
+                        <th>Barcode</th>
+                        <th>Description</th>
+                        <th>BatchNo</th>
+                        <th>Unit</th>
+                        <th>Quantity</th>
+                        <th>Rate</th>
+                        <th>Amt</th>
+                        <th>Total Disc</th>
+                        <th>VAT</th>
+                        <th>Net Amt</th>
+                        <th>Expiry</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr *ngFor="let bill of billData; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ bill.barcode }}</td>
+                        <td>{{ bill.itemName }}</td>
+                        <td>{{ bill.batch }}</td>
+                        <td>{{ bill.unit }}</td>
+                        <td>{{ bill.quantity }}</td>
+                        <td>{{ bill.rate }}</td>
+                        <td>{{ bill.amt }}</td>
+                        <td>{{ bill.totalDisc }}</td>
+                        <td>{{ bill.vat }}</td>
+                        <td>{{ bill.netAmount }}</td>
+                        <td>{{ bill.expiryDate }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
 import { signal } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ItemsService } from '../../service/items.service';
 import { ItemResponse } from '../../model/Items';
 
@@ -30,7 +30,7 @@ export class BillingComponent {
     { id: '3', batchNo: 'B00003', expiryDate: '2026-03-10' },
   ];
 
-  constructor(private fb: FormBuilder, private itemsService: ItemsService) {
+  constructor(private fb: FormBuilder, private itemsService: ItemsService, private http: HttpClient) {
     this.billingForm = this.fb.group({
       rows: this.fb.array([])
     });
@@ -154,12 +154,26 @@ export class BillingComponent {
   
   onSubmit() {
     if (this.billingForm.valid) {
-      console.log('Form submitted:', this.billingForm.value);
+      const rows = this.billingForm.value.rows; // Assuming rows is a FormArray
+  
+      rows.forEach((rowData: any) => {
+        this.http.post('http://localhost:3002/billingData', rowData).subscribe(
+          (response) => {
+            console.log('Row saved successfully:', response);
+          },
+          (error) => {
+            console.error('Error saving row:', error);
+          }
+        );
+      });
+  
+      alert('All rows submitted!');
     } else {
       this.markAllRowsAsTouched();
       alert('Please fill all required fields');
     }
   }
+  
 
   markAllRowsAsTouched() {
     this.rows.controls.forEach(row => {
