@@ -14,6 +14,21 @@
       "id": "7403",
       "itemName": "Compass",
       "barcode": "b354267"
+    },
+    {
+      "id": "d0c5",
+      "itemName": "Pencil",
+      "barcode": "B78453"
+    },
+    {
+      "id": "d013",
+      "itemName": "Earphone",
+      "barcode": "B56473"
+    },
+    {
+      "id": "6e04",
+      "itemName": "Mobile",
+      "barcode": "B65465"
     }
   ]
 }

@@ -22,7 +22,7 @@ export class BillingComponent {
   @ViewChild('addRowButton') addRowButton!: ElementRef;
 
   // Item and batch data
-  items: any[] = []; 
+  items: any[] = []; // Data fetched through itemsservice
 
   batches = [
     { id: '1', batchNo: 'B00001', expiryDate: '2025-12-31' },
@@ -37,14 +37,11 @@ export class BillingComponent {
     this.addRow(); // Add first row automatically
   }
   ngOnInit() {
-    // Fetch items from the database on component initialization
+    // Fetch items from the db
     this.itemsService.getItems().subscribe(
       (data) => {
-        this.items = data; // Assign fetched data to `items`
+        this.items = data; // Assign fetched data to item
         console.log('Items loaded:', this.items);
-      },
-      (error) => {
-        console.error('Error fetching items:', error);
       }
     );
   }
@@ -55,7 +52,7 @@ export class BillingComponent {
   createRow(): FormGroup {
     return this.fb.group({
       barcode: [''],
-      itemName: [''],
+      itemName: ['',Validators.required],
       batch: ['', Validators.required],
       expiryDate: [''],
       unit: ['', Validators.required],
@@ -68,7 +65,7 @@ export class BillingComponent {
     });
   }
 
-  addRow() {
+  addRow() { // adds a new row if previous one is valid
     if (this.rows.length === 0 || this.isLastRowValid()) {
       const newRow = this.createRow();
       this.rows.push(newRow);
@@ -135,12 +132,10 @@ export class BillingComponent {
       barcode: item.barcode,
     });
 
-    // Update itemSignals for placeholder binding (optional for UI logic)
+    // Update itemSignals for placeholder binding 
     this.itemSignals[this.selectedRow] = item.itemName;
 
     console.log('Item Selected:', item);
-    console.log('Form Row Value:', row.value); // Debugging log to ensure values are updated
-
     this.closeItemPopup();
   }
  
@@ -154,8 +149,6 @@ export class BillingComponent {
     });
   
     console.log('Batch Selected:', batch);
-    console.log('Form Row Value:', row.value); // Debugging log to ensure values are updated
-  
     this.closeBatchPopup();
   }
   

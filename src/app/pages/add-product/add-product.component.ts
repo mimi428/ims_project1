@@ -17,6 +17,20 @@ export class AddProductComponent {
       barcode: ['', Validators.required]
     });
   }
+  //json file ma store garna lai
+  onSubmit() {
+    if (this.itemForm.valid) {
+      this.itemsService.addItem(this.itemForm.value).subscribe({
+        next: () => {
+          alert('Item added successfully!');
+          this.itemForm.reset();
+        },
+        error: () => {
+          alert('Failure are the pillars to success?');
+        }
+      });
+    }
+  }
   selectedTab: string = 'detail'; // Default tab open 
   // Function to switch tabs
   selectTab(tab: string): void {
@@ -84,17 +98,4 @@ export class AddProductComponent {
   removeEntry(index: number) {
     this.entries.splice(index, 1);
   } 
-  onSubmit() {
-    if (this.itemForm.valid) {
-      this.itemsService.addItem(this.itemForm.value).subscribe({
-        next: () => {
-          alert('Item added successfully!');
-          this.itemForm.reset();
-        },
-        error: () => {
-          alert('Failed to add item');
-        }
-      });
-    }
-  }
 }

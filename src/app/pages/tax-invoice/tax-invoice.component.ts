@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { BillingComponent } from "../billing/billing.component";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-tax-invoice',
-  imports: [CommonModule, BillingComponent],
+  imports: [CommonModule, BillingComponent, RouterModule],
   templateUrl: './tax-invoice.component.html',
   styleUrl: './tax-invoice.component.css'
 })
@@ -64,7 +65,7 @@ export class TaxInvoiceComponent {
     this.selectedSalesman = salesman.name; // Update the selected salesman name
     this.invoiceForm.get('salesman')?.setValue(salesman.name); // Update the form control value 
     this.closeSalesmanPopup(); // Close the popup
-  }
+  }  
 }
 
 
