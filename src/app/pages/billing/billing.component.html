@@ -1,3 +1,24 @@
+<div class="small-form">
+  <div class="bill">
+      <div class="row">
+        <div class="col-md-2">
+          <label class="label-name" for="barcodeField">BarCode:</label>
+          <input class="input-size" id="barcodeField" type="text" placeholder="Enter Barcode" >
+        </div>
+        <div class="col-md-4">
+          <label class="label-name" for="description">Description:</label>
+          <input  class="input-size" id="description" type="text" placeholder="Description">
+        </div>
+        <div class="col-md-2">
+          <label class="label-name" for="quantityBarcode">Quantity:</label>
+          <input class="input-size" id="quantityBarcode" type="number">
+        </div>
+        <div class="col-md-4">
+          <label class="label-name">Stock: <span class="stock-indicator"></span></label>
+        </div>
+      </div>
+    </div>
+</div>
 <div class="big-form">
   <form [formGroup]="billingForm" (ngSubmit)="onSubmit()">
     <table id="productinserttable">
@@ -26,15 +47,15 @@
             <input formControlName="barcode" type="text" class="input-field" readonly />
           </td>
           <td>
-            <input formControlName="itemName" type="text" readonly class="input-field" 
-                   [placeholder]="itemSignals[i]?.() || 'Press Enter to Select Item'" (keydown.enter)="openItemPopup()"/>
+            <input formControlName="itemName" type="text" readonly class="input-field"   (focus)="activeIndex(i)" 
+                   [placeholder]="itemSignals[i]|| 'Press Enter to Select Item'" (keydown.enter)="openItemPopup()"/>
             <div *ngIf="row.get('itemName')?.invalid && (row.get('itemName')?.touched || row.get('itemName')?.dirty)" class="error-message">
               Description is required
             </div>
           </td>
           <td>
             <input formControlName="batch" type="text" readonly class="input-field" 
-                   [placeholder]="batchSignals[i]?.() || 'Press Enter to Select Batch'" (keydown.enter)="openBatchPopup()"/>
+                   [placeholder]="batchSignals[i] || 'Press Enter to Select Batch'" (focus)="activeIndex(i)" (keydown.enter)="openBatchPopup()"/>
             <div *ngIf="row.get('batch')?.invalid && (row.get('batch')?.touched || row.get('batch')?.dirty)" class="error-message">
               Batch is required
             </div>
