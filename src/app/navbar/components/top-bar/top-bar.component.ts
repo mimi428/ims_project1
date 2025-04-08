@@ -22,8 +22,8 @@ export class TopBarComponent {
       this.lowerNavbarWords = ['Masters','Inventory Info', 'Scheme Management', 'Fixed Assets Module', 'Others'];
     } else if (section === 'transactions') {
       this.lowerNavbarWords = ['Sales', 'Purchase', 'Payments'];
-    } else if (section === 'reports') {
-      this.lowerNavbarWords = ['Monthly Report', 'Annual Report', 'Performance'];
+    } else if (section === 'config') {
+      this.lowerNavbarWords = ['Employee Manager', 'Master Migration'];
     } else {
       this.lowerNavbarWords = [];
     }
@@ -56,12 +56,14 @@ export class TopBarComponent {
       return ['Asset Register', 'Depreciation Info', 'Maintenance Schedule'];
     } else if (word === 'Others') {
       return ['Settings', 'User Roles', 'Configurations'];
-    } else {
+    } else if (word === 'Employee Manager') {
+      return ['Employee List'];
+    } 
+    else {
       return [];
     }
     
   }
-
 
   onDropdownItemClick(option: string) {
     console.log("Clicked on:", option);
@@ -73,7 +75,9 @@ export class TopBarComponent {
       case 'Abbreviated Tax Invoice':
         this.router.navigate(['/tax-invoice']);
         break;
-
+        case 'Employee List':
+        this.router.navigate(['/employee']);
+        break;
     }
   }
   onLogo() {

@@ -1,0 +1,39 @@
+<div class="employee-portal">
+    <div class="card">
+        <div class="card-header">
+            <h5>Employees:</h5>
+            <button class="btn-primary" [routerLink]="['/add-user']">Add New</button>
+        </div>
+        <div class="card-body">
+            <table class="employee-table">
+                <thead>
+                    <tr>
+                        <th>Emp ID</th>
+                        <th>Name</th>
+                        <th>Contact No</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Gender</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let Employee of EmployeeList; let i = index">
+                        <td>{{ Employee.employeeId }}</td>
+                        <td>{{ Employee.employeeName }}</td>
+                        <td>{{ Employee.contactNo }}</td>
+                        <td>{{ Employee.emailId }}</td>
+                        <td>{{ Employee.role }}</td>
+                        <td>{{ Employee.gender }}</td>
+                        <td>
+                            <button class="btn-primary" [routerLink]="['/add-employee', Employee.employeeId]">Edit</button>
+                            &nbsp;
+                            <button class="btn-danger" >Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+  
