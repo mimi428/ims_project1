@@ -1,0 +1,31 @@
+<div class="header">
+    <h5>New Employee</h5>
+    <button class="btn-danger">Close</button>
+</div>
+<form [formGroup]="AddemployeeForm">
+    <div class="form-grid">
+        <label>Emp Id</label>
+        <input type="text" formControlName="Eid">
+
+        <label>Name</label>
+        <input type="text" formControlName="clientName">
+
+        <label>Contact No</label>
+        <input type="text" formControlName="clientName">
+
+        <label>Email</label>
+        <input type="text" formControlName="emailId">
+        
+        <label>Role</label>
+        <input type="text" formControlName="role">
+
+        <label>Gender</label>
+        <input type="radio" formControlName="male">Male
+        <input type="radio" formControlName="female">Female
+        
+
+        <button type="submit" class="btn-primary">Submit</button>
+    </div>
+</form>
+
+

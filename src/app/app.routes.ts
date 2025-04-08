@@ -9,6 +9,7 @@ import { AddProductComponent } from './pages/add-product/add-product.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
+import { AddEmployeeComponent } from './pages/add-employee/add-employee.component';
 
 export const routes: Routes = [
   {
@@ -28,7 +29,8 @@ export const routes: Routes = [
       { path: 'product-master', component: ProductMasterComponent},
       { path: 'tax-invoice', component: TaxInvoiceComponent },
       { path: 'add-product', component: AddProductComponent},
-      { path: 'employee', component:EmployeeComponent}
+      { path: 'employee', component:EmployeeComponent},
+      { path: 'add-employee', component:AddEmployeeComponent}
       ]
     }
   ]

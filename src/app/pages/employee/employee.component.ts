@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { Employee, IApiResponse, IchildDepartment, IparentDepartment } from '../../model/Employee';
+import { Employee, IApiResponse } from '../../model/Employee';
 import { FormsModule } from '@angular/forms';
 import { EmployeeService } from '../../service/employee.service';
 import { CommonModule } from '@angular/common';
@@ -12,9 +12,6 @@ import { RouterModule } from '@angular/router';
   styleUrl: './employee.component.css'
 })
 export class EmployeeComponent implements OnInit{
-
-  parentDeptList: IparentDepartment[] = [];
-  childDeptList: IchildDepartment[]= [];
 
   EmployeeObj: Employee = new Employee();
   EmployeeList: Employee[]=[];
@@ -32,7 +29,5 @@ export class EmployeeComponent implements OnInit{
       console.log(this.EmployeeList);
     })
   }
-
-
   }
 

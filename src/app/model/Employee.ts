@@ -22,18 +22,6 @@ export class Employee
             this.createdDate = new Date();
         }
     }
-export interface IparentDepartment{
-        departmentId: number;
-        departmentName: string;
-        departmentLogo: string;
-}
-
-export interface IchildDepartment{
-    childDeptId: number;
-    parentDeptId: number;
-    departmentName: string;
-}
-
 
 export interface IApiResponse{
     message: string;

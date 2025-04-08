@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-header">
             <h5>Employees:</h5>
-            <button class="btn-primary" [routerLink]="['/add-user']">Add New</button>
+            <button class="btn-primary" [routerLink]="['/add-employee']">Add New</button>
         </div>
         <div class="card-body">
             <table class="employee-table">
@@ -26,7 +26,7 @@
                         <td>{{ Employee.role }}</td>
                         <td>{{ Employee.gender }}</td>
                         <td>
-                            <button class="btn-primary" [routerLink]="['/add-employee', Employee.employeeId]">Edit</button>
+                            <button class="btn-primary" [routerLink]="['/add-employee']">Edit</button>
                             &nbsp;
                             <button class="btn-danger" >Delete</button>
                         </td>
