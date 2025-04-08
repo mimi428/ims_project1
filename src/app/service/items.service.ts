@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { signal } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
+import { Item, ItemResponse } from '../model/Items';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,6 @@ export class ItemsService {
   }
 
   getItems(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+    return this.http.get<any[]>(this.apiUrl); // Fetch items from the API
   }
 }

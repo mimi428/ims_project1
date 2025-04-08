@@ -2,11 +2,14 @@ import { CommonModule } from '@angular/common';
 import { Component, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
 import { signal } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { ItemsService } from '../../service/items.service';
+import { ItemResponse } from '../../model/Items';
 
 @Component({
   selector: 'app-billing',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
   templateUrl: './billing.component.html',
   styleUrls: ['./billing.component.css']
 })
@@ -19,13 +22,7 @@ export class BillingComponent {
   @ViewChild('addRowButton') addRowButton!: ElementRef;
 
   // Item and batch data
-  items = [
-    { id: '1', name: 'Bottle', barcode: '123456' },
-    { id: '2', name: 'Shoes', barcode: '789012' },
-    { id: '3', name: 'Bag', barcode: '784012' },
-    { id: '4', name: 'Pen', barcode: '889012' },
-    { id: '5', name: 'Fruit', barcode: '562341' }
-  ];
+  items: any[] = []; 
 
   batches = [
     { id: '1', batchNo: 'B00001', expiryDate: '2025-12-31' },
@@ -33,13 +30,24 @@ export class BillingComponent {
     { id: '3', batchNo: 'B00003', expiryDate: '2026-03-10' },
   ];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private itemsService: ItemsService) {
     this.billingForm = this.fb.group({
       rows: this.fb.array([])
     });
     this.addRow(); // Add first row automatically
   }
-
+  ngOnInit() {
+    // Fetch items from the database on component initialization
+    this.itemsService.getItems().subscribe(
+      (data) => {
+        this.items = data; // Assign fetched data to `items`
+        console.log('Items loaded:', this.items);
+      },
+      (error) => {
+        console.error('Error fetching items:', error);
+      }
+    );
+  }
   get rows(): FormArray {
     return this.billingForm.get('rows') as FormArray;
   }
@@ -47,7 +55,7 @@ export class BillingComponent {
   createRow(): FormGroup {
     return this.fb.group({
       barcode: [''],
-      itemDesc: ['', Validators.required],
+      itemName: [''],
       batch: ['', Validators.required],
       expiryDate: [''],
       unit: ['', Validators.required],
@@ -68,7 +76,7 @@ export class BillingComponent {
       this.selectedRow = this.rows.length - 1;
 
       setTimeout(() => {
-        const newRowIndex = this.rows.length - 1;//finds the first input or select field inside the newly added row; exclude readlonlies
+        const newRowIndex = this.rows.length - 1;
         const firstInput = document.querySelector(`
           [formGroupName="${newRowIndex}"] input:not([readonly]), 
           [formGroupName="${newRowIndex}"] select
@@ -83,7 +91,7 @@ export class BillingComponent {
       alert('Please fill all fields');
     }
   }
-  //the last row is completely filled before adding new row or not???
+
   isLastRowValid(): boolean {
     const lastRow = this.rows.at(this.rows.length - 1) as FormGroup;
     return lastRow.valid;
@@ -114,38 +122,43 @@ export class BillingComponent {
   activeIndex(i: number) {
     this.selectedRow = i;
   }
-//desc lekhda automatically barcode ko value basna janakolagi 
-  // Here we use a signal to update the item selection for each row
   itemSignals: { [key: number]: any } = {}; // object haru jasma row ko index anusar signal save garincha.
-  batchSignals:{ [key: number]: any } ={};
+  batchSignals: { [key: number]: any } = {};
 
+  // Fixing the selectItem method to correctly set the itemName and barcode
   selectItem(item: any) {
     const row = this.rows.at(this.selectedRow) as FormGroup;
-    // Use signal for itemDesc
-    const itemDescSignal = signal(item.name); //item name lai signal banako- reactive value.
-    this.itemSignals[this.selectedRow] = itemDescSignal; // Save the signal for this row index anusar
-    // Patch the form with item values
+
+    // Directly update the form control value
     row.patchValue({
-      itemDesc: itemDescSignal(),
-      barcode: item.barcode
+      itemName: item.itemName,
+      barcode: item.barcode,
     });
+
+    // Update itemSignals for placeholder binding (optional for UI logic)
+    this.itemSignals[this.selectedRow] = item.itemName;
+
     console.log('Item Selected:', item);
+    console.log('Form Row Value:', row.value); // Debugging log to ensure values are updated
+
     this.closeItemPopup();
   }
-
+ 
   selectBatch(batch: any) {
     const row = this.rows.at(this.selectedRow) as FormGroup;
-    //use signal for batch
-    const batchSignal = signal(batch.batchNo);
-    this.batchSignals[this.selectedRow] = batchSignal;
+  
+    // Use patchValue to update batch and expiryDate in the form row
     row.patchValue({
-      batch: batchSignal(),
+      batch: batch.batchNo,
       expiryDate: batch.expiryDate
     });
+  
     console.log('Batch Selected:', batch);
+    console.log('Form Row Value:', row.value); // Debugging log to ensure values are updated
+  
     this.closeBatchPopup();
   }
-
+  
   onSubmit() {
     if (this.billingForm.valid) {
       console.log('Form submitted:', this.billingForm.value);
@@ -160,7 +173,7 @@ export class BillingComponent {
       (row as FormGroup).markAllAsTouched();
     });
   }
- //popup close garnalai
+
   @HostListener('document:keydown.escape', ['$event'])
   onEscape(event: KeyboardEvent): void {
     if (this.showBatchPopup) {
@@ -173,9 +186,8 @@ export class BillingComponent {
   @HostListener('document:keydown.enter', ['$event'])
   handleEnterKey(event: KeyboardEvent) {
     const activeElement = document.activeElement as HTMLElement;
-    // enter garda popup kholnu paryoo instead of moving to next field
 
-    if (activeElement?.getAttribute('formControlName') === 'itemDesc') {
+    if (activeElement?.getAttribute('formControlName') === 'itemName') {
       event.preventDefault();
       this.openItemPopup();
       return;
@@ -186,7 +198,7 @@ export class BillingComponent {
       this.openBatchPopup();
       return;
     }
-    // Default field navigation
+
     if (activeElement && activeElement.tagName === 'INPUT' && activeElement.closest('table')) {
       event.preventDefault();
       this.moveToNextField(activeElement);
@@ -198,16 +210,13 @@ export class BillingComponent {
       document.querySelectorAll('input[formControlName], select[formControlName]')
     ) as HTMLElement[];
   }
-// to the next field whenenter pressed
+
   private moveToNextField(currentElement: HTMLElement) {
-    // const allFields = Array.from(
-    //   document.querySelectorAll('input[formControlName], select[formControlName]')
-    // ) as HTMLElement[];    
     this.detectAllFields();
 
     const currentIndex = this.allFields.indexOf(currentElement);
     if (currentIndex === -1) return;
-    // Find next focusable field after current one
+
     let nextIndex = currentIndex + 1;
     if (nextIndex >= this.allFields.length - 1) {
       this.addRow();
@@ -223,22 +232,23 @@ export class BillingComponent {
   }
 
   private isFieldFocusable(field: HTMLElement): boolean {
-        // Skip readonly fields except for the itemDesc and batch fields cause it opens popups
     if (field.hasAttribute('readonly')) {
-      return field.getAttribute('formControlName') === 'itemDesc' || field.getAttribute('formControlName') === 'batch';
+      return field.getAttribute('formControlName') === 'itemName' || field.getAttribute('formControlName') === 'batch';
     }
     return true;
   }
+
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
       this.handleArrowKeys(event);
     }
   }
+
   private handleArrowKeys(event: KeyboardEvent) {
-    const activeElement = document.activeElement as HTMLElement;//esle aaile focus vairako element dinxa.
+    const activeElement = document.activeElement as HTMLElement;
     if (!activeElement) return;
-    if (!activeElement.matches('input, select') || !activeElement.closest('table')) {//this ensures that the elements are of table onlyyy
+    if (!activeElement.matches('input, select') || !activeElement.closest('table')) {
       return;
     }
     const allFields = Array.from(
