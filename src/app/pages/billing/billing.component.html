@@ -90,8 +90,6 @@
               Quantity is required
             </div>
           </td>
-
-          <!-- Rate -->
           <td>
             <input formControlName="rate" type="number" class="input-field"
                    (input)="calculateAmount(i)" (keydown.enter)="$event.preventDefault()" />
@@ -99,41 +97,29 @@
               Rate is required
             </div>
           </td>
-
-          <!-- Amt (readonly, calculated) -->
           <td>
             <input formControlName="amt" type="number" class="input-field" readonly />
             <div *ngIf="row.get('amt')?.invalid && (row.get('amt')?.touched || row.get('amt')?.dirty)" class="error-message">
               Amount is required
             </div>
           </td>
-
-          <!-- Total Discount -->
           <td>
             <input formControlName="totalDisc" type="number" class="input-field"
                    (input)="calculateAmount(i)" (keydown.enter)="$event.preventDefault()" />
           </td>
-
-          <!-- VAT -->
           <td>
             <input formControlName="vat" type="number" class="input-field"
                    (input)="calculateAmount(i)" (keydown.enter)="$event.preventDefault()" />
           </td>
-
-          <!-- Net Amount (readonly, calculated) -->
           <td>
             <input formControlName="netAmount" type="number" class="input-field" readonly />
             <div *ngIf="row.get('netAmount')?.invalid && (row.get('netAmount')?.touched || row.get('netAmount')?.dirty)" class="error-message">
               Enter Net amount
             </div>
           </td>
-
-          <!-- Expiry -->
           <td>
             <input formControlName="expiryDate" type="text" class="input-field" readonly />
           </td>
-
-          <!-- Delete -->
           <td class="close" (click)="deleteRow(i)">
             <div class="close-wrapper">
               <button type="button" class="closetools">&times;</button>

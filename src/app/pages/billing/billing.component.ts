@@ -108,12 +108,10 @@ export class BillingComponent implements OnInit {
   }
   calculateAmount(index: number) {
     const row = this.rows.at(index) as FormGroup;
-  
     const quantity = Number(row.get('quantity')?.value) || 0;
     const rate = Number(row.get('rate')?.value) || 0;
     const totalDisc = Number(row.get('totalDisc')?.value) || 0;
     const vat = Number(row.get('vat')?.value) || 0;
-  
     const amt = quantity * rate;
     const netAmount = amt - totalDisc + vat;
   
