@@ -41,11 +41,6 @@ body {
     background-color: #f2f2f2;
 }
 
-.button-container {
-    display: flex;
-    justify-content: flex-end;
-    gap: 5px;
-  }
 .btn {
     font-size: 11px;
     padding: 8px 12px;

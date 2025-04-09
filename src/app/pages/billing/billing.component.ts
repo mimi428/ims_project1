@@ -95,7 +95,6 @@ export class BillingComponent implements OnInit {
       alert('Please fill all fields');
     }
   }
-
   isLastRowValid(): boolean {
     const lastRow = this.rows.at(this.rows.length - 1) as FormGroup;
     return lastRow.valid;
@@ -107,6 +106,23 @@ export class BillingComponent implements OnInit {
       lastRow.get(key)?.markAsTouched();
     });
   }
+  calculateAmount(index: number) {
+    const row = this.rows.at(index) as FormGroup;
+  
+    const quantity = Number(row.get('quantity')?.value) || 0;
+    const rate = Number(row.get('rate')?.value) || 0;
+    const totalDisc = Number(row.get('totalDisc')?.value) || 0;
+    const vat = Number(row.get('vat')?.value) || 0;
+  
+    const amt = quantity * rate;
+    const netAmount = amt - totalDisc + vat;
+  
+    row.patchValue({
+      amt: amt,
+      netAmount: netAmount
+    }, { emitEvent: false }); // Avoid triggering infinite loop if you're subscribing
+  }
+  
 
   deleteRow(index: number) {
     this.rows.removeAt(index);

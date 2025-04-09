@@ -49,20 +49,21 @@
       <tbody formArrayName="rows">
         <tr *ngFor="let row of rows.controls; let i = index" [formGroupName]="i" (click)="activeIndex(i)">
           <td>{{ i + 1 }}</td>
-          <!-- Barcode -->
           <td>
             <input formControlName="barcode" type="text" class="input-field" readonly />
           </td>
           <td>
-            <input formControlName="itemName" type="text" readonly class="input-field"   (focus)="activeIndex(i)" 
-                   [placeholder]="itemSignals[i]|| 'Press Enter to Select Item'" (keydown.enter)="openItemPopup()"/>
+            <input formControlName="itemName" type="text" readonly class="input-field"
+                   (focus)="activeIndex(i)" [placeholder]="itemSignals[i] || 'Press Enter to Select Item'"
+                   (keydown.enter)="openItemPopup()" />
             <div *ngIf="row.get('itemName')?.invalid && (row.get('itemName')?.touched || row.get('itemName')?.dirty)" class="error-message">
               Description is required
             </div>
           </td>
           <td>
-            <input formControlName="batch" type="text" readonly class="input-field" 
-                   [placeholder]="batchSignals[i] || 'Press Enter to Select Batch'" (focus)="activeIndex(i)" (keydown.enter)="openBatchPopup()"/>
+            <input formControlName="batch" type="text" readonly class="input-field"
+                   [placeholder]="batchSignals[i] || 'Press Enter to Select Batch'" (focus)="activeIndex(i)"
+                   (keydown.enter)="openBatchPopup()" />
             <div *ngIf="row.get('batch')?.invalid && (row.get('batch')?.touched || row.get('batch')?.dirty)" class="error-message">
               Batch is required
             </div>
@@ -71,43 +72,68 @@
             <select formControlName="unit" class="input-field" (keydown.enter)="$event.preventDefault()">
               <option value="" disabled>Select Unit</option>
               <option value="kg">Kg</option>
-              <option value="ton">Ton</option>
+              <option value="dzn">dozen</option>
+              <option value="pcs">piece</option>
+              <option value="pack">packet</option>
+              <option value="pack">box</option>
+              
+
             </select>
             <div *ngIf="row.get('unit')?.invalid && (row.get('unit')?.touched || row.get('unit')?.dirty)" class="error-message">
               Unit is required
             </div>
           </td>
           <td>
-            <input formControlName="quantity" type="number" class="input-field" (keydown.enter)="$event.preventDefault()" />
+            <input formControlName="quantity" type="number" class="input-field"
+                   (input)="calculateAmount(i)" (keydown.enter)="$event.preventDefault()" />
             <div *ngIf="row.get('quantity')?.invalid && (row.get('quantity')?.touched || row.get('quantity')?.dirty)" class="error-message">
               Quantity is required
             </div>
           </td>
+
+          <!-- Rate -->
           <td>
-            <input formControlName="rate" type="number" class="input-field" (keydown.enter)="$event.preventDefault()" />
+            <input formControlName="rate" type="number" class="input-field"
+                   (input)="calculateAmount(i)" (keydown.enter)="$event.preventDefault()" />
             <div *ngIf="row.get('rate')?.invalid && (row.get('rate')?.touched || row.get('rate')?.dirty)" class="error-message">
               Rate is required
             </div>
           </td>
+
+          <!-- Amt (readonly, calculated) -->
           <td>
-            <input formControlName="amt" type="number" class="input-field" (keydown.enter)="$event.preventDefault()" />
+            <input formControlName="amt" type="number" class="input-field" readonly />
             <div *ngIf="row.get('amt')?.invalid && (row.get('amt')?.touched || row.get('amt')?.dirty)" class="error-message">
               Amount is required
             </div>
           </td>
+
+          <!-- Total Discount -->
           <td>
-            <input formControlName="totalDisc" type="number" class="input-field" (keydown.enter)="$event.preventDefault()" />
+            <input formControlName="totalDisc" type="number" class="input-field"
+                   (input)="calculateAmount(i)" (keydown.enter)="$event.preventDefault()" />
           </td>
+
+          <!-- VAT -->
           <td>
-            <input formControlName="vat" type="number" class="input-field" (keydown.enter)="$event.preventDefault()" />
+            <input formControlName="vat" type="number" class="input-field"
+                   (input)="calculateAmount(i)" (keydown.enter)="$event.preventDefault()" />
           </td>
+
+          <!-- Net Amount (readonly, calculated) -->
           <td>
-            <input formControlName="netAmount" type="number" class="input-field" (keydown.enter)="$event.preventDefault()" />
+            <input formControlName="netAmount" type="number" class="input-field" readonly />
             <div *ngIf="row.get('netAmount')?.invalid && (row.get('netAmount')?.touched || row.get('netAmount')?.dirty)" class="error-message">
               Enter Net amount
             </div>
           </td>
-          <td><input formControlName="expiryDate" type="text" class="input-field" readonly /></td>
+
+          <!-- Expiry -->
+          <td>
+            <input formControlName="expiryDate" type="text" class="input-field" readonly />
+          </td>
+
+          <!-- Delete -->
           <td class="close" (click)="deleteRow(i)">
             <div class="close-wrapper">
               <button type="button" class="closetools">&times;</button>

@@ -33,7 +33,7 @@ export class ViewComponent implements OnInit {
     );
   }
 
-  editBill(bill: any): void {
+  viewBill(bill: any): void {
     const queryParams = {
       barcode: bill.barcode,
       itemName: bill.itemName,
