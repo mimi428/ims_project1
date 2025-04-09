@@ -55,6 +55,62 @@
       "totalDisc": 22,
       "vat": 14,
       "netAmount": 2525252
+    },
+    {
+      "id": "a29d",
+      "barcode": "b354267",
+      "itemName": "Compass",
+      "batch": "B00003",
+      "unit": "ton",
+      "quantity": "1521",
+      "rate": "55",
+      "amt": "52",
+      "totalDisc": "47",
+      "vat": "523",
+      "netAmount": "225",
+      "expiryDate": "2026-03-10"
+    },
+    {
+      "id": "34a5",
+      "barcode": "B546372",
+      "itemName": "Clip",
+      "batch": "B00002",
+      "unit": "kg",
+      "quantity": 455,
+      "rate": 5,
+      "amt": 26,
+      "totalDisc": 326,
+      "vat": 522,
+      "netAmount": 632,
+      "expiryDate": "2026-11-30"
+    },
+    {
+      "id": "7635",
+      "barcode": "B00111",
+      "itemName": "Eraser",
+      "batch": "B00001",
+      "unit": "kg",
+      "quantity": 15,
+      "rate": 54,
+      "amt": 54,
+      "totalDisc": 57,
+      "vat": 55,
+      "netAmount": 5,
+      "expiryDate": "2025-12-31"
+    },
+    {
+      "id": "103f",
+      "barcode": "B65465",
+      "itemName": "Mobile",
+      "batch": "B00001",
+      "expiryDate": "2025-12-31",
+      "unit": "ton",
+      "quantity": 8,
+      "rate": 699,
+      "amt": 12,
+      "totalDisc": 55,
+      "vat": 85,
+      "netAmount": 25
     }
   ]
 }

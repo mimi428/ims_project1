@@ -1,23 +1,25 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener, ViewChild, ElementRef } from '@angular/core';
+import { Component, HostListener, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
 import { signal } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ItemsService } from '../../service/items.service';
 import { ItemResponse } from '../../model/Items';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-billing',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './billing.component.html',
   styleUrls: ['./billing.component.css']
 })
-export class BillingComponent {
+export class BillingComponent implements OnInit {
   billingForm: FormGroup;
   showItemPopup = false;
   showBatchPopup = false;
   selectedRow: number = 0;
+  billData: any = {};
   allFields: any;
   @ViewChild('addRowButton') addRowButton!: ElementRef;
 
@@ -30,7 +32,7 @@ export class BillingComponent {
     { id: '3', batchNo: 'B00003', expiryDate: '2026-03-10' },
   ];
 
-  constructor(private fb: FormBuilder, private itemsService: ItemsService, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private itemsService: ItemsService, private http: HttpClient, private route: ActivatedRoute) {
     this.billingForm = this.fb.group({
       rows: this.fb.array([])
     });
@@ -44,6 +46,12 @@ export class BillingComponent {
         console.log('Items loaded:', this.items);
       }
     );
+    // Retrieve the query parameters and assign them to billData
+    this.route.queryParams.subscribe((params) => {
+      if (params) {
+        this.populateForm(params);
+      }
+    });
   }
   get rows(): FormArray {
     return this.billingForm.get('rows') as FormArray;
@@ -150,6 +158,25 @@ export class BillingComponent {
   
     console.log('Batch Selected:', batch);
     this.closeBatchPopup();
+  }
+  populateForm(billData: any): void {
+    console.log('Populating Form with:', billData);
+    const row = this.fb.group({
+      barcode: [billData.barcode],
+      itemName: [billData.itemName, Validators.required],
+      batch: [billData.batch, Validators.required],
+      unit: [billData.unit, Validators.required],
+      quantity: [billData.quantity, [Validators.required, Validators.min(1)]],
+      rate: [billData.rate, [Validators.required, Validators.min(0)]],
+      amt: [billData.amt, Validators.required],
+      totalDisc: [billData.totalDisc],
+      vat: [billData.vat],
+      netAmount: [billData.netAmount, Validators.required],
+      expiryDate: [billData.expiryDate],
+    });
+
+    this.rows.clear();
+    this.rows.push(row);
   }
   
   onSubmit() {

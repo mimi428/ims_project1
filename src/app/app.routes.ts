@@ -11,6 +11,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
 import { AddEmployeeComponent } from './pages/add-employee/add-employee.component';
 import { ViewComponent } from './pages/view/view.component';
+import { BillingComponent } from './pages/billing/billing.component';
 
 export const routes: Routes = [
   {
@@ -33,6 +34,7 @@ export const routes: Routes = [
       { path: 'employee', component:EmployeeComponent},
       { path: 'add-employee', component:AddEmployeeComponent},
       { path: 'view', component:ViewComponent},
+      {path: 'billing', component:BillingComponent}
 
       ]
     }

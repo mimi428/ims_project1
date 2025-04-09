@@ -1,6 +1,13 @@
 <div class="small-form">
   <div class="bill">
       <div class="row">
+        <div class="button-container">
+          <button class="btn btn-info">Image upload</button>
+          <button class="btn btn-info">Reset F3</button>
+          <button class="btn btn-info">Save</button>
+          <button type="button" class="btn btn-info" [routerLink]="['/view']">View</button>
+          <button class="btn btn-info" [routerLink]="['/top-bar']">Back</button>
+        </div>
         <div class="col-md-2">
           <label class="label-name" for="barcodeField">BarCode:</label>
           <input class="input-size" id="barcodeField" type="text" placeholder="Enter Barcode" >
@@ -110,11 +117,9 @@
       </tbody>
     </table>
     <br />
-    <div class="form-actions">
-      <button type="submit" class="submit-button">Submit</button>
-    </div>
-    <div class="form-actions">
-      <button #addRowButton type="button" class="add-row" (click)="addRow()">+</button>
+    <div class="button-conatiner">
+      <button #addRowButton type="button" class="btn btn-info" (click)="addRow()">+</button>
+      <button type="submit" class="btn btn-info">Save</button>
     </div>
   </form>
 </div>

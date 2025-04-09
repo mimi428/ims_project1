@@ -1,6 +1,29 @@
 .small-form{
     background-color: #f7f7f7;
 }
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+}
+.btn {
+  font-size: 11px;
+  padding: 8px 12px;
+  cursor: pointer;
+  background-color: #336799;
+  color: white;
+  border-radius: 0%;
+}
+
+.btn:hover {
+  background-color: #2dacd1;
+  color: white;
+}
+
+.btn:focus {
+  outline: none;
+}
 .bill {
     width: 100%;
     padding: 10px;

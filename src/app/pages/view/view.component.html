@@ -19,6 +19,7 @@
                         <th>VAT</th>
                         <th>Net Amt</th>
                         <th>Expiry</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,6 +37,11 @@
                         <td>{{ bill.vat }}</td>
                         <td>{{ bill.netAmount }}</td>
                         <td>{{ bill.expiryDate }}</td>
+                        <td>
+                            <button class="btn-primary" [routerLink]="['/billing']" (click)="editBill(bill)">Edit</button>
+                            &nbsp;
+                            <button class="btn-danger" >Delete</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
