@@ -78,6 +78,8 @@ export class TopBarComponent {
         case 'Employee List':
         this.router.navigate(['/employee']);
         break;
+      case 'Sales Tax Invoice':
+        this.router.navigate(['/voucher'])
     }
   }
   onLogo() {

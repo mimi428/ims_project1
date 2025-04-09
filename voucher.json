@@ -1,0 +1,81 @@
+{
+  "vouchers": [
+    {
+      "id": "1744193601833",
+      "date": "2025-04-09",
+      "rows": [
+        {
+          "barcode": "B546372",
+          "itemName": "Clip",
+          "batch": "B00002",
+          "unit": "dzn",
+          "quantity": 251,
+          "rate": 22,
+          "amt": 5522,
+          "totalDisc": 2205,
+          "vat": 25,
+          "netAmount": 3342,
+          "expiryDate": "2026-11-30"
+        },
+        {
+          "barcode": "B89562",
+          "itemName": "Sharpner",
+          "batch": "B00001",
+          "expiryDate": "2025-12-31",
+          "unit": "pack",
+          "quantity": 40,
+          "rate": 4000,
+          "amt": 160000,
+          "totalDisc": 4000,
+          "vat": 12,
+          "netAmount": 156012
+        },
+        {
+          "barcode": "B65465",
+          "itemName": "Mobile",
+          "batch": "B00002",
+          "expiryDate": "2026-11-30",
+          "unit": "pack",
+          "quantity": 50,
+          "rate": 222,
+          "amt": 11100,
+          "totalDisc": 101010,
+          "vat": 222,
+          "netAmount": -89688
+        }
+      ]
+    },
+    {
+      "id": "1744193712859",
+      "date": "2025-04-09",
+      "rows": [
+        {
+          "barcode": "b354267",
+          "itemName": "Compass",
+          "batch": "B00003",
+          "unit": "pack",
+          "quantity": 4,
+          "rate": 55,
+          "amt": 220,
+          "totalDisc": 222,
+          "vat": 666,
+          "netAmount": 664,
+          "expiryDate": "2026-03-10"
+        },
+        {
+          "barcode": "B78453",
+          "itemName": "Pencil",
+          "batch": "B00001",
+          "expiryDate": "2025-12-31",
+          "unit": "dzn",
+          "quantity": 5,
+          "rate": 22,
+          "amt": 110,
+          "totalDisc": 22,
+          "vat": 2,
+          "netAmount": 90
+        }
+      ]
+    }
+  ]
+}

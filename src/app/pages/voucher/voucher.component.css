@@ -1,0 +1,273 @@
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+}
+.btn {
+  font-size: 11px;
+  padding: 8px 12px;
+  cursor: pointer;
+  background-color: #336799;
+  color: white;
+  border-radius: 0%;
+}
+
+.btn:hover {
+  background-color: #2dacd1;
+  color: white;
+}
+
+.btn:focus {
+  outline: none;
+}
+.voucher {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .col-md-2, .col-md-4 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .label-name {
+    font-weight: bold;
+    margin-right: 10px; 
+    font-size: 12px;
+  }
+  
+  .input-size {
+    padding: 5px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: smaller;
+  }
+  
+  .stock-indicator {
+    color: red; 
+  }
+  
+  .col-md-2 {
+    flex: 0 0 16.66%; 
+  }
+  
+  .col-md-4 {
+    flex: 0 0 33.33%; 
+  }
+
+.big-form {
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  #productinserttable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px; 
+  }
+  
+  #prodlistTableheader {
+    background: silver;
+    color: black;
+    border-right: 1px solid #b4b4b4;
+    border-left: 1px solid #b4b4b4;
+  }
+  
+  #prodlistTableheader th {
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  #productinserttable td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #b4b4b4;
+  }
+
+  .sno, .barcode, .description, .batch, .unit, .quantity, .rate, .amnt, .discountAmt, .totalDisc, .vatvalue, .netamount, .expdate, .close {
+    padding: 10px;
+  }
+  
+  .description input, .batch input, .unit select, .quantity input, .rate input, .amnt input, .discountAmt input, .totalDisc input, .vatvalue input, .netamount input, .expdate input {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 5px;
+    font-size: 12px;  
+    box-sizing: border-box;
+  }
+  
+  .input-field:disabled {
+    background-color: #f0f0f0;
+  }
+  .close-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .add p {
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: left;
+    margin: 10px;
+  }
+  
+  .add p:hover {
+    color: #007bff;
+  }
+  
+  .selected:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .amnt, .totalDisc, .netamount, .vatvalue {
+    background-color: #f9f9f9;
+    text-align: right;
+  }
+  
+  .quantity input, .rate input, .amnt input, .discountAmt input, .totalDisc input, .vatvalue input, .netamount input {
+    text-align: right;
+  }
+
+  .expdate input {
+    text-align: center;
+  }
+  
+  .unit select {
+    padding: 5px;
+    font-size: 12px;
+  }
+
+  .close {
+    width: 40px;
+    text-align: center;
+  }
+  
+  /* Common Popup Overlay */
+.item-popup-overlay, .batch-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Common Popup Styling */
+.voucher-popup{
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 500px;
+    max-width: 90%;
+}
+.item-popup, .batch-popup {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  max-width: 90%;
+}
+
+/* for popups item n batch */
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  background-color: #2dacd1;
+}
+
+.popup-header h3 {
+  margin: 0;
+  font-size: 14px;
+  color: #fff;
+}
+
+/* Close Button */
+.close-button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.close-button:hover {
+  color: #333;
+}
+
+/* Popup Body */
+.popup-body {
+  padding: 13px;
+}
+
+.popup-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.popup-body li {
+  padding: 8px 0;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.popup-body li:hover {
+  background: #f5f5f5;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+table th {
+  background: #4e7fa7;
+  color: #fff;
+  font-weight: bold;
+}
+
+table tr:hover {
+  cursor: pointer;
+  background: #f5f5f5;
+}
+ .error-message{
+  color: red;
+  font-size: x-small;
+ }
+.add-row{
+  color: green;
+  align-items: center;
+}
+.form-actions{
+  margin-left: 760px;
+}
