@@ -1,4 +1,5 @@
 export interface Bill {
+    id:any;
     barcode: string;
     itemName: string;
     batch: string;

@@ -15,20 +15,6 @@
       "netAmount": 14
     },
     {
-      "id": "2297",
-      "barcode": "B00111",
-      "itemName": "Eraser",
-      "batch": "B00001",
-      "expiryDate": "2025-12-31",
-      "unit": "ton",
-      "quantity": 52,
-      "rate": 55,
-      "amt": 54,
-      "totalDisc": 447,
-      "vat": 55,
-      "netAmount": 54
-    },
-    {
       "id": "b6f3",
       "barcode": "B89562",
       "itemName": "Sharpner",
@@ -85,32 +71,18 @@
       "expiryDate": "2026-11-30"
     },
     {
-      "id": "7635",
-      "barcode": "B00111",
-      "itemName": "Eraser",
+      "id": "5beb",
+      "barcode": "b354267",
+      "itemName": "Compass",
       "batch": "B00001",
       "unit": "kg",
-      "quantity": 15,
-      "rate": 54,
-      "amt": 54,
-      "totalDisc": 57,
-      "vat": 55,
-      "netAmount": 5,
+      "quantity": 45,
+      "rate": 14444,
+      "amt": 22255,
+      "totalDisc": 5551,
+      "vat": 221,
+      "netAmount": 55,
       "expiryDate": "2025-12-31"
-    },
-    {
-      "id": "103f",
-      "barcode": "B65465",
-      "itemName": "Mobile",
-      "batch": "B00001",
-      "expiryDate": "2025-12-31",
-      "unit": "ton",
-      "quantity": 8,
-      "rate": 699,
-      "amt": 12,
-      "totalDisc": 55,
-      "vat": 85,
-      "netAmount": 25
     }
   ]
 }

@@ -4,7 +4,6 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, Validators, For
 import { signal } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ItemsService } from '../../service/items.service';
-import { ItemResponse } from '../../model/Items';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 
 @Component({
@@ -186,7 +185,7 @@ export class BillingComponent implements OnInit {
       rows.forEach((rowData: any) => {
         this.http.post('http://localhost:3002/billingData', rowData).subscribe(
           (response) => {
-            console.log('Row saved successfully:', response);
+            console.log('Data saved successfully:', response);
           },
           (error) => {
             console.error('Error saving row:', error);
@@ -194,7 +193,7 @@ export class BillingComponent implements OnInit {
         );
       });
   
-      alert('All rows submitted!');
+      alert('Data has been saved');
     } else {
       this.markAllRowsAsTouched();
       alert('Please fill all required fields');

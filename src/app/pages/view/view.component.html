@@ -38,9 +38,11 @@
                         <td>{{ bill.netAmount }}</td>
                         <td>{{ bill.expiryDate }}</td>
                         <td>
-                            <button class="btn-primary" [routerLink]="['/billing']" (click)="editBill(bill)">Edit</button>
+                            <div class="button-conatiner">
+                            <button class="btn" [routerLink]="['/billing']" (click)="editBill(bill)">Edit</button>
                             &nbsp;
-                            <button class="btn-danger" >Delete</button>
+                            <button class="btn" (click)="deleteBill(bill)" >Delete</button>
+                        </div>
                         </td>
                     </tr>
                 </tbody>

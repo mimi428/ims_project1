@@ -12,4 +12,7 @@ export class ViewService {
   getbillingData(): Observable<Bill[]> {
     return this.http.get<Bill[]>(this.jsonUrl); 
   }
+  deleteBill(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.jsonUrl}/${id}`);
+  }
 }
