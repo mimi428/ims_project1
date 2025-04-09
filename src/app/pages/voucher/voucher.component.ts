@@ -6,6 +6,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ItemsService } from '../../service/items.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { VoucherService } from '../../service/voucher.service';
+import { Voucher, VoucherRow } from '../../model/Voucher';
 
 @Component({
   selector: 'app-voucher',
@@ -20,6 +21,8 @@ export class VoucherComponent implements OnInit {
   showBatchPopup = false;
   selectedRow: number = 0;
   voucherData: any = {};
+  selectedVoucher: any = null;
+  voucherId: string = '';
   allFields: any;
   @ViewChild('addRowButton') addRowButton!: ElementRef;
 
@@ -52,6 +55,14 @@ export class VoucherComponent implements OnInit {
         this.populateForm(params);
       }
     });
+    this.generateVoucherId();  // Generate voucher ID when the component is loaded
+  }
+
+  // Method to generate a unique Voucher ID
+  generateVoucherId() {
+    const timestamp = new Date().getTime();  // You can generate a Voucher ID based on timestamp
+    this.voucherId = `V${timestamp}`;
+  
   }
   get rows(): FormArray {
     return this.voucherForm.get('rows') as FormArray;

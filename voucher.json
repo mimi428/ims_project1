@@ -76,6 +76,38 @@
           "netAmount": 90
         }
       ]
+    },
+    {
+      "id": "1744199360211",
+      "date": "2025-04-09",
+      "rows": [
+        {
+          "barcode": "B56473",
+          "itemName": "Earphone",
+          "batch": "B00002",
+          "unit": "dzn",
+          "quantity": 12,
+          "rate": 222,
+          "amt": 2664,
+          "totalDisc": 22,
+          "vat": 2,
+          "netAmount": 2644,
+          "expiryDate": "2026-11-30"
+        },
+        {
+          "barcode": "B89562",
+          "itemName": "Sharpner",
+          "batch": "B00003",
+          "expiryDate": "2026-03-10",
+          "unit": "pack",
+          "quantity": 100,
+          "rate": 500,
+          "amt": 50000,
+          "totalDisc": 5500,
+          "vat": 12,
+          "netAmount": 44512
+        }
+      ]
     }
   ]
 }

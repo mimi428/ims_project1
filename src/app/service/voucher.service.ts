@@ -1,6 +1,7 @@
 import { Injectable, signal, computed } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Voucher } from '../model/Voucher';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class VoucherService {
@@ -23,5 +24,15 @@ export class VoucherService {
     this.http.post<Voucher>(this.baseUrl, voucher).subscribe(saved => {
       this.vouchers.update(v => [...v, saved]);
     });
+    
   }
+  getVoucherById(voucherId: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/${voucherId}`);
+  }
+
+  // Create a new voucher
+  createVoucher(voucherData: any): Observable<any> {
+    return this.http.post<any>(this.baseUrl, voucherData);  // POST request to save the voucher
+  }
+  
 }
