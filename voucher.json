@@ -108,6 +108,25 @@
           "netAmount": 44512
         }
       ]
+    },
+    {
+      "id": "1744254053310",
+      "date": "2025-04-10",
+      "rows": [
+        {
+          "barcode": "B78453",
+          "itemName": "Pencil",
+          "batch": "B00001",
+          "unit": "pcs",
+          "quantity": 55,
+          "rate": 55225,
+          "amt": 3037375,
+          "totalDisc": 225,
+          "vat": 22225,
+          "netAmount": 3059375,
+          "expiryDate": "2025-12-31"
+        }
+      ]
     }
   ]
 }

@@ -134,32 +134,36 @@
   </div>
   <div *ngIf="showVouchersPopup" class="item-popup-overlay">
     <div class="voucher-popup">
-        <div class="popup-header">
-            <h3>Saved Vouchers</h3>
-            <button type="button" class="close-button" (click)="closeVoucherPopup()">&times;</button>
-          </div>
-      <ul>
-          <div class="popup-body">
-            <table>
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Date</th>
-                  <th>No. of items</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let voucher of voucherService.allVouchers()" >
-                  <td>{{ voucher.id }}</td>
-                  <td>{{ voucher.date}}</td>
-                  <td>{{ voucher.rows.length }} items</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-      </ul>
+      <div class="popup-header">
+        <h3>Saved Vouchers</h3>
+        <button type="button" class="close-button" (click)="closeVoucherPopup()">&times;</button>
+      </div>
+      <div class="popup-body">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Date</th>
+              <th>No. of items</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr 
+            *ngFor="let voucher of voucherService.allVouchers()" 
+            (click)="loadVoucherDetails(voucher.id + '')"
+            style="cursor: pointer;"
+          >
+          
+              <td>{{ voucher.id }}</td>
+              <td>{{ voucher.date }}</td>
+              <td>{{ voucher.rows.length }} items</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
+  
   <!-- Item Selection Popup -->
   <div *ngIf="showItemPopup" class="item-popup-overlay">
     <div class="item-popup">

@@ -25,9 +25,7 @@ export class VoucherComponent implements OnInit {
   voucherId: string = '';
   allFields: any;
   @ViewChild('addRowButton') addRowButton!: ElementRef;
-
-  // Item and batch data
-  items: any[] = []; // Data fetched through itemsservice
+  items: any[] = []; // data from itemsservice
 
   batches = [
     { id: '1', batchNo: 'B00001', expiryDate: '2025-12-31' },
@@ -60,7 +58,7 @@ export class VoucherComponent implements OnInit {
 
   // Method to generate a unique Voucher ID
   generateVoucherId() {
-    const timestamp = new Date().getTime();  // You can generate a Voucher ID based on timestamp
+    const timestamp = new Date().getTime();  //generate a Voucher ID based on timestamp
     this.voucherId = `V${timestamp}`;
   
   }
@@ -161,18 +159,12 @@ toggleVouchersPopup() {
   }
   itemSignals: { [key: number]: any } = {}; // object haru jasma row ko index anusar signal save garincha.
   batchSignals: { [key: number]: any } = {};
-
-  // Fixing the selectItem method to correctly set the itemName and barcode
   selectItem(item: any) {
     const row = this.rows.at(this.selectedRow) as FormGroup;
-
-    // Directly update the form control value
     row.patchValue({
       itemName: item.itemName,
       barcode: item.barcode,
     });
-
-    // Update itemSignals for placeholder binding 
     this.itemSignals[this.selectedRow] = item.itemName;
 
     console.log('Item Selected:', item);
@@ -181,8 +173,6 @@ toggleVouchersPopup() {
  
   selectBatch(batch: any) {
     const row = this.rows.at(this.selectedRow) as FormGroup;
-  
-    // Use patchValue to update batch and expiryDate in the form row
     row.patchValue({
       batch: batch.batchNo,
       expiryDate: batch.expiryDate
@@ -210,25 +200,54 @@ toggleVouchersPopup() {
     this.rows.clear();
     this.rows.push(row);
   }
+  loadVoucherDetails(voucherId: string) {
+    this.http.get<any>(`http://localhost:3004/vouchers/${voucherId}`).subscribe(
+      (voucherData) => {
+        this.voucherId = voucherData.id;
+        this.voucherForm.reset();
+        this.rows.clear(); // voucher ma vako matra dekhaune ho so remove existing rows
+  
+        voucherData.rows.forEach((row: any) => {
+          const rowForm = this.fb.group({
+            barcode: [row.barcode],
+            itemName: [row.itemName, Validators.required],
+            batch: [row.batch, Validators.required],
+            unit: [row.unit, Validators.required],
+            quantity: [row.quantity, [Validators.required, Validators.min(1)]],
+            rate: [row.rate, [Validators.required, Validators.min(0)]],
+            amt: [row.amt, Validators.required],
+            totalDisc: [row.totalDisc],
+            vat: [row.vat],
+            netAmount: [row.netAmount, Validators.required],
+            expiryDate: [row.expiryDate],
+          });
+  
+          this.rows.push(rowForm);
+        });
+  
+        this.closeVoucherPopup(); // Close the popup after loading
+      },
+      (error) => {
+        alert('Failed to load voucher details.');
+      }
+    );
+  }
+  
   onSubmit() {
     if (this.voucherForm.valid) {
       // Get all the rows from the form (the rows FormArray)
       const rows = this.voucherForm.get('rows')?.value;
-  
-      // Prepare the voucher object with date and rows
       const voucher = {
         id: String(Date.now()), // Unique ID based on timestamp
-        date: new Date().toISOString().split('T')[0], // Format date as YYYY-MM-DD
+        date: new Date().toISOString().split('T')[0], // idk this ask ai 
         rows: rows
       };
   
       // Send the entire voucher to the backend in one request
       this.http.post('http://localhost:3004/vouchers', voucher).subscribe(
         (response) => {
-          console.log('Voucher saved successfully:', response);
+
           alert('Voucher saved successfully!');
-          
-          // Optionally reset the form after saving
           this.voucherForm.reset();
           this.rows.clear();
           this.addRow(); // Add a new empty row if needed
