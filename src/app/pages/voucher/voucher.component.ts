@@ -159,11 +159,13 @@ toggleVouchersPopup() {
   }
   itemSignals: { [key: number]: any } = {}; // object haru jasma row ko index anusar signal save garincha.
   batchSignals: { [key: number]: any } = {};
+  unitSignals: {[key:number]:any}={};
   selectItem(item: any) {
     const row = this.rows.at(this.selectedRow) as FormGroup;
     row.patchValue({
       itemName: item.itemName,
       barcode: item.barcode,
+      unit: item.unit,
     });
     this.itemSignals[this.selectedRow] = item.itemName;
 
@@ -187,7 +189,7 @@ toggleVouchersPopup() {
       barcode: [billData.barcode],
       itemName: [billData.itemName, Validators.required],
       batch: [billData.batch, Validators.required],
-      unit: [billData.unit, Validators.required],
+      unit: [billData.unit],
       quantity: [billData.quantity, [Validators.required, Validators.min(1)]],
       rate: [billData.rate, [Validators.required, Validators.min(0)]],
       amt: [billData.amt, Validators.required],
@@ -238,7 +240,7 @@ toggleVouchersPopup() {
       // Get all the rows from the form (the rows FormArray)
       const rows = this.voucherForm.get('rows')?.value;
       const voucher = {
-        id: String(Date.now()), // Unique ID based on timestamp
+        id: this.voucherId, // Unique ID based on timestamp
         date: new Date().toISOString().split('T')[0], // idk this ask ai 
         rows: rows
       };

@@ -66,20 +66,9 @@
               </div>
             </td>
             <td>
-              <select formControlName="unit" class="input-field" (keydown.enter)="$event.preventDefault()">
-                <option value="" disabled>Select Unit</option>
-                <option value="kg">Kg</option>
-                <option value="dzn">dozen</option>
-                <option value="pcs">piece</option>
-                <option value="pack">packet</option>
-                <option value="pack">box</option>
-                
-  
-              </select>
-              <div *ngIf="row.get('unit')?.invalid && (row.get('unit')?.touched || row.get('unit')?.dirty)" class="error-message">
-                Unit is required
-              </div>
+              <input formControlName="unit" type="text" class="input-field" readonly />
             </td>
+              
             <td>
               <input formControlName="quantity" type="number" class="input-field"
                      (input)="calculateAmount(i)" (keydown.enter)="$event.preventDefault()" />
@@ -148,12 +137,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr 
-            *ngFor="let voucher of voucherService.allVouchers()" 
-            (click)="loadVoucherDetails(voucher.id + '')"
-            style="cursor: pointer;"
-          >
-          
+            <tr *ngFor="let voucher of voucherService.allVouchers()" (click)="loadVoucherDetails(voucher.id + '')" style="cursor: pointer;">
               <td>{{ voucher.id }}</td>
               <td>{{ voucher.date }}</td>
               <td>{{ voucher.rows.length }} items</td>
@@ -178,6 +162,7 @@
               <th>ID</th>
               <th>Item Name</th>
               <th>Barcode</th>
+              <th>Unit</th>
             </tr>
           </thead>
           <tbody>
@@ -185,6 +170,7 @@
               <td>{{ item.id }}</td>
               <td>{{ item.itemName }}</td>
               <td>{{ item.barcode }}</td>
+              <td>{{item.unit}}</td>
             </tr>
           </tbody>
         </table>

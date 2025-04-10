@@ -49,7 +49,7 @@ export class TopBarComponent {
     } else if (word === 'Others') {
       return ['Settings', 'User Roles', 'Configurations'];
     } else if (word === 'Sales') {
-      return ['Abbreviated Tax Invoice', 'Sales Tax Invoice', 'Export Sales Invoice', 'Cash Handout'];
+      return ['Abbreviated Tax Invoice', 'Voucher', 'Export Sales Invoice', 'Cash Handout'];
     } else if (word === 'Purchase') {
       return ['Purchase invoice', 'Import purchase invoice'];
     } else if (word === 'Payments') {
@@ -78,7 +78,7 @@ export class TopBarComponent {
         case 'Employee List':
         this.router.navigate(['/employee']);
         break;
-      case 'Sales Tax Invoice':
+      case 'Voucher':
         this.router.navigate(['/voucher'])
     }
   }

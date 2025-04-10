@@ -1,0 +1,8 @@
+{
+    "units": [
+  { "id": 1, "name": "pcs" },
+  { "id": 2, "name": "kg" },
+  { "id": 3, "name": "ltr" },
+  { "id": 4, "name": "dozen" }
+    ]
+}

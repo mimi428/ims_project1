@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ItemsService } from '../../service/items.service';
+import { UnitService } from '../../service/unit.service';
 
 @Component({
   selector: 'app-add-product',
@@ -11,12 +12,26 @@ import { ItemsService } from '../../service/items.service';
 })
 export class AddProductComponent { 
   itemForm: FormGroup;
-  constructor(private fb: FormBuilder, private itemsService: ItemsService) {
+  units: any[] = [];
+  constructor(private fb: FormBuilder, private itemsService: ItemsService, private unitService: UnitService) {
     this.itemForm = this.fb.group({
       itemName: ['', Validators.required],
-      barcode: ['', Validators.required]
+      barcode: ['', Validators.required],
+      unit:['']
     });
   }
+  ngOnInit() {
+    this.unitService.getUnits().subscribe(data => {
+      this.units = data;
+      console.log('Units loaded:', this.units);
+    });
+    this.loadUnits()
+  }
+  loadUnits() {
+    this.unitService.getUnits().subscribe((data) => {
+      this.units = data;
+    });}
+
   //json file ma store garna lai
   onSubmit() {
     if (this.itemForm.valid) {
@@ -30,7 +45,14 @@ export class AddProductComponent {
         }
       });
     }
+    if (this.itemForm.valid) {
+      this.unitService.addUnit(this.itemForm.value).subscribe(() => {
+        this.itemForm.reset();
+        this.loadUnits(); // refresh after add
+      });
+    }
   }
+
   selectedTab: string = 'detail'; // Default tab open 
   // Function to switch tabs
   selectTab(tab: string): void {

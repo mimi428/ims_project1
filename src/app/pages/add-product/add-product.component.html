@@ -60,6 +60,13 @@
                 <label for="barcode">Barcode:</label>
                 <input type="text" id="barcode" formControlName="barcode">
               </div>
+              <div class="form-row">
+                <label for="barcode">Unit:</label>
+                <select formControlName="unit" class="form-select">
+                  <option value="">unit select gara</option>
+                  <option *ngFor="let unit of units" [value]="unit.name">{{ unit.name }}</option>
+                </select>
+              </div>
               <button type="submit" class="btn-close">Add</button>
             </form>
           </div>
@@ -68,7 +75,7 @@
           <div class="tabs">
           <ul class="tab-button">
             <li>
-              <a (click)="selectTab('detail')" [class.active]="selectedTab === 'detail'">Detail Information</a>
+              <a (click)="selectTab('detail')" [class.active]="selectedTab === 'detail'">Unit Master</a>
             </li>
             <li>
               <a (click)="selectTab('alternate')" [class.active]="selectedTab === 'alternate'">Alternate Unit</a>
@@ -105,16 +112,6 @@
               <div class="form-group">
                   <label for="purchaseprice" class="form-label">Purchase Price :</label>
                   <input type="number" id="purchaseprice" class="form-input">
-              </div>
-          
-              <div class="form-group">
-                  <label for="labelMrp" class="form-label">Label MRP :</label>
-                  <input type="number" id="labelMrp" class="form-input">
-              </div>
-          
-              <div class="form-group">
-                  <label for="location" class="form-label">Location :</label>
-                  <input type="text"  class="form-input">
               </div>
           </div>
           </div>

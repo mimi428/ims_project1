@@ -1,44 +1,16 @@
 {
   "items": [
     {
-      "id": "25f7",
+      "id": "702a",
       "itemName": "Eraser",
-      "barcode": "B00111"
+      "barcode": "B00111",
+      "unit": "pcs"
     },
     {
-      "id": "40c2",
-      "itemName": "Sharpner",
-      "barcode": "B89562"
-    },
-    {
-      "id": "7403",
-      "itemName": "Compass",
-      "barcode": "b354267"
-    },
-    {
-      "id": "d0c5",
-      "itemName": "Pencil",
-      "barcode": "B78453"
-    },
-    {
-      "id": "d013",
-      "itemName": "Earphone",
-      "barcode": "B56473"
-    },
-    {
-      "id": "6e04",
-      "itemName": "Mobile",
-      "barcode": "B65465"
-    },
-    {
-      "id": "fb61",
-      "itemName": "Clip",
-      "barcode": "B546372"
-    },
-    {
-      "id": "80a8",
-      "itemName": "Book",
-      "barcode": "B434343"
+      "id": "0800",
+      "itemName": "Banana",
+      "barcode": "B78453",
+      "unit": "dozen"
     }
   ]
 }
