@@ -75,7 +75,7 @@
           <div class="tabs">
           <ul class="tab-button">
             <li>
-              <a (click)="selectTab('detail')" [class.active]="selectedTab === 'detail'">Unit Master</a>
+              <a (click)="selectTab('unitmaster')" [class.active]="selectedTab === 'unitmaster'">Unit Master</a>
             </li>
             <li>
               <a (click)="selectTab('alternate')" [class.active]="selectedTab === 'alternate'">Alternate Unit</a>
@@ -99,22 +99,23 @@
           </ul>
           </div>
 <br>
-          <div class="selection">
-          <div *ngIf="selectedTab === 'detail'" class="tab-pane">
+        <div class="selection">
+          <div *ngIf="selectedTab === 'unitmaster'" class="tab-pane">
             <div class="form-container">
-              <div class="form-group">
-                  <label for="StockUnit" class="form-label">Stock Unit :</label>
-                  <select id="StockUnit" class="form-select">
-                      <option>Ton</option>
-                      <option>Gram</option>
-                  </select>
-              </div>
-              <div class="form-group">
-                  <label for="purchaseprice" class="form-label">Purchase Price :</label>
-                  <input type="number" id="purchaseprice" class="form-input">
-              </div>
+              <form [formGroup]="itemForm" (ngSubmit)="addUnit()">
+                <div class="form-group">
+                  <label for="unitName">Unit Name:</label><br />
+                  <input id="unitName" type="text" formControlName="unitName"  class="form-input"/>
+                  <div *ngIf="itemForm.get('unitName')?.invalid && itemForm.get('unitName')?.touched">
+                    <small class="text-danger">Unit Name is required and must be at least 2 characters long.</small>
+                  </div>
+                </div>
+                <button type="submit" [disabled]="itemForm.invalid">Add Unit</button>
+              </form>
+            </div>
           </div>
-          </div>
+        </div>
+
           
           <div *ngIf="selectedTab === 'alternate'" class="tab-pane">
             <div class="input-barcode">
@@ -315,7 +316,7 @@
       </div>
     </div>
   </div>
-</div>
+
 
 
   

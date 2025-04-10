@@ -53,7 +53,9 @@ export class AddProductComponent {
     }
   }
 
-  selectedTab: string = 'detail'; // Default tab open 
+  
+
+  selectedTab: string = 'unitmaster'; // Default tab open 
   // Function to switch tabs
   selectTab(tab: string): void {
     this.selectedTab = tab;
