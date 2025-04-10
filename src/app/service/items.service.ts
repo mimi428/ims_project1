@@ -10,7 +10,7 @@ export class ItemsService {
 
   constructor(private http: HttpClient) {}
 
-  addItem(item: { itemName: string; barcode: string; unit: string }): Observable<any> {
+  addItem(item: { itemName: string; barcode: string; unitName: string }): Observable<any> {
     return this.http.post(this.apiUrl, item);
   }
   

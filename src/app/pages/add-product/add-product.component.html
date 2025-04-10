@@ -62,9 +62,9 @@
               </div>
               <div class="form-row">
                 <label for="barcode">Unit:</label>
-                <select formControlName="unit" class="form-select">
-                  <option value="">unit select gara</option>
-                  <option *ngFor="let unit of units" [value]="unit.name">{{ unit.name }}</option>
+                <select formControlName="unitName" class="form-select">
+                  <option value="">Select unit</option>
+                  <option *ngFor="let unit of units" [value]="unit.unitName">{{ unit.unitName }}</option>
                 </select>
               </div>
               <button type="submit" class="btn-close">Add</button>

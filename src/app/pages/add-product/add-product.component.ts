@@ -17,7 +17,6 @@ export class AddProductComponent {
     this.itemForm = this.fb.group({
       itemName: ['', Validators.required],
       barcode: ['', Validators.required],
-      unit:[''],
       unitName: ['', [Validators.required, Validators.minLength(2)]],
     });
   }
@@ -44,12 +43,6 @@ export class AddProductComponent {
         error: () => {
           alert('Failure are the pillars to success?');
         }
-      });
-    }
-    if (this.itemForm.valid) {
-      this.itemsService.addItem(this.itemForm.value).subscribe(() => {
-        this.itemForm.reset();
-       
       });
     }
   }

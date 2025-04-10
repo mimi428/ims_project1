@@ -159,6 +159,38 @@
           "netAmount": 10060
         }
       ]
+    },
+    {
+      "id": "V1744279276559",
+      "date": "2025-04-10",
+      "rows": [
+        {
+          "barcode": "B52641",
+          "itemName": "Orange",
+          "batch": "B00002",
+          "unitName": "Kg",
+          "quantity": 6541,
+          "rate": 626,
+          "amt": 4094666,
+          "totalDisc": 12,
+          "vat": 55,
+          "netAmount": 4094709,
+          "expiryDate": "2026-11-30"
+        },
+        {
+          "barcode": "B78488",
+          "itemName": "Noodles",
+          "batch": "B00001",
+          "expiryDate": "2025-12-31",
+          "unitName": "Box",
+          "quantity": 2054,
+          "rate": 22,
+          "amt": 45188,
+          "totalDisc": 25,
+          "vat": 2,
+          "netAmount": 45165
+        }
+      ]
     }
   ]
 }

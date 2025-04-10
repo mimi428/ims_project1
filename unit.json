@@ -1,48 +1,32 @@
 {
   "units": [
     {
-      "id": 1,
-      "name": "pcs"
-    },
-    {
-      "id": 2,
-      "name": "kg"
-    },
-    {
-      "id": 3,
-      "name": "ltr"
-    },
-    {
-      "id": 4,
-      "name": "dozen"
-    },
-    {
-      "id": "0d09",
-      "unitName": "mahi"
-    },
-    {
-      "id": "8d1f",
-      "unitName": "mahi"
-    },
-    {
-      "id": "6138",
+      "id": "bf16",
       "unitName": "packet"
     },
     {
-      "id": "d62e",
-      "unitName": "packet"
+      "id": "773e",
+      "unitName": "Dozen"
     },
     {
-      "id": "c5c5",
-      "unitName": "ton"
+      "id": "c8d0",
+      "unitName": "Kg"
     },
     {
-      "id": "4e4e",
-      "unitName": "ton"
+      "id": "062e",
+      "unitName": "Piece"
     },
     {
-      "id": "0fbc",
-      "unitName": "why"
+      "id": "bb1d",
+      "unitName": "Box"
+    },
+    {
+      "id": "d746",
+      "unitName": "litre"
+    },
+    {
+      "id": "18b1",
+      "unitName": "gram"
     }
   ]
 }

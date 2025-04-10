@@ -72,7 +72,7 @@ export class VoucherComponent implements OnInit {
       itemName: ['',Validators.required],
       batch: ['', Validators.required],
       expiryDate: [''],
-      unit: ['', Validators.required],
+      unitName: ['', Validators.required],
       quantity: [null, [Validators.required, Validators.min(1)]],
       rate: [null, [Validators.required, Validators.min(0)]],
       amt: [null, Validators.required],
@@ -165,7 +165,7 @@ toggleVouchersPopup() {
     row.patchValue({
       itemName: item.itemName,
       barcode: item.barcode,
-      unit: item.unit,
+      unitName: item.unitName,
     });
     this.itemSignals[this.selectedRow] = item.itemName;
 
@@ -189,7 +189,7 @@ toggleVouchersPopup() {
       barcode: [billData.barcode],
       itemName: [billData.itemName, Validators.required],
       batch: [billData.batch, Validators.required],
-      unit: [billData.unit],
+      unitName: [billData.unitName],
       quantity: [billData.quantity, [Validators.required, Validators.min(1)]],
       rate: [billData.rate, [Validators.required, Validators.min(0)]],
       amt: [billData.amt, Validators.required],
@@ -214,7 +214,7 @@ toggleVouchersPopup() {
             barcode: [row.barcode],
             itemName: [row.itemName, Validators.required],
             batch: [row.batch, Validators.required],
-            unit: [row.unit, Validators.required],
+            unitName: [row.unitName, Validators.required],
             quantity: [row.quantity, [Validators.required, Validators.min(1)]],
             rate: [row.rate, [Validators.required, Validators.min(0)]],
             amt: [row.amt, Validators.required],

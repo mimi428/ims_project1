@@ -1,34 +1,34 @@
 {
   "items": [
     {
-      "id": "702a",
-      "itemName": "Eraser",
-      "barcode": "B00111",
-      "unit": "pcs"
-    },
-    {
-      "id": "0800",
-      "itemName": "Banana",
-      "barcode": "B78453",
-      "unit": "dozen"
-    },
-    {
-      "id": "2ce0",
-      "itemName": "Eraser",
-      "barcode": "B00111",
-      "unit": "pcs"
-    },
-    {
-      "id": "d86a",
+      "id": "cd2f",
       "itemName": "Clip",
-      "barcode": "b354267",
-      "unit": "dozen"
+      "barcode": "B00111",
+      "unitName": "Piece"
     },
     {
-      "id": "b8c5",
-      "itemName": "Clip",
-      "barcode": "b354267",
-      "unit": "dozen"
+      "id": "fa48",
+      "itemName": "Eraser",
+      "barcode": "B56473",
+      "unitName": "Box"
+    },
+    {
+      "id": "ce71",
+      "itemName": "Orange",
+      "barcode": "B52641",
+      "unitName": "Kg"
+    },
+    {
+      "id": "71c6",
+      "itemName": "Noodles",
+      "barcode": "B78488",
+      "unitName": "Box"
+    },
+    {
+      "id": "4e6b",
+      "itemName": "Orange",
+      "barcode": "B00111",
+      "unitName": "gram"
     }
   ]
 }
