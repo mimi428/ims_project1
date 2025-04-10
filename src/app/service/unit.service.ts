@@ -13,8 +13,9 @@ export class UnitService {
     return this.http.get<any[]>(this.baseUrl);
   }
 
-  addUnit(unit: any): Observable<any> {
-    return this.http.post(this.baseUrl, unit);
+  addUnit(unit: { unitName: string }) {
+    return this.http.post<any>('http://localhost:3009/units', unit); // Replace with your actual API endpoint
   }
+
 }
 

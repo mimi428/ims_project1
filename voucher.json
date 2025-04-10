@@ -127,6 +127,38 @@
           "expiryDate": "2025-12-31"
         }
       ]
+    },
+    {
+      "id": "V1744276422132",
+      "date": "2025-04-10",
+      "rows": [
+        {
+          "barcode": "b354267",
+          "itemName": "Clip",
+          "batch": "B00002",
+          "unit": "dozen",
+          "quantity": 52,
+          "rate": 225,
+          "amt": 11700,
+          "totalDisc": 2222,
+          "vat": 222,
+          "netAmount": 9700,
+          "expiryDate": "2026-11-30"
+        },
+        {
+          "barcode": "B00111",
+          "itemName": "Eraser",
+          "batch": "B00003",
+          "expiryDate": "2026-03-10",
+          "unit": "pcs",
+          "quantity": 2515,
+          "rate": 4,
+          "amt": 10060,
+          "totalDisc": null,
+          "vat": null,
+          "netAmount": 10060
+        }
+      ]
     }
   ]
 }

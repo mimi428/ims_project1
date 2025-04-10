@@ -11,6 +11,24 @@
       "itemName": "Banana",
       "barcode": "B78453",
       "unit": "dozen"
+    },
+    {
+      "id": "2ce0",
+      "itemName": "Eraser",
+      "barcode": "B00111",
+      "unit": "pcs"
+    },
+    {
+      "id": "d86a",
+      "itemName": "Clip",
+      "barcode": "b354267",
+      "unit": "dozen"
+    },
+    {
+      "id": "b8c5",
+      "itemName": "Clip",
+      "barcode": "b354267",
+      "unit": "dozen"
     }
   ]
 }

@@ -102,15 +102,12 @@
         <div class="selection">
           <div *ngIf="selectedTab === 'unitmaster'" class="tab-pane">
             <div class="form-container">
-              <form [formGroup]="itemForm" (ngSubmit)="addUnit()">
+              <form [formGroup]="itemForm" (ngSubmit)="saveUnit()">
                 <div class="form-group">
                   <label for="unitName">Unit Name:</label><br />
                   <input id="unitName" type="text" formControlName="unitName"  class="form-input"/>
-                  <div *ngIf="itemForm.get('unitName')?.invalid && itemForm.get('unitName')?.touched">
-                    <small class="text-danger">Unit Name is required and must be at least 2 characters long.</small>
-                  </div>
                 </div>
-                <button type="submit" [disabled]="itemForm.invalid">Add Unit</button>
+                <button type="submit" class="btn">Add Unit</button>
               </form>
             </div>
           </div>

@@ -17,7 +17,8 @@ export class AddProductComponent {
     this.itemForm = this.fb.group({
       itemName: ['', Validators.required],
       barcode: ['', Validators.required],
-      unit:['']
+      unit:[''],
+      unitName: ['', [Validators.required, Validators.minLength(2)]],
     });
   }
   ngOnInit() {
@@ -46,14 +47,33 @@ export class AddProductComponent {
       });
     }
     if (this.itemForm.valid) {
-      this.unitService.addUnit(this.itemForm.value).subscribe(() => {
+      this.itemsService.addItem(this.itemForm.value).subscribe(() => {
         this.itemForm.reset();
-        this.loadUnits(); // refresh after add
+       
       });
     }
   }
-
+  saveUnit() {
+    console.log('Save Unit method called');
+    if (this.itemForm.get('unitName')?.valid) { // Validate only the unitName field
+      const newUnit = { unitName: this.itemForm.get('unitName')?.value };
+      this.unitService.addUnit(newUnit).subscribe(
+        (response) => {
+          console.log('Unit saved successfully:', response);
+          this.units.push(response); // Add the new unit to the dropdown
+          this.itemForm.get('unitName')?.reset(); // Reset only the unitName field
+        },
+        (error) => {
+          console.error('Error saving unit:', error);
+          alert('Failed to save unit. Please try again.');
+        }
+      );
+    } else {
+      alert('Please enter a valid unit name.');
+    }
+  }
   
+ 
 
   selectedTab: string = 'unitmaster'; // Default tab open 
   // Function to switch tabs
