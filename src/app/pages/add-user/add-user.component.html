@@ -1,1 +1,18 @@
-<p>add-user works!</p>
+<h3>Add New User</h3>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <label>Name:</label>
+  <input formControlName="name" type="text" /><br />
+
+  <label>Email:</label>
+  <input formControlName="email" type="email" /><br />
+  <label>Contact</label>
+  <input formControlName="contact" type="contact" /><br />
+
+  <label>Role:</label>
+  <input formControlName="role" type="text" /><br />
+
+  <label>Password</label>
+  <input formControlName="password" type="password" /><br />
+
+  <button type="submit" [disabled]="userForm.invalid">Save</button>
+</form>

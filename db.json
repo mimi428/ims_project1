@@ -1,19 +1,12 @@
 {
-    "users": [
-      {
-        "id": 1,
-        "username": "mihika",
-        "password": "mihika333"
-      },
-      {
-        "id": 2,
-        "username": "admin",
-        "password": "admin"
-      },
-      {
-        "id": 3,
-        "username": "mahi",
-        "password": "mahimon"
-      }
-    ]
-  }
+  "users": [
+    {
+      "id": "334c",
+      "name": "mahi",
+      "email": "mahi@mail.com",
+      "contact": "34856824112",
+      "role": "assistant",
+      "password": "mahimahi"
+    }
+  ]
+}
