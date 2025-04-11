@@ -13,6 +13,8 @@ import { AddEmployeeComponent } from './pages/add-employee/add-employee.componen
 import { ViewComponent } from './pages/view/view.component';
 import { BillingComponent } from './pages/billing/billing.component';
 import { VoucherComponent } from './pages/voucher/voucher.component';
+import { UserComponent } from './pages/user/user.component';
+import { AddUserComponent } from './pages/add-user/add-user.component';
 
 export const routes: Routes = [
   {
@@ -36,7 +38,9 @@ export const routes: Routes = [
       { path: 'add-employee', component:AddEmployeeComponent},
       { path: 'view', component:ViewComponent},
       {path: 'billing', component:BillingComponent},
-      {path: 'voucher', component:VoucherComponent}
+      {path: 'voucher', component:VoucherComponent},
+      {path: 'user', component:UserComponent},
+      {path: 'add-user', component:AddUserComponent}
 
       ]
     }

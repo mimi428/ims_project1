@@ -23,7 +23,7 @@ export class TopBarComponent {
     } else if (section === 'transactions') {
       this.lowerNavbarWords = ['Sales', 'Purchase', 'Payments'];
     } else if (section === 'config') {
-      this.lowerNavbarWords = ['Employee Manager', 'Master Migration'];
+      this.lowerNavbarWords = ['User Management', 'Master Migration'];
     } else {
       this.lowerNavbarWords = [];
     }
@@ -56,8 +56,8 @@ export class TopBarComponent {
       return ['Asset Register', 'Depreciation Info', 'Maintenance Schedule'];
     } else if (word === 'Others') {
       return ['Settings', 'User Roles', 'Configurations'];
-    } else if (word === 'Employee Manager') {
-      return ['Employee List'];
+    } else if (word === 'User Management') {
+      return ['Employee List', 'User Manager'];
     } 
     else {
       return [];
@@ -78,6 +78,9 @@ export class TopBarComponent {
         case 'Employee List':
         this.router.navigate(['/employee']);
         break;
+        case 'User Manager':
+          this.router.navigate(['/user']);
+          break;
       case 'Voucher':
         this.router.navigate(['/voucher'])
     }
