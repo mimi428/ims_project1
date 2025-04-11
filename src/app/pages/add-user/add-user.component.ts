@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../service/auth.service';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -14,7 +14,7 @@ export class AddUserComponent {
   
   userForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.userForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -29,7 +29,7 @@ export class AddUserComponent {
       this.authService.addUser(this.userForm.value).subscribe({
         next: () => {
           alert('User added successfully!');
-          this.userForm.reset();
+          this.router.navigate(['/user']);
         },
         error: (err) => {
           alert('Failed to add user: ' + err.message);

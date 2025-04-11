@@ -1,31 +1,47 @@
-<div class="header">
-    <h5>New Employee</h5>
-    <button class="btn-danger">Close</button>
-</div>
-<form [formGroup]="AddemployeeForm">
-    <div class="form-grid">
-        <label>Emp Id</label>
-        <input type="text" formControlName="Eid">
-
-        <label>Name</label>
-        <input type="text" formControlName="clientName">
-
-        <label>Contact No</label>
-        <input type="text" formControlName="clientName">
-
-        <label>Email</label>
-        <input type="text" formControlName="emailId">
-        
-        <label>Role</label>
-        <input type="text" formControlName="role">
-
-        <label>Gender</label>
-        <input type="radio" formControlName="male">Male
-        <input type="radio" formControlName="female">Female
-        
-
-        <button type="submit" class="btn-primary">Submit</button>
+<div class="card">
+    <div class="card-header">
+        <h5>Add Employee</h5>
+        <button class="btn" [routerLink]="['/employee']">Back</button>
     </div>
-</form>
+    <div class="card-body">
+        <div class="form-group">
+            <form [formGroup]="AddemployeeForm">
+                <label>Name:</label>
+                <input formControlName="employeeName" type="text" /><br />
+                <div *ngIf="AddemployeeForm.get('employeeName')?.touched && AddemployeeForm.get('employeeName')?.invalid" class="error-msg">
+                    Name is required.
+                </div>
+
+                <label>Contact:</label>
+                <input formControlName="contactNo" type="number"/><br/>
+                <div *ngIf="AddemployeeForm.get('contactNo')?.touched && AddemployeeForm.get('contactNo')?.invalid" class="error-msg">
+                    <span *ngIf="AddemployeeForm.get('contactNo')?.errors?.['required']">Contact is required.</span>
+                    <span *ngIf="AddemployeeForm.get('contactNo')?.errors?.['minlength']">Invalid</span>
+                    <span *ngIf="AddemployeeForm.get('contactNo')?.errors?.['maxlength']">Invalid</span>
+                  </div>
+
+                <label>Email:</label>
+                <input formControlName="emailId" type="email"/><br />
+                <div *ngIf="AddemployeeForm.get('emailId')?.touched && AddemployeeForm.get('emailId')?.invalid" class="error-msg">
+                    <span *ngIf="AddemployeeForm.get('emailId')?.errors?.['required']">Email is required.</span>
+                    <span *ngIf="AddemployeeForm.get('emailId')?.errors?.['email']">Invalid email format.</span>
+                </div>
+
+                <label>Role:</label>
+                <input formControlName="role" type="text"/><br/>
+                <div *ngIf="AddemployeeForm.get('role')?.touched && AddemployeeForm.get('role')?.invalid" class="error-msg">
+                    Role is required.
+                </div>
+                
+                <label>Gender:</label>
+                <input formControlName="gender" type="text"/><br/>
+                <div *ngIf="AddemployeeForm.get('gender')?.touched && AddemployeeForm.get('gender')?.invalid" class="error-msg">
+                    Role is required.
+                </div>
+                <button type="submit" class="save-btn" [disabled]="AddemployeeForm.invalid">Save</button>
+              </form>      
+        </div>    
+    </div>
+</div>
 
 

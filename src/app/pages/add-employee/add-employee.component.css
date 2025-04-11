@@ -1,0 +1,80 @@
+.card {
+    max-width: 400px;
+    margin: 30px auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #fff;
+  }
+  .card-header {
+    background-color: #336799;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+  }
+  .card-header h5 {
+    margin: 0;
+    font-size: 18px;
+  }
+  .btn {
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .btn:hover {
+    background-color: #1aa7c4;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .form-group label {
+    display:inline;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border 0.2s ease-in-out;
+  }
+  
+  .form-group input:focus {
+    border-color: #6c63ff;
+    outline: none;
+  }
+  
+  .error-msg {
+    color:red;
+    font-size: 12px;
+  }
+  
+  .save-btn {
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-left: 40%;
+  }
+  
+  .save-btn:hover {
+    cursor:pointer;
+  }
+  
+  
+  
+  

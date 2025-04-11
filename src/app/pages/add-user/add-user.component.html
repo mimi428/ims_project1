@@ -25,9 +25,8 @@
                     <span *ngIf="userForm.get('contact')?.errors?.['required']">Contact is required.</span>
                     <span *ngIf="userForm.get('contact')?.errors?.['minlength']">Invalid</span>
                     <span *ngIf="userForm.get('contact')?.errors?.['maxlength']">Invalid</span>
-                  </div>
+                </div>
                 
-              
                 <label>Role:</label>
                 <input formControlName="role" type="text"/><br/>
                 <div *ngIf="userForm.get('role')?.touched && userForm.get('role')?.invalid" class="error-msg">
@@ -39,7 +38,7 @@
                 <div *ngIf="userForm.get('password')?.touched && userForm.get('password')?.invalid" class="error-msg">
                     <span *ngIf="userForm.get('password')?.errors?.['required']">Password is required.</span>
                 </div>
-                <button type="submit" class="btn" [disabled]="userForm.invalid">Save</button>
+                <button type="submit" class="save-btn" [disabled]="userForm.invalid">Save</button>
               </form>      
         </div>    
     </div>
