@@ -7,6 +7,22 @@
       "contact": "34856824112",
       "role": "assistant",
       "password": "mahimahi"
+    },
+    {
+      "id": "d26d",
+      "name": "Mihika",
+      "email": "mihika@mail.com",
+      "contact": "9813919990",
+      "role": "Manager",
+      "password": "mihika333"
+    },
+    {
+      "id": "327e",
+      "name": "Manij",
+      "email": "Manij@mail.com",
+      "contact": 214325,
+      "role": "customer",
+      "password": "12345"
     }
   ]
 }

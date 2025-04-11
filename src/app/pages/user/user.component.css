@@ -40,3 +40,10 @@ body {
 .user-table th {
     background-color: #f2f2f2;
 }
+.btn {
+    background-color: #27c3e2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

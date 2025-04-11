@@ -15,7 +15,7 @@ import { finalize } from 'rxjs/operators';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  userName = signal('');
+  name = signal('');
   password = signal('');
   loginError = signal('');
   isLoading = signal(false);
@@ -26,11 +26,11 @@ export class LoginComponent {
     private authService: AuthService
   ) {
     this.loginForm = this.fb.group({
-      userName: ['', Validators.required],
+      name: ['', Validators.required],
       password: ['', Validators.required]
     });
 
-    this.loginForm.get('userName')?.valueChanges.subscribe(value => this.userName.set(value));
+    this.loginForm.get('name')?.valueChanges.subscribe(value => this.name.set(value));
     this.loginForm.get('password')?.valueChanges.subscribe(value => this.password.set(value));
   }
   
@@ -42,10 +42,10 @@ export class LoginComponent {
     this.isLoading.set(true);
     this.loginError.set('');
 
-    const userName = this.userName();
+    const name = this.name();
     const password = this.password();
 
-    this.authService.login(userName, password)
+    this.authService.login(name, password)
       .pipe(
         finalize(() => this.isLoading.set(false))
       )

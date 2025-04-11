@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-header">
             <h5>Users</h5>
-            <button class="btn-primary" [routerLink]="['/add-user']">Add New</button>
+            <button class="btn" [routerLink]="['/add-user']">Add New</button>
         </div>
         <div class="card-body">
             <table class="user-table">
@@ -11,7 +11,25 @@
                         <th>S.N.</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Contact</th>
                         <th>Role</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
+                <tbody>
+                    <tr *ngFor="let user of users; let i = index">
+                      <td>{{ i + 1 }}</td>
+                      <td>{{ user.name }}</td>
+                      <td>{{ user.email }}</td>
+                      <td>{{ user.contact}}</td>
+                      <td>{{ user.role }}</td>
+                      <td>
+                        <button class="btn">Edit</button>
+                        <button class="btn">Delete</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>

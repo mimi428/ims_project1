@@ -1,18 +1,46 @@
-<h3>Add New User</h3>
-<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-  <label>Name:</label>
-  <input formControlName="name" type="text" /><br />
-
-  <label>Email:</label>
-  <input formControlName="email" type="email" /><br />
-  <label>Contact</label>
-  <input formControlName="contact" type="contact" /><br />
-
-  <label>Role:</label>
-  <input formControlName="role" type="text" /><br />
-
-  <label>Password</label>
-  <input formControlName="password" type="password" /><br />
-
-  <button type="submit" [disabled]="userForm.invalid">Save</button>
-</form>
+<div class="card">
+    <div class="card-header">
+        <h5>Add Users</h5>
+        <button class="btn" [routerLink]="['/user']">Back</button>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                <label>Name:</label>
+                <input formControlName="name" type="text" /><br />
+                <div *ngIf="userForm.get('name')?.touched && userForm.get('name')?.invalid" class="error-msg">
+                    Name is required.
+                </div>
+              
+                <label>Email:</label>
+                <input formControlName="email" type="email"/><br />
+                <div *ngIf="userForm.get('email')?.touched && userForm.get('email')?.invalid" class="error-msg">
+                    <span *ngIf="userForm.get('email')?.errors?.['required']">Email is required.</span>
+                    <span *ngIf="userForm.get('email')?.errors?.['email']">Invalid email format.</span>
+                </div>
+              
+                <label>Contact:</label>
+                <input formControlName="contact" type="number"/><br/>
+                <div *ngIf="userForm.get('contact')?.touched && userForm.get('contact')?.invalid" class="error-msg">
+                    <span *ngIf="userForm.get('contact')?.errors?.['required']">Contact is required.</span>
+                    <span *ngIf="userForm.get('contact')?.errors?.['minlength']">Invalid</span>
+                    <span *ngIf="userForm.get('contact')?.errors?.['maxlength']">Invalid</span>
+                  </div>
+                
+              
+                <label>Role:</label>
+                <input formControlName="role" type="text"/><br/>
+                <div *ngIf="userForm.get('role')?.touched && userForm.get('role')?.invalid" class="error-msg">
+                    Role is required.
+                </div>
+              
+                <label>Password:</label>
+                <input formControlName="password" type="password" /><br />
+                <div *ngIf="userForm.get('password')?.touched && userForm.get('password')?.invalid" class="error-msg">
+                    <span *ngIf="userForm.get('password')?.errors?.['required']">Password is required.</span>
+                </div>
+                <button type="submit" class="btn" [disabled]="userForm.invalid">Save</button>
+              </form>      
+        </div>    
+    </div>
+</div>
