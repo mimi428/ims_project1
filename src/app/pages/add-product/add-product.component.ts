@@ -18,6 +18,8 @@ export class AddProductComponent {
       itemName: ['', Validators.required],
       barcode: ['', Validators.required],
       unitName: ['', [Validators.required, Validators.minLength(2)]],
+      conFactor:[''],
+      alternateUnit:['']
     });
   }
   ngOnInit() {

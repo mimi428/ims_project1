@@ -86,9 +86,14 @@
 .chart-wrapper {
   display: flex;
   gap: 20px;
+  padding:20px;
 }
 .chart {
+  padding: 10px;
   width: 50%;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  
 }
 .chart h6 {
   text-align: center;
@@ -102,7 +107,6 @@
   height: 100%; 
 }
 .chart.pie canvas {
-  width: 300px !important;
-  height: 300px !important;
+  width: 350px !important;
+  height: 350px !important;
 }
-

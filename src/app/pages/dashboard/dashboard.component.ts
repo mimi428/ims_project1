@@ -24,21 +24,23 @@ export class DashboardComponent implements AfterViewInit {
       type: 'bar',
       data: {
         labels: [
-          ['Real', 'Juice'],
-          ['Electrolyte', 'Beverages'],
+          ['Real juice'],
+          ['Electrolyte Beverages'],
           ['Soft','Drinks'],
           ['Aprilsdfjvahbukhvb'],
           ['Mayudwbausdb']
         ],
         datasets: [{
           label: 'Drink Record',
-          data: [190, 808, 509, 365, 702],
+          data: [190, 908, 509, 365, 702],
           backgroundColor: '#336799',
+          hoverBackgroundColor:'rgba(96, 171, 231, 0.467)',
           borderRadius: 20
         }]
       },
       options: {
         responsive: true,
+        indexAxis: 'x',
         plugins: {
           title: {
             display: true,
@@ -65,7 +67,7 @@ export class DashboardComponent implements AfterViewInit {
         datasets: [{
           label: 'This Vs That',
           data: [40, 35, 25],
-          backgroundColor: ['#4CAF50', '#FF9800', '#9C27B0'],
+          backgroundColor: ['#854764', '#336799', 'pink'],
         }]
       },
       options: {

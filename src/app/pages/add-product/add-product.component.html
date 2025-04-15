@@ -102,7 +102,7 @@
         <div class="selection">
           <div *ngIf="selectedTab === 'unitmaster'" class="tab-pane">
             <div class="form-container">
-              <form [formGroup]="itemForm" (ngSubmit)="saveUnit()">
+              <form [formGroup]="itemForm" >
                 <div class="form-group">
                   <label for="unitName">Unit Name:</label><br />
                   <input id="unitName" type="text" formControlName="unitName"  class="form-input"/>
@@ -113,18 +113,22 @@
           </div>
         </div>
 
-          
+        <form [formGroup]="itemForm">
           <div *ngIf="selectedTab === 'alternate'" class="tab-pane">
-            <div class="input-barcode">
-              <label for="subItem">Sub Item:</label>
-              <input type="text" id="subItem" class="input-field" [formControl]="subItemControl">
-              <br>
-              <label for="yield">Yield(%):</label>
-              <input type="text" id="yield" class="input-field" [formControl]="yieldControl">
-              <button class="btn btn-info1" (click)="addEntry()">Add</button>
+            <div class="input-alt">
+                <label for="unit">Unit:</label>
+                <select formControlName="unitName" class="form-select">
+                  <option value="">Select unit</option>
+                  <option *ngFor="let unit of units" [value]="unit.unitName">{{ unit.unitName }}</option>
+                </select><br>
+              <label for="barcode">Conversion Factor:</label>
+              <input formControlName="conFactor" type="number" placeholder="Conversion Factor" /><br><br>
+              <label for="barcode">Alternate Unit:</label>
+              <input formControlName="alternateUnit" placeholder="Alternate Unit" />
             </div>
           </div>
-
+      </form>
+          
           <div *ngIf="selectedTab === 'inventory'" class="tab-pane">
             <div class="inventory-control">
               <!-- for form side -->
@@ -312,8 +316,6 @@
         </div>
       </div>
     </div>
-  </div>
-
 
 
   
