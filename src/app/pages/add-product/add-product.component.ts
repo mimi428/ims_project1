@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ItemsService } from '../../service/items.service';
 import { UnitService } from '../../service/unit.service';
+import { AltunitService } from '../../service/altunit.service';
+import { UnitConversion } from '../../model/Altunit';
 
 @Component({
   selector: 'app-add-product',
@@ -12,15 +14,20 @@ import { UnitService } from '../../service/unit.service';
 })
 export class AddProductComponent { 
   itemForm: FormGroup;
+  altunitForm:FormGroup;
   units: any[] = [];
-  constructor(private fb: FormBuilder, private itemsService: ItemsService, private unitService: UnitService) {
+  constructor(private fb: FormBuilder, private itemsService: ItemsService, private unitService: UnitService, private altunitService: AltunitService) {
     this.itemForm = this.fb.group({
       itemName: ['', Validators.required],
       barcode: ['', Validators.required],
       unitName: ['', [Validators.required, Validators.minLength(2)]],
-      conFactor:[''],
-      alternateUnit:['']
     });
+    this.altunitForm = this.fb.group({
+    unitName: ['', [Validators.required, Validators.minLength(2)]],
+    conFactor:[''],
+    alternateUnit:['']
+    });
+    
   }
   ngOnInit() {
     this.unitService.getUnits().subscribe(data => {
@@ -48,15 +55,28 @@ export class AddProductComponent {
       });
     }
   }
+  onOkay() {
+    if (this.altunitForm.valid) {
+      const formData: UnitConversion = this.altunitForm.value;
+      this.altunitService.saveUnitConversion(formData).subscribe({
+        next: () => {
+          alert('Added successfully!');
+          this.itemForm.reset();
+        },
+        error: () => {
+          alert('Failure are the pillars to success?');
+        }
+      });
+    }
+  }
   saveUnit() {
-    console.log('Save Unit method called');
-    if (this.itemForm.get('unitName')?.valid) { // Validate only the unitName field
+    if (this.itemForm.get('unitName')?.valid) { 
       const newUnit = { unitName: this.itemForm.get('unitName')?.value };
       this.unitService.addUnit(newUnit).subscribe(
         (response) => {
           console.log('Unit saved successfully:', response);
-          this.units.push(response); // Add the new unit to the dropdown
-          this.itemForm.get('unitName')?.reset(); // Reset only the unitName field
+          this.units.push(response); 
+          this.itemForm.get('unitName')?.reset(); 
         },
         (error) => {
           console.error('Error saving unit:', error);

@@ -113,7 +113,7 @@
           </div>
         </div>
 
-        <form [formGroup]="itemForm">
+        <form [formGroup]="altunitForm" (ngSubmit)="onOkay()">
           <div *ngIf="selectedTab === 'alternate'" class="tab-pane">
             <div class="input-alt">
                 <label for="unit">Unit:</label>
@@ -124,7 +124,8 @@
               <label for="barcode">Conversion Factor:</label>
               <input formControlName="conFactor" type="number" placeholder="Conversion Factor" /><br><br>
               <label for="barcode">Alternate Unit:</label>
-              <input formControlName="alternateUnit" placeholder="Alternate Unit" />
+              <input formControlName="alternateUnit" placeholder="Alternate Unit" /> <br>
+              <button type="submit" class="btn-close">Save</button>
             </div>
           </div>
       </form>

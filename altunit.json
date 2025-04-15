@@ -1,0 +1,16 @@
+{
+  "unitConversions": [
+    {
+      "id": "28c0",
+      "unitName": "Piece",
+      "conFactor": 12,
+      "alternateUnit": "Dozen"
+    },
+    {
+      "id": "24a2",
+      "unitName": "Kg",
+      "conFactor": 100,
+      "alternateUnit": "Ton"
+    }
+  ]
+}
