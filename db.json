@@ -23,6 +23,22 @@
       "contact": 2341235,
       "role": "svadv",
       "password": "csdsd"
+    },
+    {
+      "id": "88b9",
+      "name": "Ram",
+      "email": "ram@gmail.com",
+      "contact": 31284625,
+      "role": "waiter",
+      "password": "123"
+    },
+    {
+      "id": "1140",
+      "name": "Jeena",
+      "email": "jee@mail",
+      "contact": 87248235,
+      "role": "salesgirl",
+      "password": "jee"
     }
   ]
 }
