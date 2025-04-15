@@ -23,11 +23,18 @@ export class DashboardComponent implements AfterViewInit {
     this.barchart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: ['Jan', 'Feb', 'March', 'April', 'May'],
+        labels: [
+          ['Real', 'Juice'],
+          ['Electrolyte', 'Beverages'],
+          ['Soft','Drinks'],
+          ['Aprilsdfjvahbukhvb'],
+          ['Mayudwbausdb']
+        ],
         datasets: [{
-          label: 'Visits',
-          data: [100, 190, 309, 565, 702],
-          backgroundColor: '#336799'
+          label: 'Drink Record',
+          data: [190, 808, 509, 365, 702],
+          backgroundColor: '#336799',
+          borderRadius: 20
         }]
       },
       options: {
@@ -35,13 +42,13 @@ export class DashboardComponent implements AfterViewInit {
         plugins: {
           title: {
             display: true,
-            text: 'Monthly Visits'
+            text: 'RECORDS'
           }
         },
         scales: {
           y: {
             beginAtZero: true,
-            max: 1000 // ✅ Limits Y-axis to 100
+            max: 1000
           }
         }
       }
@@ -54,11 +61,11 @@ export class DashboardComponent implements AfterViewInit {
     this.piechart = new Chart(ctx, {
       type: 'pie',
       data: {
-        labels: ['Debtors', 'Creditors', 'Others'],
+        labels: ['Today', 'Tomorrow', 'Others'],
         datasets: [{
-          label: 'Debtors vs Creditors',
+          label: 'This Vs That',
           data: [40, 35, 25],
-          backgroundColor: ['#4CAF50', '#FF9800', '#9C27B0']
+          backgroundColor: ['#4CAF50', '#FF9800', '#9C27B0'],
         }]
       },
       options: {
@@ -66,7 +73,7 @@ export class DashboardComponent implements AfterViewInit {
         plugins: {
           title: {
             display: true,
-            text: 'Debtors Vs Creditors'
+            text: 'THIS VS THAT'
           }
         }
       }
