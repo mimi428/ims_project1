@@ -18,6 +18,11 @@ export class ItemsService {
   getItems(): Observable<Item[]> {
     return this.http.get<Item[]>(this.apiUrl); 
   }
- 
+  deleteItems(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+  updateItem(id: string, updatedItem: Item): Observable<Item> {
+    return this.http.put<Item>(`${this.apiUrl}/${id}`, updatedItem);
+  }
   
 }

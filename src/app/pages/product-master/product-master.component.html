@@ -64,6 +64,7 @@
                   <th>Item Name</th>
                   <th>Barcode</th>
                   <th>Unit</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -72,6 +73,11 @@
                   <td>{{ item.itemName }}</td>
                   <td>{{ item.barcode }}</td>
                   <td>{{ item.unitName }}</td>
+                  <td>
+                    <button class="btn-primary" ([routerLink]="['/add-product']")>Edit</button>
+                    &nbsp;
+                    <button class="btn-danger" (click)="onDelete(item.id)" >Delete</button>
+                </td>
                 </tr>
               </tbody>
             </table>
