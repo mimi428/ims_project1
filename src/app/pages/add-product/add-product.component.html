@@ -67,16 +67,13 @@
                   <option *ngFor="let unit of units" [value]="unit.unitName">{{ unit.unitName }}</option>
                 </select>
               </div>
-              <button type="submit" class="btn-close">Add</button>
             </form>
           </div>
 
           <br><br>
           <div class="tabs">
           <ul class="tab-button">
-            <li>
-              <a (click)="selectTab('unitmaster')" [class.active]="selectedTab === 'unitmaster'">Unit Master</a>
-            </li>
+
             <li>
               <a (click)="selectTab('alternate')" [class.active]="selectedTab === 'alternate'">Alternate Unit</a>
             </li>
@@ -94,6 +91,9 @@
             </li>
             <li>
               <a (click)="selectTab('yield')" [class.active]="selectedTab === 'yield'">Yield</a>
+            </li>
+            <li>
+              <a (click)="selectTab('unitmaster')" [class.active]="selectedTab === 'unitmaster'">Unit Master</a>
             </li>
 
           </ul>
@@ -113,19 +113,14 @@
           </div>
         </div>
 
-        <form [formGroup]="altunitForm" (ngSubmit)="onOkay()">
+        <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
           <div *ngIf="selectedTab === 'alternate'" class="tab-pane">
             <div class="input-alt">
-                <label for="unit">Unit:</label>
-                <select formControlName="unitName" class="form-select">
-                  <option value="">Select unit</option>
-                  <option *ngFor="let unit of units" [value]="unit.unitName">{{ unit.unitName }}</option>
-                </select><br>
               <label for="barcode">Conversion Factor:</label>
               <input formControlName="conFactor" type="number" placeholder="Conversion Factor" /><br><br>
               <label for="barcode">Alternate Unit:</label>
               <input formControlName="alternateUnit" placeholder="Alternate Unit" /> <br>
-              <button type="submit" class="btn-close">Save</button>
+              <button type="submit" class="btn-close">Add</button>
             </div>
           </div>
       </form>

@@ -1,22 +1,12 @@
 {
   "items": [
     {
-      "id": "cd2f",
-      "itemName": "Clip",
-      "barcode": "B00111",
-      "unitName": "Piece"
-    },
-    {
-      "id": "fa48",
-      "itemName": "Eraser",
-      "barcode": "B56473",
-      "unitName": "Box"
-    },
-    {
-      "id": "71c6",
-      "itemName": "Noodles",
-      "barcode": "B78488",
-      "unitName": "Box"
+      "id": "bbbe",
+      "itemName": "Chicken Meat",
+      "barcode": "b00009",
+      "unitName": "Kg",
+      "conFactor": 23,
+      "alternateUnit": "ton"
     }
   ]
 }

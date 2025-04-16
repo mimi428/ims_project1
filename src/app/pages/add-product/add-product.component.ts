@@ -3,8 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ItemsService } from '../../service/items.service';
 import { UnitService } from '../../service/unit.service';
-import { AltunitService } from '../../service/altunit.service';
-import { UnitConversion } from '../../model/Altunit';
+
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -15,18 +14,15 @@ import { RouterModule } from '@angular/router';
 })
 export class AddProductComponent { 
   itemForm: FormGroup;
-  altunitForm:FormGroup;
   units: any[] = [];
-  constructor(private fb: FormBuilder, private itemsService: ItemsService, private unitService: UnitService, private altunitService: AltunitService) {
+  constructor(private fb: FormBuilder, private itemsService: ItemsService, private unitService: UnitService) {
     this.itemForm = this.fb.group({
       itemName: ['', Validators.required],
       barcode: ['', Validators.required],
       unitName: ['', [Validators.required, Validators.minLength(2)]],
-    });
-    this.altunitForm = this.fb.group({
-    unitName: ['', [Validators.required, Validators.minLength(2)]],
-    conFactor:[''],
-    alternateUnit:['']
+      conFactor:[''],
+      alternateUnit:['']
+
     });
     
   }
@@ -56,20 +52,7 @@ export class AddProductComponent {
       });
     }
   }
-  onOkay() {
-    if (this.altunitForm.valid) {
-      const formData: UnitConversion = this.altunitForm.value;
-      this.altunitService.saveUnitConversion(formData).subscribe({
-        next: () => {
-          alert('Added successfully!');
-          this.itemForm.reset();
-        },
-        error: () => {
-          alert('Failure are the pillars to success?');
-        }
-      });
-    }
-  }
+ 
   saveUnit() {
     if (this.itemForm.get('unitName')?.valid) { 
       const newUnit = { unitName: this.itemForm.get('unitName')?.value };
@@ -92,7 +75,7 @@ export class AddProductComponent {
   
  
 
-  selectedTab: string = 'unitmaster'; // Default tab open 
+  selectedTab: string = 'alternate'; // Default tab open 
   // Function to switch tabs
   selectTab(tab: string): void {
     this.selectedTab = tab;

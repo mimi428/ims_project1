@@ -19,10 +19,13 @@ export class ProductMasterComponent implements OnInit {
 
   constructor(private router: Router, private itemsService: ItemsService) {}
   ngOnInit(): void {
-      this.itemsService.getItems().subscribe((data) => {
-        this.items = data;
-      });
+    this.loadItems()
 
+  }
+  loadItems(){
+    this.itemsService.getItems().subscribe((data) => {
+      this.items = data;
+    });
   }
   redirectToAddProduct() {
     this.router.navigate(['/add-product']);
@@ -32,6 +35,7 @@ export class ProductMasterComponent implements OnInit {
     if (confirmed) {
       this.itemsService.deleteItems(id).subscribe(() => {
         alert('Item deleted successfully!');
+        this.loadItems();
       });
     }
   }

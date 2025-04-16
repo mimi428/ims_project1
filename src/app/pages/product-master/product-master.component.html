@@ -48,6 +48,7 @@
                   <th>Item Name</th>
                   <th>Barcode</th>
                   <th>Unit</th>
+                  <th>Alternate Unit</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -57,6 +58,7 @@
                   <td>{{ item.itemName }}</td>
                   <td>{{ item.barcode }}</td>
                   <td>{{ item.unitName }}</td>
+                  <td>{{ item.alternateUnit}}</td>
                   <td>
                     <button class="btn-primary" [routerLink]="['/add-product']">Edit</button>
                     &nbsp;

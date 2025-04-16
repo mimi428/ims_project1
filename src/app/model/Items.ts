@@ -3,6 +3,8 @@ export interface Item {
     itemName: string;
     barcode: string;
     unitName: string;
+    conFactor:number;
+    alternateUnit:string;
   }
   
   export interface ItemResponse {
