@@ -66,9 +66,13 @@
               </div>
             </td>
             <td>
-              <input formControlName="unitName" type="text" class="input-field" readonly />
+              <select *ngIf="unitSignals[i]" formControlName="unit" class="input-field">
+                <option *ngFor="let unit of unitSignals[i]" [value]="unit.value">
+                  {{ unit.label }}
+                </option>
+              </select>
+              <input *ngIf="!unitSignals[i]" formControlName="unit" type="text" class="input-field" />
             </td>
-              
             <td>
               <input formControlName="quantity" type="number" class="input-field"
                      (input)="calculateAmount(i)" (keydown.enter)="$event.preventDefault()" />

@@ -7,6 +7,38 @@
       "unitName": "Kg",
       "conFactor": 23,
       "alternateUnit": "ton"
+    },
+    {
+      "id": "a769",
+      "itemName": "Copy",
+      "barcode": "123456",
+      "unitName": "Piece",
+      "conFactor": 12,
+      "alternateUnit": "Dozen"
+    },
+    {
+      "id": "1b92",
+      "itemName": "Water",
+      "barcode": "B7575",
+      "unitName": "litre",
+      "conFactor": 3,
+      "alternateUnit": "Bottle"
+    },
+    {
+      "id": "b059",
+      "itemName": "Pencil",
+      "barcode": "B765",
+      "unitName": "packet",
+      "conFactor": null,
+      "alternateUnit": ""
+    },
+    {
+      "id": "c038",
+      "itemName": "Keyboard",
+      "barcode": "M83836",
+      "unitName": "Piece",
+      "conFactor": 100,
+      "alternateUnit": "Carton"
     }
   ]
 }

@@ -114,6 +114,38 @@
           "netAmount": 45165
         }
       ]
+    },
+    {
+      "id": "V1744792307705",
+      "date": "2025-04-16",
+      "rows": [
+        {
+          "barcode": "b00009",
+          "itemName": "Chicken Meat",
+          "batch": "B00001",
+          "unitName": "Kg",
+          "quantity": 5251,
+          "rate": 525,
+          "amt": 2756775,
+          "totalDisc": 852,
+          "vat": 5,
+          "netAmount": 2755928,
+          "expiryDate": "2025-12-31"
+        },
+        {
+          "barcode": "123456",
+          "itemName": "Copy",
+          "batch": "B00003",
+          "expiryDate": "2026-03-10",
+          "unitName": "Piece",
+          "quantity": 265,
+          "rate": 5,
+          "amt": 1325,
+          "totalDisc": 22,
+          "vat": 2,
+          "netAmount": 1305
+        }
+      ]
     }
   ]
 }

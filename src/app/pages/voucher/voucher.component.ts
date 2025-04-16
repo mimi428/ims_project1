@@ -72,7 +72,7 @@ export class VoucherComponent implements OnInit {
       itemName: ['',Validators.required],
       batch: ['', Validators.required],
       expiryDate: [''],
-      unitName: ['', Validators.required],
+      unit: ['', Validators.required],
       quantity: [null, [Validators.required, Validators.min(1)]],
       rate: [null, [Validators.required, Validators.min(0)]],
       amt: [null, Validators.required],
@@ -165,11 +165,17 @@ toggleVouchersPopup() {
     row.patchValue({
       itemName: item.itemName,
       barcode: item.barcode,
-      unitName: item.unitName,
+      unit: '',
     });
     this.itemSignals[this.selectedRow] = item.itemName;
+    const unitOptions = [
+      { label: item.unitName, value: item.unitName },
+      { label: item.alternateUnit, value: item.alternateUnit }
+    ];
+    this.unitSignals[this.selectedRow] = unitOptions;
 
     console.log('Item Selected:', item);
+    console.log('Unit Options:', unitOptions);
     this.closeItemPopup();
   }
  
@@ -189,7 +195,7 @@ toggleVouchersPopup() {
       barcode: [billData.barcode],
       itemName: [billData.itemName, Validators.required],
       batch: [billData.batch, Validators.required],
-      unitName: [billData.unitName],
+      unit: [billData.unit],
       quantity: [billData.quantity, [Validators.required, Validators.min(1)]],
       rate: [billData.rate, [Validators.required, Validators.min(0)]],
       amt: [billData.amt, Validators.required],
@@ -214,7 +220,7 @@ toggleVouchersPopup() {
             barcode: [row.barcode],
             itemName: [row.itemName, Validators.required],
             batch: [row.batch, Validators.required],
-            unitName: [row.unitName, Validators.required],
+            unit: [row.unit, Validators.required],
             quantity: [row.quantity, [Validators.required, Validators.min(1)]],
             rate: [row.rate, [Validators.required, Validators.min(0)]],
             amt: [row.amt, Validators.required],
@@ -227,7 +233,7 @@ toggleVouchersPopup() {
           this.rows.push(rowForm);
         });
   
-        this.closeVoucherPopup(); // Close the popup after loading
+        this.closeVoucherPopup();
       },
       (error) => {
         alert('Failed to load voucher details.');
