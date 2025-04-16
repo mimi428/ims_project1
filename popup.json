@@ -19,10 +19,16 @@
       "unitName": "Kg"
     },
     {
-      "id": "005f",
+      "id": "71c6",
       "itemName": "Noodles",
-      "barcode": "N6564654",
-      "unitName": "packet"
+      "barcode": "B78488",
+      "unitName": "Box"
+    },
+    {
+      "id": "4e6b",
+      "itemName": "Orange",
+      "barcode": "B00111",
+      "unitName": "gram"
     }
   ]
 }
