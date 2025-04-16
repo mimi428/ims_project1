@@ -18,6 +18,9 @@ export class ItemsService {
   getItems(): Observable<Item[]> {
     return this.http.get<Item[]>(this.apiUrl); 
   }
- 
+  deleteItems(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+  
   
 }

@@ -34,23 +34,7 @@
           </div>
           <form class="search-container">
             <!-- Search Type Radios -->
-            <label>
-              <input type="radio" formControlName="searchType" value="searchItemName"> Search By Name
-            </label>
-            <label>
-              <input type="radio" formControlName="searchType" value="searchItemCode"> Search By Code
-            </label>
-            <label>
-              <input type="radio" formControlName="searchType" value="searchItemBarcode"> Barcode
-            </label>
-            <input type="search" formControlName="searchQuery" placeholder="Search..." autocomplete="off" class="search-input">
-            <label>
-              <input type="radio" formControlName="sortType" value="sortItemName"> Sort By Name
-            </label>
-            <label>
-              <input type="radio" formControlName="sortType" value="sortItemByDate"> Sort By C-Date
-            </label>
-
+            <input type="search" placeholder="Search..." class="search-input">
             <button type="submit">Search</button>
           </form>
           <br>
@@ -64,6 +48,7 @@
                   <th>Item Name</th>
                   <th>Barcode</th>
                   <th>Unit</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -72,6 +57,11 @@
                   <td>{{ item.itemName }}</td>
                   <td>{{ item.barcode }}</td>
                   <td>{{ item.unitName }}</td>
+                  <td>
+                    <button class="btn-primary" [routerLink]="['/add-product']">Edit</button>
+                    &nbsp;
+                    <button class="btn-danger"   (click)="onDelete(item.id)">Delete</button>
+                </td>
                 </tr>
               </tbody>
             </table>
