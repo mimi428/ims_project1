@@ -39,12 +39,12 @@
 
 
 .form-container {
-    width: 60%;
+    width: 95%;
     margin: 20px auto;
-    background: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin-top: 0px;
 }
 .form-row {
     display: flex;
@@ -284,6 +284,12 @@
   display: flex;
   justify-content: space-between;
   gap: 20px;
+  width: 90%;
+  margin: 20px auto;
+  margin-top: 0px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .headinginv {
@@ -374,7 +380,7 @@
   margin-left: 20px;
   margin-right: 20px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 .input-alt label {
   font-weight: bold;
@@ -382,6 +388,14 @@
   color: #333;
 }
 /* for the barcode  */
+.barcode-tab{
+  width: 95%;
+  margin: 20px auto;
+  padding: 20px;
+  margin-top: 0px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
 .input-barcode {
   display: flex;
   align-items: center;
@@ -416,10 +430,16 @@
 }
 .table-container1 {
   height: 40vh;
-  width: 99%;
+  width: 95%;
   overflow-x: hidden;
   overflow-y: auto;
   border: 1px solid #ccc;
+  margin: 20px auto;
+  margin-top: 0px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  
 }
 
 .bartable {

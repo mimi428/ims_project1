@@ -5,10 +5,11 @@ import { ItemsService } from '../../service/items.service';
 import { UnitService } from '../../service/unit.service';
 import { AltunitService } from '../../service/altunit.service';
 import { UnitConversion } from '../../model/Altunit';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
-  imports: [CommonModule,ReactiveFormsModule],
+  imports: [CommonModule,ReactiveFormsModule,RouterModule],
   templateUrl: './add-product.component.html',
   styleUrl: './add-product.component.css'
 })
@@ -77,6 +78,7 @@ export class AddProductComponent {
           console.log('Unit saved successfully:', response);
           this.units.push(response); 
           this.itemForm.get('unitName')?.reset(); 
+          alert('Unit is saved!');
         },
         (error) => {
           console.error('Error saving unit:', error);

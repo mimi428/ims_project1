@@ -11,6 +11,24 @@
       "unitName": "Kg",
       "conFactor": 100,
       "alternateUnit": "Ton"
+    },
+    {
+      "id": "fe99",
+      "unitName": "bag",
+      "conFactor": 2,
+      "alternateUnit": "carton"
+    },
+    {
+      "id": "45c7",
+      "unitName": "bottle",
+      "conFactor": 10,
+      "alternateUnit": "pack"
+    },
+    {
+      "id": "b1c8",
+      "unitName": "bag",
+      "conFactor": 20,
+      "alternateUnit": "pack"
     }
   ]
 }

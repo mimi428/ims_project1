@@ -14,7 +14,7 @@ export class UnitService {
   }
 
   addUnit(unit: { unitName: string }) {
-    return this.http.post<any>('http://localhost:3009/units', unit); // Replace with your actual API endpoint
+    return this.http.post<any>('http://localhost:3009/units', unit); 
   }
 
 }

@@ -8,7 +8,7 @@
             <button class="btn btn-info" disabled>Add Main Group</button>
             <button class="btn btn-info" disabled>Add Sub Group</button>
             <button type="button" class="btn btn-info">Add product</button>
-            <button class="btn btn-info">Back</button>
+            <button class="btn btn-info" routerLink="/product-master">Back</button>
           </div>
         </div>
     </div>
@@ -102,7 +102,7 @@
         <div class="selection">
           <div *ngIf="selectedTab === 'unitmaster'" class="tab-pane">
             <div class="form-container">
-              <form [formGroup]="itemForm" >
+              <form [formGroup]="itemForm" (ngSubmit)="saveUnit()" >
                 <div class="form-group">
                   <label for="unitName">Unit Name:</label><br />
                   <input id="unitName" type="text" formControlName="unitName"  class="form-input"/>
@@ -190,16 +190,6 @@
 
           <div *ngIf="selectedTab === 'barcode'" class="tab-pane">
             <div class="barcode-tab">
-              <div class="input-barcode">
-                  <label for="barcode">Barcode:</label>
-                  <input type="text" id="barcode" class="input-field">
-                  <label for="unit">Unit:</label>
-                  <select id="unit" class="dropdown">
-                      <option value="">Select Unit</option>
-                  </select>
-                  <button class="btn btn-info1">Add</button>
-              </div>
-              <br>
               <div class="table-container1">
                   <table class="bartable">
                       <thead class="tableforbar">
@@ -268,6 +258,7 @@
           </div>
 
           <div *ngIf="selectedTab === 'yield'" class="tab-pane">
+            <div class="table-container1">
             <div class="input-barcode">
               <div class="form-group">
                 <label for="subItem">Sub Item:</label>
@@ -289,8 +280,7 @@
               </div>
               <button class="btn btn-info1" (click)="addEntry()" [disabled]="subItemControl.invalid || yieldControl.invalid">Add</button>
             </div>
-          
-            <div class="table-container1">
+        
               <table class="bartable">
                 <thead class="tableforbar">
                   <tr>

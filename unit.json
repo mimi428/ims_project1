@@ -31,6 +31,14 @@
     {
       "id": "352a",
       "unitName": "bag"
+    },
+    {
+      "id": "ca4f",
+      "unitName": "bottle"
+    },
+    {
+      "id": "2147",
+      "unitName": "litre"
     }
   ]
 }

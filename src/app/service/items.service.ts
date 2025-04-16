@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Item } from '../model/Items';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,9 @@ export class ItemsService {
     return this.http.post(this.apiUrl, item);
   }
   
-  getItems(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl); 
+  getItems(): Observable<Item[]> {
+    return this.http.get<Item[]>(this.apiUrl); 
   }
+ 
+  
 }
