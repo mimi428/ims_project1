@@ -30,6 +30,9 @@ export class ProductMasterComponent implements OnInit {
   redirectToAddProduct() {
     this.router.navigate(['/add-product']);
   }
+  redirectTodash(){
+    this.router.navigate(['/dashboard']);
+  }
   onDelete(id: string) {
     const confirmed = window.confirm('Are you sure you want to delete this item?');
     if (confirmed) {

@@ -146,6 +146,51 @@
           "netAmount": 1305
         }
       ]
+    },
+    {
+      "id": "V1744863101827",
+      "date": "2025-04-17",
+      "rows": [
+        {
+          "barcode": "C655555",
+          "itemName": "Chocolate",
+          "batch": "B00001",
+          "unit": "Box",
+          "quantity": 51,
+          "rate": 33,
+          "amt": 1683,
+          "totalDisc": 12,
+          "vat": 22,
+          "netAmount": 1693,
+          "expiryDate": "2025-12-31"
+        },
+        {
+          "barcode": "M83836",
+          "itemName": "Keyboard",
+          "batch": "B00002",
+          "expiryDate": "2026-11-30",
+          "unit": "Carton",
+          "quantity": 25,
+          "rate": 100,
+          "amt": 2500,
+          "totalDisc": 222,
+          "vat": 2,
+          "netAmount": 2280
+        },
+        {
+          "barcode": "b00008",
+          "itemName": "Chicken Meat",
+          "batch": "B00003",
+          "expiryDate": "2026-03-10",
+          "unit": "ton",
+          "quantity": 100,
+          "rate": 100,
+          "amt": 10000,
+          "totalDisc": 100,
+          "vat": 100,
+          "netAmount": 10000
+        }
+      ]
     }
   ]
 }

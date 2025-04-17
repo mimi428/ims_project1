@@ -10,12 +10,10 @@
         <button type="button" class="btn btn-info">Export AltUnit</button>
         <button class="btn btn-info">Export Product</button>
         <button class="btn btn-info">Import Product [F2]</button>
-        <button routerlink="/navbar/components/top-bar" class="btn btn-info">Back</button>
+        <button class="btn btn-info" (click)="redirectTodash()">Back</button>
       </div>
     </div>
   </div>
-  
-
     <div class="row">
         <div class="col-md-3 sidebar">
             <div class="tree">
@@ -33,9 +31,8 @@
             </button>
           </div>
           <form class="search-container">
-            <!-- Search Type Radios -->
             <input type="search" placeholder="Search..." class="search-input">
-            <button type="submit">Search</button>
+            <button type="submit" class="btn">Search</button>
           </form>
           <br>
         <div class="col-9">
@@ -60,9 +57,9 @@
                   <td>{{ item.unitName }}</td>
                   <td>{{ item.alternateUnit}}</td>
                   <td>
-                    <button class="btn-primary" [routerLink]="['/add-product',item.id]">Edit</button>
+                    <button class="btn" [routerLink]="['/add-product',item.id]">Edit</button>
                     &nbsp;
-                    <button class="btn-danger"   (click)="onDelete(item.id)">Delete</button>
+                    <button class="btn"   (click)="onDelete(item.id)">Delete</button>
                 </td>
                 </tr>
               </tbody>

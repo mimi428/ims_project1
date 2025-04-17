@@ -39,6 +39,14 @@
       "unitName": "Piece",
       "conFactor": 100,
       "alternateUnit": "Carton"
+    },
+    {
+      "itemName": "Chocolate",
+      "barcode": "C655555",
+      "unitName": "packet",
+      "conFactor": 100,
+      "alternateUnit": "Box",
+      "id": "23e2"
     }
   ]
 }
