@@ -1,4 +1,3 @@
-/* Custom styles for the label */
 .label-text {
     white-space: nowrap;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -88,8 +87,7 @@
     background: #336799;
     color: white;
   }
-  
-  /* Buttons inside the table */
+
   td button {
     padding: 3px 8px;
     border: none;
@@ -120,8 +118,7 @@
     border-bottom: 3px solid #007bff;
     font-weight: bold;
   }
-  
-  /* Tab Content */
+
   .tab-content {
     display: none;
     padding: 10px;

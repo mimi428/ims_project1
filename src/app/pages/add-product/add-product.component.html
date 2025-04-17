@@ -120,7 +120,7 @@
               <input formControlName="conFactor" type="number" placeholder="Conversion Factor" /><br><br>
               <label for="barcode">Alternate Unit:</label>
               <input formControlName="alternateUnit" placeholder="Alternate Unit" /> <br>
-              <button type="submit" class="btn-close">Add</button>
+              <button type="submit" class="btn-close">  {{ isEditMode ? 'Update' : 'Add' }}</button>
             </div>
           </div>
       </form>

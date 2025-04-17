@@ -3,7 +3,7 @@
     {
       "itemName": "Chicken Meat",
       "barcode": "b00008",
-      "unitName": "Kg",
+      "unitName": "Piece",
       "conFactor": 23,
       "alternateUnit": "ton",
       "id": "bbbe"

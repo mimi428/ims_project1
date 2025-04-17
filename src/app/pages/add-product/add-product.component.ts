@@ -51,7 +51,7 @@ export class AddProductComponent {
       if (this.isEditMode && this.itemId) {
         this.itemsService.updateItem(this.itemId, this.itemForm.value).subscribe({
           next: () => {
-            alert('Item updated successfully!');
+            alert('Item update vayo hai!');
             this.router.navigate(['/product-master']); 
           },
           error: () => {
@@ -61,7 +61,7 @@ export class AddProductComponent {
       } else {
         this.itemsService.addItem(this.itemForm.value).subscribe({
           next: () => {
-            alert('Item added successfully!');
+            alert('Item add vayo hai!');
             this.itemForm.reset();
           },
           error: () => {
