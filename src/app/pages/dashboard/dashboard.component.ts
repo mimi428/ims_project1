@@ -23,20 +23,23 @@ export class DashboardComponent implements AfterViewInit {
     this.barchart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: [
-          ['Real juice'],
-          ['Electrolyte Beverages'],
-          ['Soft','Drinks'],
-          ['Aprilsdfjvahbukhvb'],
-          ['Mayudwbausdb']
-        ],
-        datasets: [{
-          label: 'Drink Record',
-          data: [190, 908, 509, 365, 702],
-          backgroundColor: '#336799',
-          hoverBackgroundColor:'rgba(96, 171, 231, 0.467)',
-          borderRadius: 20
-        }]
+        labels: ['January', 'February', 'March', 'April', 'May'],
+        datasets: [
+          {
+            label: 'Sales',
+            data: [80000, 95000, 100000, 85000, 110000],
+            backgroundColor: '#4CAF50',
+            hoverBackgroundColor: '#81C784',
+            borderRadius: 10
+          },
+          {
+            label: 'Purchase',
+            data: [60000, 70000, 65000, 55000, 75000],
+            backgroundColor: '#2196F3',
+            hoverBackgroundColor: '#64B5F6',
+            borderRadius: 10
+          }
+        ]
       },
       options: {
         responsive: true,
@@ -44,30 +47,29 @@ export class DashboardComponent implements AfterViewInit {
         plugins: {
           title: {
             display: true,
-            text: 'RECORDS'
+
           }
         },
         scales: {
           y: {
             beginAtZero: true,
-            max: 1000
+            max: 120000
           }
         }
       }
     });
   }
-  
-
   createPieChart() {
     const ctx = this.piechartRef.nativeElement;
     this.piechart = new Chart(ctx, {
       type: 'pie',
       data: {
-        labels: ['Today', 'Tomorrow', 'Others'],
+        labels: ['Electronics', 'Groceries', 'Clothing', 'Stationery', 'Others'],
         datasets: [{
-          label: 'This Vs That',
-          data: [40, 35, 25],
-          backgroundColor: ['#854764', '#336799', 'pink'],
+          label: 'Sales by Category',
+          data: [35, 25, 20, 10, 10],
+          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+          hoverOffset: 10
         }]
       },
       options: {
@@ -75,10 +77,12 @@ export class DashboardComponent implements AfterViewInit {
         plugins: {
           title: {
             display: true,
-            text: 'THIS VS THAT'
+          },
+          legend: {
+            position: 'bottom'
           }
         }
       }
     });
   }
-}
+}  

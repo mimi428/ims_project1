@@ -1,14 +1,6 @@
 {
   "items": [
     {
-      "itemName": "Chicken Meat",
-      "barcode": "b00008",
-      "unitName": "Piece",
-      "conFactor": 23,
-      "alternateUnit": "ton",
-      "id": "bbbe"
-    },
-    {
       "itemName": "Copy",
       "barcode": "C23456",
       "unitName": "Piece",
@@ -47,6 +39,14 @@
       "conFactor": 100,
       "alternateUnit": "Box",
       "id": "23e2"
+    },
+    {
+      "id": "2a33",
+      "itemName": "Shirt",
+      "barcode": "S73623",
+      "unitName": "Dozen",
+      "conFactor": 10,
+      "alternateUnit": "Box"
     }
   ]
 }

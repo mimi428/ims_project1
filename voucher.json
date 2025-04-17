@@ -84,111 +84,60 @@
       ]
     },
     {
-      "id": "V1744279276559",
-      "date": "2025-04-10",
-      "rows": [
-        {
-          "barcode": "B52641",
-          "itemName": "Orange",
-          "batch": "B00002",
-          "unitName": "Kg",
-          "quantity": 6541,
-          "rate": 626,
-          "amt": 4094666,
-          "totalDisc": 12,
-          "vat": 55,
-          "netAmount": 4094709,
-          "expiryDate": "2026-11-30"
-        },
-        {
-          "barcode": "B78488",
-          "itemName": "Noodles",
-          "batch": "B00001",
-          "expiryDate": "2025-12-31",
-          "unitName": "Box",
-          "quantity": 2054,
-          "rate": 22,
-          "amt": 45188,
-          "totalDisc": 25,
-          "vat": 2,
-          "netAmount": 45165
-        }
-      ]
-    },
-    {
-      "id": "V1744792307705",
-      "date": "2025-04-16",
-      "rows": [
-        {
-          "barcode": "b00009",
-          "itemName": "Chicken Meat",
-          "batch": "B00001",
-          "unitName": "Kg",
-          "quantity": 5251,
-          "rate": 525,
-          "amt": 2756775,
-          "totalDisc": 852,
-          "vat": 5,
-          "netAmount": 2755928,
-          "expiryDate": "2025-12-31"
-        },
-        {
-          "barcode": "123456",
-          "itemName": "Copy",
-          "batch": "B00003",
-          "expiryDate": "2026-03-10",
-          "unitName": "Piece",
-          "quantity": 265,
-          "rate": 5,
-          "amt": 1325,
-          "totalDisc": 22,
-          "vat": 2,
-          "netAmount": 1305
-        }
-      ]
-    },
-    {
-      "id": "V1744863101827",
+      "id": "V1744868430973",
       "date": "2025-04-17",
       "rows": [
         {
           "barcode": "C655555",
           "itemName": "Chocolate",
-          "batch": "B00001",
-          "unit": "Box",
-          "quantity": 51,
-          "rate": 33,
-          "amt": 1683,
-          "totalDisc": 12,
-          "vat": 22,
-          "netAmount": 1693,
-          "expiryDate": "2025-12-31"
-        },
-        {
-          "barcode": "M83836",
-          "itemName": "Keyboard",
           "batch": "B00002",
-          "expiryDate": "2026-11-30",
-          "unit": "Carton",
-          "quantity": 25,
-          "rate": 100,
-          "amt": 2500,
-          "totalDisc": 222,
-          "vat": 2,
-          "netAmount": 2280
+          "unit": "Box",
+          "quantity": 12,
+          "rate": 10000,
+          "amt": 120000,
+          "totalDisc": 1200,
+          "vat": 13,
+          "netAmount": 118813,
+          "expiryDate": "2026-11-30"
         },
         {
-          "barcode": "b00008",
-          "itemName": "Chicken Meat",
+          "barcode": "C23456",
+          "itemName": "Copy",
+          "batch": "B00001",
+          "expiryDate": "2025-12-31",
+          "unit": "Dozen",
+          "quantity": 12,
+          "rate": 400,
+          "amt": 4800,
+          "totalDisc": 400,
+          "vat": 12,
+          "netAmount": 4412
+        },
+        {
+          "barcode": "B7575",
+          "itemName": "Water",
+          "batch": "B00001",
+          "expiryDate": "2025-12-31",
+          "unit": "Bottle",
+          "quantity": 15,
+          "rate": 20,
+          "amt": 300,
+          "totalDisc": 10,
+          "vat": 12,
+          "netAmount": 302
+        },
+        {
+          "barcode": "S73623",
+          "itemName": "Shirt",
           "batch": "B00003",
           "expiryDate": "2026-03-10",
-          "unit": "ton",
-          "quantity": 100,
-          "rate": 100,
-          "amt": 10000,
-          "totalDisc": 100,
-          "vat": 100,
-          "netAmount": 10000
+          "unit": "Box",
+          "quantity": 130,
+          "rate": 1200,
+          "amt": 156000,
+          "totalDisc": 18000,
+          "vat": 13,
+          "netAmount": 138013
         }
       ]
     }
