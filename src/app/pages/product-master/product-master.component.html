@@ -60,7 +60,7 @@
                   <td>{{ item.unitName }}</td>
                   <td>{{ item.alternateUnit}}</td>
                   <td>
-                    <button class="btn-primary" [routerLink]="['/add-product']">Edit</button>
+                    <button class="btn-primary" [routerLink]="['/add-product',item.id]">Edit</button>
                     &nbsp;
                     <button class="btn-danger"   (click)="onDelete(item.id)">Delete</button>
                 </td>

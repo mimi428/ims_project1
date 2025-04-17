@@ -1,20 +1,20 @@
 {
   "items": [
     {
-      "id": "bbbe",
       "itemName": "Chicken Meat",
-      "barcode": "b00009",
+      "barcode": "b00008",
       "unitName": "Kg",
       "conFactor": 23,
-      "alternateUnit": "ton"
+      "alternateUnit": "ton",
+      "id": "bbbe"
     },
     {
-      "id": "a769",
       "itemName": "Copy",
-      "barcode": "123456",
+      "barcode": "C23456",
       "unitName": "Piece",
       "conFactor": 12,
-      "alternateUnit": "Dozen"
+      "alternateUnit": "Dozen",
+      "id": "a769"
     },
     {
       "id": "1b92",

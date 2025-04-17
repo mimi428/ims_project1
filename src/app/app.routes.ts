@@ -40,8 +40,8 @@ export const routes: Routes = [
       {path: 'billing', component:BillingComponent},
       {path: 'voucher', component:VoucherComponent},
       {path: 'user', component:UserComponent},
-      {path: 'add-user', component:AddUserComponent}
-
+      {path: 'add-user', component:AddUserComponent},
+      { path: 'add-product/:id', component: AddProductComponent}
       ]
     }
   ]

@@ -4,7 +4,7 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { ItemsService } from '../../service/items.service';
 import { UnitService } from '../../service/unit.service';
 
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
@@ -15,7 +15,10 @@ import { RouterModule } from '@angular/router';
 export class AddProductComponent { 
   itemForm: FormGroup;
   units: any[] = [];
-  constructor(private fb: FormBuilder, private itemsService: ItemsService, private unitService: UnitService) {
+  selectedTab: string = 'alternate';
+  isEditMode = false;
+  itemId: string | null = null;
+  constructor(private fb: FormBuilder, private itemsService: ItemsService, private unitService: UnitService,  private route: ActivatedRoute, private router: Router) {
     this.itemForm = this.fb.group({
       itemName: ['', Validators.required],
       barcode: ['', Validators.required],
@@ -27,11 +30,16 @@ export class AddProductComponent {
     
   }
   ngOnInit() {
-    this.unitService.getUnits().subscribe(data => {
-      this.units = data;
-      console.log('Units loaded:', this.units);
-    });
-    this.loadUnits()
+    this.loadUnits();
+    
+      this.itemId = this.route.snapshot.paramMap.get('id');
+      if (this.itemId) {
+        this.isEditMode = true;
+        this.itemsService.getItemById(this.itemId).subscribe(item => {
+          this.itemForm.patchValue(item);
+        });
+      }
+
   }
   loadUnits() {
     this.unitService.getUnits().subscribe((data) => {
@@ -41,17 +49,30 @@ export class AddProductComponent {
   //json file ma store garna lai
   onSubmit() {
     if (this.itemForm.valid) {
-      this.itemsService.addItem(this.itemForm.value).subscribe({
-        next: () => {
-          alert('Item added successfully!');
-          this.itemForm.reset();
-        },
-        error: () => {
-          alert('Failure are the pillars to success?');
-        }
-      });
+      if (this.isEditMode && this.itemId) {
+        this.itemsService.updateItem(this.itemId, this.itemForm.value).subscribe({
+          next: () => {
+            alert('Item updated successfully!');
+            this.router.navigate(['/product-master']); 
+          },
+          error: () => {
+            alert('Failed to update item.');
+          }
+        });
+      } else {
+        this.itemsService.addItem(this.itemForm.value).subscribe({
+          next: () => {
+            alert('Item added successfully!');
+            this.itemForm.reset();
+          },
+          error: () => {
+            alert('Failure are the pillars to success?');
+          }
+        });
+      }
     }
   }
+  
  
   saveUnit() {
     if (this.itemForm.get('unitName')?.valid) { 
@@ -73,9 +94,6 @@ export class AddProductComponent {
     }
   }
   
- 
-
-  selectedTab: string = 'alternate'; // Default tab open 
   // Function to switch tabs
   selectTab(tab: string): void {
     this.selectedTab = tab;
