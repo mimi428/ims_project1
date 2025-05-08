@@ -8,8 +8,9 @@
         <button class="btn btn-info">Add Main Group</button>
         <button class="btn btn-info" disabled>Add Sub Group</button>
         <button type="button" class="btn btn-info">Export AltUnit</button>
-        <button class="btn btn-info">Export Product</button>
+        <button class="btn btn-info" (click)="ExportProduct()">Export Product</button>
         <button class="btn btn-info">Import Product [F2]</button>
+        <input type="file" id="importFileInput" (change)="handleFileImport($event)" style="display: none;" accept=".xlsx, .csv" />
         <button class="btn btn-info" (click)="redirectTodash()">Back</button>
       </div>
     </div>

@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, HostListener } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { TreeComponent } from "../tree/tree.component";
 import { Item } from '../../model/Items';
 import { ItemsService } from '../../service/items.service';
+import * as XLSX from 'xlsx';
+import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-product-master',
@@ -33,6 +35,78 @@ export class ProductMasterComponent implements OnInit {
   redirectTodash(){
     this.router.navigate(['/dashboard']);
   }
+  @HostListener('window:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === 'F2') {
+      event.preventDefault();
+      this.triggerImportFileInput();
+    }
+  }
+
+  triggerImportFileInput() {
+    const fileInput = document.getElementById('importFileInput') as HTMLInputElement;
+    fileInput?.click();
+  }
+
+  handleFileImport(event: Event) {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      const data = new Uint8Array(e.target.result);
+      const workbook = XLSX.read(data, { type: 'array' });
+      const sheet = workbook.Sheets[workbook.SheetNames[0]];
+      const importedItems = XLSX.utils.sheet_to_json<Item>(sheet);
+
+      this.items = [...this.items, ...importedItems];
+      this.itemsService.getItems().subscribe({
+        next: (existingItems) => {
+          importedItems.forEach((importedItem) => {
+            const exists = existingItems.some(
+              (existingItem) => existingItem.barcode === importedItem.barcode
+            );
+            if (!exists) {
+              this.itemsService
+                .addItem({
+                  itemName: importedItem.itemName,
+                  barcode: importedItem.barcode,
+                  unitName: importedItem.unitName,
+                })
+                .subscribe({
+                  next: () => console.log(`Saved: ${importedItem.itemName}`),
+                  error: (err) => console.error('Error saving item', err),
+                });
+            } else {
+              console.log(`Duplicate item skipped: ${importedItem.itemName}`);
+            }
+          });
+
+          alert('Import completed and saved to database.');
+        },
+        error: (err) => console.error('Error fetching items', err),
+      });
+    };
+    reader.readAsArrayBuffer(file);
+  }
+  ExportProduct(): void {
+    const fileName = 'product-list.xlsx';
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.items);
+    const workbook: XLSX.WorkBook = {
+      Sheets: { 'Products': worksheet },
+      SheetNames: ['Products']
+    };
+    const excelBuffer: any = XLSX.write(workbook, {
+      bookType: 'xlsx',
+      type: 'array'
+    });
+    const data: Blob = new Blob([excelBuffer], {
+      type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    });
+  
+    FileSaver.saveAs(data, 'product-list.xlsx');
+  }
+  
   onDelete(id: string) {
     const confirmed = window.confirm('Are you sure you want to delete this item?');
     if (confirmed) {
