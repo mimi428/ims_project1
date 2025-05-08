@@ -15,6 +15,7 @@ import { BillingComponent } from './pages/billing/billing.component';
 import { VoucherComponent } from './pages/voucher/voucher.component';
 import { UserComponent } from './pages/user/user.component';
 import { AddUserComponent } from './pages/add-user/add-user.component';
+import { ReportComponent } from './pages/report/report.component';
 
 export const routes: Routes = [
   {
@@ -39,6 +40,7 @@ export const routes: Routes = [
       { path: 'view', component:ViewComponent},
       {path: 'billing', component:BillingComponent},
       {path: 'voucher', component:VoucherComponent},
+      {path: 'report', component:ReportComponent},
       {path: 'user', component:UserComponent},
       {path: 'add-user', component:AddUserComponent},
       { path: 'add-product/:id', component: AddProductComponent}

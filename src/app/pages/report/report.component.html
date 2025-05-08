@@ -1,0 +1,91 @@
+
+<br>
+<div class="popup">
+    <h2>Purchase Report - Item Wise</h2>
+<form [formGroup]="reportForm">
+  <div class="form-container">
+    <div class="form-column">
+      <fieldset>
+        <legend>Date Range Selection</legend>
+        <div class="date-row">
+            <div class="radio-group">
+                <label>From (AD)</label>
+                <input type="date" formControlName="fromAd1">
+                <input type="date" formControlName="fromAd2">
+            </div>
+            <div class="radio-group indent">
+                <label>To (AD)</label>
+                <input type="date" formControlName="fromAd1">
+                <input type="date" formControlName="fromAd2">
+            </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Division & Cost Center</legend>
+        <label>Division:</label>
+        <select formControlName="division">
+          <option>DEMOCN_AUTO</option>
+        </select>
+
+        <label>Cost Center:</label>
+        <input type="text" formControlName="costCenter">
+      </fieldset>
+
+      <fieldset>
+        <legend>Report Type Selection</legend>
+        <div class="date-row">
+          <div class="radio-group">
+            <label><input type="radio" formControlName="reportType" value="item"> Item Wise Report</label>
+            <label><input type="radio" formControlName="reportType" value="itemGroup"> Item Group Wise Report</label>
+            <label><input type="radio" formControlName="reportType" value="day"> Day Wise Report</label>
+          </div>
+          <div class="radio-group indent">
+            <label><input type="radio" formControlName="groupOption" value="groupOnly"> Show Item Group Only</label>
+            <label><input type="radio" formControlName="groupOption" value="withinGroups"> Show Item Within Groups</label>
+            <label><input type="radio" formControlName="groupOption" value="hierarchy"> Show All Item Group Hierarchy</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Other Options</legend>
+        <div class="checkbox-group">
+          <label><input type="checkbox" formControlName="showVariantFilters"> Show Variant Filters</label>
+          <label><input type="checkbox" formControlName="showItemDetails"> Show Item Details Also</label>
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- Right -->
+    <div class="form-column">
+      <fieldset>
+        <legend>Report Filter Option</legend>
+        <input type="text" placeholder="Department :" formControlName="department">
+        <input type="text" placeholder="Main Item :" formControlName="mainItem">
+        <select formControlName="purchaseType">
+          <option>ALL</option>
+        </select>
+        <select formControlName="invoiceType">
+          <option>ALL</option>
+        </select>
+        <input type="text" placeholder="Press Enter or Tab for Account List" formControlName="supplierName">
+      </fieldset>
+
+      <fieldset>
+        <legend>Item Selection</legend>
+        <input type="text" placeholder="Press Enter or Tab for Item List" formControlName="itemName">
+        <label><input type="checkbox" formControlName="multipleItems"> Select Multiple Items</label>
+        <label><input type="checkbox" formControlName="batchWiseReport"> Show Batch Wise Stock Report</label>
+      </fieldset>
+    </div>
+
+  </div>
+
+  <div class="button-group">
+    <button type="button" class="run" (click)="runReport()">RUN</button>
+    <button type="button" class="close" (click)="close()">Close</button>
+  </div>
+</form>
+
+</div>

@@ -1,0 +1,91 @@
+h2 {
+    margin-top: 0;
+    text-align: center;
+    font-size: 18px;
+  }
+  .popup{
+    margin: 0 auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    background-color: #949191;
+    border-radius: 8px;
+  }
+  
+    .form-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    }
+
+    .form-column {
+    flex: 1 1 45%;
+    min-width: 300px;
+    }
+
+    fieldset {
+    border: 1px solid #ccc;
+    padding: 15px 20px 20px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    }
+
+    legend {
+    font-weight: bold;
+    padding: 0 8px;
+    font-size: 13px;
+    color: #333;
+    }
+
+    .date-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    }
+
+    .radio-group,
+    .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    }
+
+    .radio-group.indent {
+    margin-left: 15px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    select {
+    width: 100%;
+    padding: 6px 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    }
+
+    .button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+    }
+
+    button.run {
+    background-color: #007bff;
+    color: white;
+    padding: 6px 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    }
+
+    button.close {
+    background-color: #6c757d;
+    color: white;
+    padding: 6px 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    }

@@ -24,15 +24,15 @@ export class TopBarComponent {
       this.lowerNavbarWords = ['Sales', 'Purchase', 'Payments'];
     } else if (section === 'config') {
       this.lowerNavbarWords = ['User Management', 'Master Migration'];
-    } else {
+    } else if (section === 'report') {
+      this.lowerNavbarWords = ['Purchase Report', 'Sales Report', 'VAT Report', 'Inventory Report'];
+    }else {
       this.lowerNavbarWords = [];
     }
-
     this.dropdownVisible = {};
   }
 
   toggleDropdown(word: string) {
-
     Object.keys(this.dropdownVisible).forEach(key => this.dropdownVisible[key] = false);
     this.dropdownVisible[word] = !this.dropdownVisible[word]; // Toggle selected dropdown
   }
@@ -58,8 +58,13 @@ export class TopBarComponent {
       return ['Settings', 'User Roles', 'Configurations'];
     } else if (word === 'User Management') {
       return ['Employee List', 'User Manager'];
-    } 
-    else {
+    } else if (word === 'Purchase Report') {
+      return ['Report- Itemswise', 'Report- Unitwise', 'Report- Supplierwise', 'Report- Categorywise', 'Report- Warehousewise'];
+    } else if (word === 'Sales Report') {
+      return ['Sales Book Report', 'Sales Register Report', 'Sales Return Report', 'Sales Tax Report'];
+    } else if (word === 'VAT Report') { 
+      return ['VAT Report- Itemswise', 'VAT Report- Unitwise'];
+    }else {
       return [];
     }
     
@@ -83,6 +88,9 @@ export class TopBarComponent {
           break;
       case 'Voucher':
         this.router.navigate(['/voucher'])
+        break;
+        case 'Report- Itemswise':
+          this.router.navigate(['/report'])
     }
   }
   onLogo() {

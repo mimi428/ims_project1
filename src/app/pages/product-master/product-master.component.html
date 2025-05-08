@@ -31,42 +31,42 @@
               Product Group List
             </button>
           </div>
-          <form class="search-container">
-            <input type="search" placeholder="Search..." class="search-input">
+          <form class="search-container" (submit)="onSearch($event)">
+            <input type="search" [(ngModel)]="searchTerm" name="search" placeholder="Search..." class="search-input">
             <button type="submit" class="btn">Search</button>
           </form>
           <br>
-        <div class="col-9">
-          <div class="container">
-            <h6>All Products:</h6>
-            <table>
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Item Name</th>
-                  <th>Barcode</th>
-                  <th>Unit</th>
-                  <th>Alternate Unit</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let item of items">
-                  <td>{{ item.id }}</td>
-                  <td>{{ item.itemName }}</td>
-                  <td>{{ item.barcode }}</td>
-                  <td>{{ item.unitName }}</td>
-                  <td>{{ item.alternateUnit}}</td>
-                  <td>
-                    <button class="btn" [routerLink]="['/add-product',item.id]">Edit</button>
-                    &nbsp;
-                    <button class="btn" (click)="onDelete(item.id)">Delete</button>
-                </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>          
-      </div>
-  
- 
       
+          <div class="col-9">
+            <div class="container">
+              <h6>All Products:</h6>
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Item Name</th>
+                    <th>Barcode</th>
+                    <th>Unit</th>
+                    <th>Alternate Unit</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of filteredItems">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.itemName }}</td>
+                    <td>{{ item.barcode }}</td>
+                    <td>{{ item.unitName }}</td>
+                    <td>{{ item.alternateUnit }}</td>
+                    <td>
+                      <button class="btn" [routerLink]="['/add-product', item.id]">Edit</button>
+                      &nbsp;
+                      <button class="btn" (click)="onDelete(item.id)">Delete</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>

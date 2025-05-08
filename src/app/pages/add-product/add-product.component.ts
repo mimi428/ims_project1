@@ -28,6 +28,9 @@ export class AddProductComponent {
     });
     
   }
+  refreshPage() {
+    window.location.reload();
+  }
   ngOnInit() {
     this.loadUnits();
     

@@ -25,14 +25,6 @@
       "alternateUnit": ""
     },
     {
-      "id": "c038",
-      "itemName": "Keyboard",
-      "barcode": "M83836",
-      "unitName": "Piece",
-      "conFactor": 100,
-      "alternateUnit": "Carton"
-    },
-    {
       "itemName": "Chocolate",
       "barcode": "C655555",
       "unitName": "packet",
@@ -47,6 +39,32 @@
       "unitName": "Dozen",
       "conFactor": 10,
       "alternateUnit": "Box"
+    },
+    {
+      "id": "a5cd",
+      "itemName": "Earphone",
+      "barcode": "E32643",
+      "unitName": "Piece"
+    },
+    {
+      "itemName": "Watch",
+      "barcode": "W32515",
+      "unitName": "Dozen",
+      "conFactor": 77,
+      "alternateUnit": "ton",
+      "id": "da66"
+    },
+    {
+      "id": "e5eb",
+      "itemName": "Phonecase",
+      "barcode": "P52365",
+      "unitName": "packet"
+    },
+    {
+      "id": "8ea3",
+      "itemName": "Mobile",
+      "barcode": "M98765",
+      "unitName": "litre"
     }
   ]
 }
